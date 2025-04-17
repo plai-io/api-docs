@@ -1,0 +1,81 @@
+---
+title: "Connected Accounts"
+api: "POST /auth/get_connected_accounts_data"
+description: "This endpoint allows you to retrieve a list of social accounts (e.g., Facebook, Instagram, etc.) that are connected to a user's profile on our platform. By specifying the user's unique ID, you can access information about the social accounts they have linked, enabling you to manage or interact with these accounts for further operations, such as advertising or analytics."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User Id
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean" required>
+	Indicates whether the API operation was successful
+</ResponseField>
+
+<ResponseField name="results" type="object" required>
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean" required>
+			Confirms successful processing within the results payload
+		</ResponseField>
+
+    	<ResponseField name="connectedAccounts" type="object" required>
+    		<Expandable title="Connected Accounts (Dynamic Platforms)">
+    			<ResponseField
+    				name="{platform}"
+    				type="object"
+    				dynamicKey="socialMediaPlatform"
+    			>
+    				<Note>
+    					Dynamic key representing social media platform (e.g.
+    					googleAdwords, facebookAds, etc.)
+    				</Note>
+
+    				<Expandable title="Platform Account Details">
+    					<ResponseField name="userName" type="string" required>
+    						The authenticated user's display name
+    					</ResponseField>
+    					<ResponseField
+    						name="isConnected"
+    						type="boolean"
+    						required
+    					>
+    						Connection status of the account
+    					</ResponseField>
+    					<ResponseField
+    						name="platformServiceName"
+    						type="string"
+    						required
+    					>
+    						Platform identifier (matches the dynamic object key)
+    					</ResponseField>
+    					<ResponseField name="selectedOption" type="string">
+    						User-selected configuration option
+    					</ResponseField>
+    					<ResponseField
+    						name="refreshToken"
+    						type="string"
+    						required
+    						sensitive
+    					>
+    						OAuth refresh token for the connection
+    					</ResponseField>
+    					<ResponseField name="accountId" type="number" required>
+    						Platform-specific account identifier
+    					</ResponseField>
+    					<ResponseField name="accountName" type="number">
+    						ID of the account
+    					</ResponseField>
+    					<ResponseField name="currencyCode" type="string">
+    						3-letter ISO currency code for the account
+    					</ResponseField>
+    				</Expandable>
+    			</ResponseField>
+    		</Expandable>
+    	</ResponseField>
+    </Expandable>
+
+</ResponseField>

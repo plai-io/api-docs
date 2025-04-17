@@ -1,0 +1,149 @@
+---
+title: "Get Ad Account Media"
+api: "POST /meta/get_ad_account_media"
+description: "This endpoint is used to fetch media assets (both images and videos) associated with a user's Facebook Ad Account. It provides access to the creative library that can be used in ad campaigns, allowing users to browse and select previously uploaded media for their advertisements."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User Id
+</ParamField>
+<ParamField
+	body="type"
+	type="string"
+	default="IMAGE | VIDEO"
+	placeholder="IMAGE | VIDEO"
+	required
+>
+	Media Type
+</ParamField>
+<ParamField body="pagination" type="string" default="">
+	Pagination
+</ParamField>
+
+## Response
+
+<Tabs>
+  <Tab title="Images Response">
+    
+    <ResponseField name="success" type="boolean" required>
+        Indicates whether the operation was successful
+    </ResponseField>
+
+    <ResponseField name="results" type="object" required>
+        <Expandable title="Results Object">
+            <ResponseField name="success" type="boolean" required>
+                Confirms successful media retrieval
+            </ResponseField>
+            <ResponseField name="media" type="array" required>
+                <Expandable title="Media Items">
+                    <ResponseField name="id" type="string" required>
+                        Unique media identifier
+                    </ResponseField>
+                    <ResponseField name="format" type="array" required>
+                        <Expandable title="Media Formats">
+                            <ResponseField name="embed_html" type="string" required>
+                                HTML iframe embed code
+                            </ResponseField>
+                            <ResponseField name="filter" type="string" required>
+                                Dimension descriptor
+                            </ResponseField>
+                            <ResponseField name="height" type="number" required>
+                                Pixel height
+                            </ResponseField>
+                            <ResponseField name="picture" type="string" required>
+                                Preview image URL
+                            </ResponseField>
+                            <ResponseField name="width" type="number" required>
+                                Pixel width
+                            </ResponseField>
+                        </Expandable>
+                    </ResponseField>
+                </Expandable>
+            </ResponseField>
+        </Expandable>
+    </ResponseField>
+
+  </Tab>
+
+  <Tab title="Videos Response">
+    <ResponseField name="success" type="boolean" required>
+    Indicates whether the API request was successful
+    </ResponseField>
+
+    <ResponseField name="results" type="object" required>
+        <Expandable title="Results Object">
+            <ResponseField name="success" type="boolean" required>
+            Confirms successful media retrieval
+            </ResponseField>
+
+            <ResponseField name="media" type="array" required>
+            <Expandable title="Media Items">
+                <ResponseField name="url" type="string" required>
+                    Direct URL to the media file
+
+                </ResponseField>
+
+                <ResponseField name="width" type="number" required>
+                    Width of the media in pixels
+                </ResponseField>
+
+                <ResponseField name="height" type="number" required>
+                    Height of the media in pixels
+                </ResponseField>
+
+                <ResponseField name="id" type="string" required>
+                    Unique identifier for the media item
+                </ResponseField>
+            </Expandable>
+            </ResponseField>
+        </Expandable>
+    </ResponseField>
+
+    </Tab>
+
+</Tabs>
+
+<ResponseExample>
+    ```json 200 (IMAGES)
+   {
+        "success":true,
+        "results":{
+            "success":true,
+            "media":[
+                {
+                    "id":"2074273929752253",
+                    "format":[
+                        {
+                            "embed_html":"<iframe allow=\"autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share\" allowfullscreen=\"true\" frameborder=\"0\" height=\"130\" scrolling=\"no\" src=\"https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F120206061579950153%2Fvideos%2F2074273929752253%2F%3Fidorvanity%3D120206061579950153&width=130\" style=\"border:none;overflow:hidden\" width=\"130\"></iframe>",
+                            "filter":"130x130",
+                            "height":130,
+                            "picture":"https://scontent-ord5-2.xx.fbcdn.net/v/t15.13418-10/485495564_1004185174993501_5346987072051659935_n.jpg?stp=dst-jpg_s130x130_tt6&_nc_cat=110&ccb=1-7&_nc_sid=ace027&_nc_eui2=AeGDGk3WT3pgnbEOgYPA0qA9j0cq8_MbHGiPRyrz8xscaORB8i69mT8NjgkZsAV-1UHj81dKp8wq4f6KlO892n68&_nc_ohc=2plK7cMH8cMQ7kNvgEzzPWI&_nc_oc=AdmKLzGx1IckidCC3X0zKeKgWln8v-ypqcG7D-WCNexMZWnaIkaCay1n7_G3OAWv448D9pNaEQAgemarTjeVdQck&_nc_zt=23&_nc_ht=scontent-ord5-2.xx&edm=AM_bLsMEAAAA&_nc_gid=OXJsWsYoQ8IpbhdQuDtnFA&oh=00_AYF6Q3bszBdOiBRLnZ9Zjod5opyC0XzMA08z6HhQ6koATg&oe=67E6E01D",
+                            "width":130
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+    ```
+
+    ```json 200 (VIDEOS)
+    {
+        "success":true,
+        "results":{
+            "success":true,
+            "media":[
+                {
+                    "url":"https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/458397097_120212188508890153_5643706261073051043_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=890911&_nc_eui2=AeEb31a9FMRMAR99chReYCjZNy7E6NJ-DsU3LsTo0n4Oxa-6orXAzPLD3SUNeacQy6gdHVFFw3UMBKjcIZ7h6VEW&_nc_ohc=Vgv_WkUc4y4Q7kNvgGHEwR8&_nc_oc=AdmVeH5LXBRNcMi7xjpQPNh8t7j9lMC6c3iWMNQ5Up77fDG4QFcziAJGv9FztzMyv8cSbVifb_himrkLK5cXB2IZ&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AJcBmwoEAAAA&_nc_gid=jb2uOjyDnEnPtP44f-xPUg&oh=00_AYENmPdDcrUWqDw0xdryQXMKv2RmTaPfjpgOYXD_M6B1nA&oe=67E70714",
+                    "width":1080,
+                    "height":1920,
+                    "id":"3184782144999967:2ec2d87ca494ba28f676b385df9c98ca"
+                }
+            ]
+        }
+    }
+    ```
+
+</ResponseExample>

@@ -1,0 +1,31 @@
+---
+title: "Create User Profile"
+api: "POST /auth/create_user"
+description: "This endpoint allows the creation of a new user profile on our platform. By providing the necessary user information, you can onboard new users into the system, enabling them to access and utilize platform features and services."
+---
+
+## Request Body
+
+<ParamField body="email" type="string" required>
+	Customers Email Address
+</ParamField>
+<ParamField body="name" type="string" required>
+	Customers Full Name
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean" required>
+	Indicates whether the API operation was successful
+</ResponseField>
+
+<ResponseField name="results" type="object" required>
+	<Expandable title="Results">
+		<ResponseField name="success" type="boolean" required>
+			Confirms successful processing within the results payload
+		</ResponseField>
+		<ResponseField name="id" type="string" required>
+			Unique identifier hash
+		</ResponseField>
+	</Expandable>
+</ResponseField>

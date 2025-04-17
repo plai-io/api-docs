@@ -1,0 +1,78 @@
+---
+title: "Create Facebook Audience"
+api: "POST /meta/create_fb_csv_audience"
+description: "This endpoint allows you to create a custom audience by uploading a CSV file containing user data (such as emails, phone numbers, or other identifiers). The uploaded data is processed and matched against platform records to build a targeted audience for advertising purposes."
+contentType: multipart/form-data
+---
+
+## Request Body
+
+<Note>
+	The request body for this endpoint should be sent as `multipart/form-data`.
+	The following fields are expected:
+</Note>
+
+<ParamField body="userId" type="string" required>
+	User Id
+</ParamField>
+<ParamField body="audienceName" type="string" required>
+	The name of the audience you are creating. This name will be displayed in
+	your Facebook Ads account.
+</ParamField>
+<ParamField body="csvFile" type="file" required>
+
+    <Card
+        title="Download Sample CSV"
+        icon="download"
+        href="https://business.facebook.com/images/ads/signals/example_files/example_value_based_audience_file.csv"
+    >
+        Sample CSV
+    </Card>
+
+    <Note>
+        Make sure to follow csv guidelines from https://www.facebook.com/business/help/2082575038703844?id=2469097953376494
+    </Note>
+
+
+    Audience Csv. Ensure the file is in CSV format.
+
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean" required>
+	Indicates whether the API operation was successful
+</ResponseField>
+
+<ResponseField name="results" type="object" required>
+	<Expandable title="Audience Results">
+		<ResponseField name="success" type="boolean" required>
+			Confirms successful audience operation
+		</ResponseField>
+
+    	<ResponseField name="audienceId" type="string" required>
+    		Unique identifier for the audience
+    	</ResponseField>
+
+    	<ResponseField name="audienceName" type="string" required>
+    		Name of the audience
+    	</ResponseField>
+
+    	<ResponseField name="invalid_entry_samples" type="object">
+    		<Note>Empty object when no invalid entries exist</Note>
+    	</ResponseField>
+
+    	<ResponseField name="num_invalid_entries" type="number" required>
+    		Count of invalid entries in the audience
+    	</ResponseField>
+
+    	<ResponseField name="num_received" type="number" required>
+    		Total number of entries received
+    	</ResponseField>
+
+    	<ResponseField name="session_id" type="string" required>
+    		Processing session identifier
+    	</ResponseField>
+    </Expandable>
+
+</ResponseField>

@@ -1,0 +1,34 @@
+---
+title: "Create Advert Link"
+api: "POST /auth/create_advert_generator_link"
+description: "This endpoint generates a link that allows users to seamlessly connect their Facebook and Instagram accounts for the purpose of creating advertisements. By connecting these accounts, users can manage and launch campaigns across both platforms from a unified interface. This integration streamlines the process of advertisement creation and management, ensuring a smooth experience for users looking to run cross-platform ads."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User Id
+</ParamField>
+<ParamField body="platform" type="string" initialValue="FACEBOOK" required>
+	Social Platform Key
+</ParamField>
+<ParamField body="redirectUri" type="url" required>
+	Redirect Url to redirect after connecting accounts
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean" required>
+	Indicates whether the operation was successful
+</ResponseField>
+
+<ResponseField name="results" type="object" required>
+	<Expandable title="Results">
+		<ResponseField name="success" type="boolean" required>
+			Confirms successful processing within the results payload
+		</ResponseField>
+		<ResponseField name="link" type="string" required>
+			Generated URL with parameters and redirect URL
+		</ResponseField>
+	</Expandable>
+</ResponseField>

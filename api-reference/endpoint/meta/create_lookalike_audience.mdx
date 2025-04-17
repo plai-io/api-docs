@@ -1,0 +1,47 @@
+---
+title: "Create Lookalike Audience"
+api: "POST /meta/create_lookalike_audience"
+description: "This endpoint allows you to create a Lookalike Audience based on an existing custom audience. A Lookalike Audience helps you reach new people who are similar to your existing customers, improving the chances of ad engagement and conversion."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User Id
+</ParamField>
+<ParamField body="sourceType" type="string" required default="PAGE | AUDIENCE">
+	Pagination (PAGE | AUDIENCE)
+</ParamField>
+<ParamField body="sourceId" type="string" required>
+	<Info>
+		If source is `PAGE`, you must include the page id parameter. This should be the Facebook Page ID from which the audience will be created.
+	</Info>
+
+    <Info>
+    If source is `AUDIENCE`, you must include the audience id parameter. This should be the Custom Audience ID that will be used.
+    </Info>
+
+</ParamField>
+<ParamField body="audienceName" type="string" required>
+	Audience Name
+</ParamField>
+<ParamField body="countryCode" type="string" required>
+	Country Code e.g: US,UK
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean" required>
+	Indicates whether the operation was successful
+</ResponseField>
+
+<ResponseField name="results" type="object" required>
+	<Expandable title="Results Object">
+		<ResponseField name="id" type="string" required>
+			Unique identifier for lookalike audience
+		</ResponseField>
+		<ResponseField name="name" type="string" required>
+			Name of audience
+		</ResponseField>
+	</Expandable>
+</ResponseField>

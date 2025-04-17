@@ -1,0 +1,30 @@
+---
+title: "Authentication Overview"
+description: "Learn how to connect your social accounts (Facebook, Linkedin, etc.) to our platform for quick and secure access. This page covers supported providers and the simple steps to link your account."
+---
+
+### Connect Facebook or Linkedin Account
+
+<Steps>
+	<Step title="First Step">
+		Create a new user profile if one does not already exist, including your full name and email address.
+
+        <Card title="Click to Create new profile" icon="link" href="/api-reference/endpoint/auth/create_user" horizontal />
+    </Step>
+    <Step title="Second Step">
+    	Link your Facebook or Linkedin Account, with our platform
+
+        <Card title="Click to Generate Link" icon="link" href="/api-reference/endpoint/auth/create_advert" horizontal />
+
+        To connect a social account, set the platform parameter accordingly:
+
+
+        - For Facebook or Instagram, set `platform = FACEBOOK`. This will allow you to connect your Facebook Page, Instagram Page, or Ads Account to our platform.
+
+        ![title](/images/auth_fb.png)
+
+        - For LinkedIn, set `platform = LINKEDIN`. This enables you to connect your LinkedIn Page or Ads Account.
+
+    </Step>
+
+</Steps>

@@ -1,0 +1,34 @@
+---
+title: "Check LeardForm TOS"
+api: "POST /meta/check_leadform_tos"
+description: "This endpoint checks whether the user has accepted the Terms of Service for their connected social media page (e.g., Facebook Page). It is used to verify compliance before allowing actions such as advertising or content management."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User Id
+</ParamField>
+<ParamField body="fbPageId" type="string" required>
+	Facebook Page Id
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean" required>
+	Indicates whether the operation was successful
+</ResponseField>
+
+<ResponseField name="results" type="object" required>
+	<Expandable title="Results">
+		<ResponseField name="success" type="boolean" required>
+			Confirms successful processing within the results payload
+		</ResponseField>
+		<ResponseField name="hasAgreeToTos" type="boolean" required>
+			Confirms if user agreed to terms of services
+		</ResponseField>
+		<ResponseField name="error" type="string">
+			Error string if something went wrong
+		</ResponseField>
+	</Expandable>
+</ResponseField>

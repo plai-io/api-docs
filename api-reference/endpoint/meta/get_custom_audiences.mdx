@@ -1,0 +1,50 @@
+---
+title: "Get Custom Audiences"
+api: "POST /meta/get_custom_audiences"
+description: "This endpoint allows you to get custom audiences."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User Id
+</ParamField>
+<ParamField body="pagination" type="string">
+	If the number of results exceeds the page limit, the response will include
+	pagination links (`next` and `previous`) to help you navigate through the
+	result set.
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean" required>
+	Indicates whether the operation was successful
+</ResponseField>
+
+<ResponseField name="results" type="object" required>
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean" required>
+			Confirms successful audience retrieval
+		</ResponseField>
+
+    	<ResponseField name="customAudiences" type="array" required>
+            <Expandable title="Custom Audiences">
+                <ResponseField name="id" type="string" required>
+                    Unique audience identifier
+                </ResponseField>
+
+                <ResponseField name="name" type="string" required>
+                    Audience display name
+                </ResponseField>
+
+                <ResponseField name="subtype" type="string" required >
+                    Audience classification type
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+
+    	<ResponseField name="next" type="string" />
+    	<ResponseField name="previous" type="string" />
+    </Expandable>
+
+</ResponseField>

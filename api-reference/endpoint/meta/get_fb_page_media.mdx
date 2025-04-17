@@ -1,0 +1,124 @@
+---
+title: "Get Facebook Page Media"
+api: "POST /meta/get_fb_page_media"
+description: "This endpoint is used to fetch media assets (both images and videos) associated with a user's Facebook Page. It provides access to the creative library that can be used in ad campaigns, allowing users to browse and select previously uploaded media for their advertisements."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User Id
+</ParamField>
+<ParamField body="fbPageId" type="string" required>
+	Facebook Page ID
+</ParamField>
+<ParamField
+	body="type"
+	type="string"
+	default="IMAGE | VIDEO"
+	placeholder="IMAGE | VIDEO"
+	required
+>
+	Media Type
+</ParamField>
+<ParamField body="pagination" type="string" default="">
+	Pagination
+</ParamField>
+
+## Response
+
+<Tabs>
+  <Tab title="Images Response">
+    
+    <ResponseField name="success" type="boolean" required>
+        Indicates whether the operation was successful
+    </ResponseField>
+
+    <ResponseField name="results" type="object" required>
+        <Expandable title="Results Object">
+            <ResponseField name="success" type="boolean" required>
+                Confirms successful media retrieval
+            </ResponseField>
+            <ResponseField name="media" type="array" required>
+                <Expandable title="Media Items">
+                    <ResponseField name="id" type="string" required>
+                        Unique media identifier
+                    </ResponseField>
+                       <ResponseField name="full_picture" type="string" required>
+                        Picture Link
+                    </ResponseField>
+                </Expandable>
+            </ResponseField>
+        </Expandable>
+    </ResponseField>
+
+  </Tab>
+
+  <Tab title="Videos Response">
+    <ResponseField name="success" type="boolean" required>
+    Indicates whether the API request was successful
+    </ResponseField>
+
+    <ResponseField name="results" type="object" required>
+        <Expandable title="Results Object">
+            <ResponseField name="success" type="boolean" required>
+            Confirms successful media retrieval
+            </ResponseField>
+
+            <ResponseField name="media" type="array" required>
+            <Expandable title="Media Items">
+
+                <ResponseField name="id" type="string" required>
+                    Unique identifier for the media item
+                </ResponseField>
+
+                <ResponseField name="source" type="string" required>
+                    Video Source URL
+                </ResponseField>
+
+                <ResponseField name="picture" type="string" required>
+                    Video Thumbnail Picture
+                </ResponseField>
+            </Expandable>
+            </ResponseField>
+        </Expandable>
+    </ResponseField>
+
+    </Tab>
+
+</Tabs>
+
+<ResponseExample>
+    ```json 200 (IMAGES)
+    {
+        "success":true,
+        "results":
+            {
+                "success":true,
+                "media":[
+                    {
+                        "id":"2074273929752253",
+                        "full_picture": "https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/458397097_120212188508890153_5643706261073051043_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=890911&_nc_eui2=AeEb31a9FMRMAR99chReYC"
+                    }
+                ]
+            }
+    }
+    ```
+
+    ```json 200 (VIDEOS)
+    {
+        "success":true,
+        "results":{
+            "success":true,
+            "media":[
+                {
+                    "id": "1361984114970374",
+                    "source": "https://scontent-ord5-2.xx.fbcdn.net/o1/v/t2/f2/m69/AQO5UgzvdZxQb-fax-Ej7-_oNuXl9XXa7As55tKAxZXitXRM4tfNrxjQzQoDUJT2626vEbEZ4ArbG4qltgdYeikj.mp4?strext=1&_nc_cat=111&_nc_sid=5e9851&_nc_ht=scontent-ord5-2.xx.fbcdn.net&_nc_ohc=ugKIbHPFh_8Q7kNvgEu8WEl",
+                    "picture": "https://scontent-ord5-2.xx.fbcdn.net/v/t15.5256-10/475037280_1986779405162351_2987258282856273552_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=e3495b&_nc_eui2=AeF-GfgvhUPcju8YrI08qVrTg5efafm7pkeDl59p-bumRyJ6hLxDWu9ECoJ1pDLrp7jlWuqdLfmgChl2HKldD5Od&_nc_ohc=hW3y9qSEgXwQ7kNvgFg1LzP"
+                }
+            ]
+        }
+    }
+    ```
+
+</ResponseExample>

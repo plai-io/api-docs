@@ -1,0 +1,51 @@
+---
+title: "Create Leadform Audience"
+api: "POST /meta/create_leadform_audience"
+description: "This endpoint allows you to create a custom audience based on users who have interacted with your Facebook Lead Forms. It helps advertisers retarget users who have shown interest by submitting a lead form or engaging with lead ads."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User Id
+</ParamField>
+<ParamField body="name" type="string" required>
+	Lead Form Audience Name
+</ParamField>
+<ParamField body="description" type="string" required>
+	Lead Form Audience description
+</ParamField>
+<ParamField body="type" type="string" required>
+	Type (OPEN)
+</ParamField>
+<ParamField body="fbPageId" type="string" required>
+	Facebook Page Id
+</ParamField>
+<ParamField body="leadFormIds" type="array" required>
+	Lead Form Ids
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean" required>
+	Indicates whether the operation was successful
+</ResponseField>
+
+<ResponseField name="results" type="object" required>
+    <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean" required>
+            Indicates whether the operation was successful
+        </ResponseField>
+        <ResponseField name="audience" type="object" required>
+            <Expandable title="Audience Object">
+                <ResponseField name="id" type="string" required>
+                    Unique identifier for lookalike audience
+                </ResponseField>
+                <ResponseField name="name" type="string" required>
+                    Name of audience
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+    </Expandable>
+
+</ResponseField>

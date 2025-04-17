@@ -1,0 +1,50 @@
+---
+title: "Create Page Audience"
+api: "POST /meta/create_page_audience"
+description: "This endpoint allows you to create a custom audience based on user interactions with a specific Facebook Page. It enables advertisers to target people who have engaged with the page through actions such as likes, comments, shares, or visits."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User Id
+</ParamField>
+<ParamField body="name" type="string" required>
+	Page Audience Name
+</ParamField>
+<ParamField body="fbPageId" type="string" required>
+	Facebook Page Id
+</ParamField>
+<ParamField body="instagramId" type="string">
+	Instagram Id
+
+    <Note>
+     without this it will create only facebook page audience and including this will create only instagram page audience
+    </Note>
+
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean" required>
+	Indicates whether the operation was successful
+</ResponseField>
+
+<ResponseField name="results" type="object" required>
+    <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean" required>
+            Indicates whether the operation was successful
+        </ResponseField>
+        <ResponseField name="audience" type="object" required>
+            <Expandable title="Audience Object">
+                <ResponseField name="id" type="string" required>
+                    Unique identifier for page audience
+                </ResponseField>
+                <ResponseField name="name" type="string" required>
+                    Name of audience
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+    </Expandable>
+
+</ResponseField>

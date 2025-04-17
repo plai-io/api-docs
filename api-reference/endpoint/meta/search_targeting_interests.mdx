@@ -1,0 +1,69 @@
+---
+title: "Get Search Targeting Interests"
+api: "POST /meta/search_targeting_interests"
+description: "This endpoint allows you to search for advertising target interests based on specific criteria such as the user ID, selected categories, and target countries. It helps in identifying relevant interest groups to improve the accuracy and effectiveness of ad targeting."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User Id
+</ParamField>
+<ParamField body="query" type="string" required>
+	Search Query
+</ParamField>
+<ParamField body="specialAdCategories" type="array" default={[]}>
+	<Info>
+		Supported Values = (HOUSING, FINANCIAL_PRODUCTS_SERVICES, EMPLOYMENT)
+	</Info>
+</ParamField>
+<ParamField body="specialAdCountries" type="array" default={[]}>
+	Countries Codes e.g: US, UK
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean" required>
+	Indicates whether the operation was successful
+</ResponseField>
+
+<ResponseField name="results" type="object" required>
+	<Expandable title="Media Results">
+		<ResponseField name="success" type="boolean" required>
+			Confirms successful media retrieval
+		</ResponseField>
+
+    	<ResponseField name="interests" type="array" required>
+            <Expandable title="Interest Items">
+                <ResponseField name="id" type="string" required>
+                    Unique interest identifier
+                </ResponseField>
+
+                <ResponseField name="name" type="string" required>
+                    Display name of the interest
+                </ResponseField>
+
+                <ResponseField name="type" type="string" required enum="behaviors|demographics|interests">
+                    Classification type of the interest
+                </ResponseField>
+
+                <ResponseField name="path" type="array" required>
+                        Array of paths
+                </ResponseField>
+
+                <ResponseField name="audience_size_lower_bound" type="number" required>
+                    Minimum estimated audience size
+                </ResponseField>
+
+                <ResponseField name="audience_size_upper_bound" type="number" required>
+                    Maximum estimated audience size
+                </ResponseField>
+
+                <ResponseField name="description" type="string" required>
+                    Detailed explanation of the interest category
+                </ResponseField>
+            </Expandable>
+    </ResponseField>
+    </Expandable>
+
+</ResponseField>

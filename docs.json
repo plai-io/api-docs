@@ -1,102 +1,96 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
-  "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
-  },
-  "favicon": "/favicon.svg",
-  "navigation": {
-    "tabs": [
-      {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "introduction",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Essentials",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint Examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
-          }
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
-  }
+	"$schema": "https://mintlify.com/docs.json",
+	"theme": "mint",
+	"name": "Plai Api Docs",
+	"colors": {
+		"primary": "#1E45F9",
+		"light": "#0A84E3",
+		"dark": "#1E45F9"
+	},
+	"favicon": "/favicon.png",
+	"navigation": {
+		"groups": [
+			{
+				"group": "Getting Started",
+				"pages": ["introduction", "quickstart"]
+			},
+			{
+				"group": "Api Endpoints",
+				"pages": [
+					{
+						"group": "Authentication",
+						"icon": "user",
+						"pages": [
+							"api-reference/endpoint/auth/auth_overview",
+							"api-reference/endpoint/auth/create_user",
+							"api-reference/endpoint/auth/create_advert",
+							"api-reference/endpoint/auth/get_connected_accounts"
+						]
+					},
+					{
+						"group": "Audiences",
+						"icon": "users",
+						"pages": [
+							{
+								"group": "Meta Audience",
+								"icon": "meta",
+								"pages": [
+									"api-reference/endpoint/meta/meta_overview",
+									"api-reference/endpoint/meta/create_fb_csv_audience",
+									"api-reference/endpoint/meta/get_custom_audiences",
+									"api-reference/endpoint/meta/create_lookalike_audience",
+									"api-reference/endpoint/meta/create_leadform_audience",
+									"api-reference/endpoint/meta/create_page_audience"
+								]
+							},
+							{
+								"group": "Linkedin Audience",
+								"icon": "linkedin",
+								"pages": [
+									"api-reference/endpoint/linkedin/linkedin_overview",
+									"api-reference/endpoint/linkedin/create_csv_audience"
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	"api": {
+		"mdx": {
+			"server": "https://public-api-yifgeucula-uc.a.run.app",
+			"auth": {
+				"method": "key",
+				"name": "x-api-key"
+			}
+		},
+		"playground": {
+			"proxy": false
+		}
+	},
+	"logo": {
+		"light": "/logo/light.svg",
+		"dark": "/logo/dark.svg"
+	},
+	"navbar": {
+		"links": [
+			{
+				"label": "Support",
+				"href": "mailto:getsupport@plai.app"
+			}
+		],
+		"primary": {
+			"type": "button",
+			"label": "Dashboard",
+			"href": "https://whitelabel.plai.io"
+		}
+	},
+	"footer": {
+		"socials": {
+			"facebook": "https://www.facebook.com/plaiapp",
+			"instagram": "https://www.facebook.com/plaiapp",
+			"linkedin": "https://www.linkedin.com/company/plaiio"
+		}
+	}
 }

@@ -1,0 +1,69 @@
+---
+title: "Get Search Targeting Locations"
+api: "POST /meta/search_targeting_locations"
+description: "This endpoint allows you to search for advertising target Locations based on search query. It helps in identifying relevant interest locations to improve the accuracy and effectiveness of ad targeting."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User Id
+</ParamField>
+<ParamField body="query" type="string" required>
+	Search Query
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean" required>
+	Indicates whether the operation was successful
+</ResponseField>
+
+<ResponseField name="results" type="object" required>
+	<Expandable title="Media Results">
+		<ResponseField name="success" type="boolean" required>
+			Confirms successful media retrieval
+		</ResponseField>
+
+    	<ResponseField name="locations" type="array" required>
+      <Expandable title="Location Items">
+          <ResponseField name="key" type="string" required>
+            Unique location identifier
+          </ResponseField>
+
+          <ResponseField name="name" type="string" required>
+            Display name of the location
+          </ResponseField>
+
+          <ResponseField name="region" type="string" required>
+            Administrative region/state
+          </ResponseField>
+
+          <ResponseField name="country_name" type="string" required>
+            Full country name
+          </ResponseField>
+
+          <ResponseField name="type" type="string" required enum="city|country|region|zip">
+            Geographic granularity level (city, subcity, neighborhood)
+          </ResponseField>
+
+          <ResponseField name="country_code" type="string" required format="ISO 3166-1 alpha-2">
+            2-letter country code
+          </ResponseField>
+
+          <ResponseField name="region_id" type="number" required>
+            Internal region identifier
+          </ResponseField>
+
+          <ResponseField name="supports_region" type="boolean" required>
+            Whether regional targeting is available
+          </ResponseField>
+
+          <ResponseField name="supports_city" type="boolean" required>
+            Whether city-level targeting is available
+          </ResponseField>
+      </Expandable>
+    </ResponseField>
+    </Expandable>
+
+</ResponseField>
