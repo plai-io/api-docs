@@ -1,7 +1,7 @@
 ---
 title: "Create Advert Link"
 api: "POST /auth/create_advert_generator_link"
-description: "This endpoint generates a link that allows users to seamlessly connect their Facebook and Instagram accounts for the purpose of creating advertisements. By connecting these accounts, users can manage and launch campaigns across both platforms from a unified interface. This integration streamlines the process of advertisement creation and management, ensuring a smooth experience for users looking to run cross-platform ads."
+description: "This endpoint generates a link that allows users to seamlessly connect their Ad accounts for the purpose of creating advertisements. By connecting these accounts, users can manage and launch campaigns across all platforms from a unified interface. This integration streamlines the process of advertisement creation and management, ensuring a smooth experience for users looking to run cross-platform ads."
 ---
 
 ## Request Body
@@ -10,25 +10,29 @@ description: "This endpoint generates a link that allows users to seamlessly con
 	User Id
 </ParamField>
 <ParamField body="platform" type="string" initialValue="FACEBOOK" required>
-	Social Platform Key
+	For Facebook or Instagram, set `platform = FACEBOOK`, for LinkedIn, set
+	`platform = LINKEDIN`.
 </ParamField>
-<ParamField body="redirectUri" type="url" required>
-	Redirect Url to redirect after connecting accounts
+<ParamField body="redirectUri" type="URL">
+	The URL users are redirected to after linking their accounts
 </ParamField>
 
 ## Response
 
-<ResponseField name="success" type="boolean" required>
+<ResponseField name="success" type="boolean">
 	Indicates whether the operation was successful
 </ResponseField>
 
-<ResponseField name="results" type="object" required>
+<ResponseField name="results" type="object">
 	<Expandable title="Results">
-		<ResponseField name="success" type="boolean" required>
+		<ResponseField name="success" type="boolean">
 			Confirms successful processing within the results payload
 		</ResponseField>
-		<ResponseField name="link" type="string" required>
+		<ResponseField name="link" type="string">
 			Generated URL with parameters and redirect URL
+		</ResponseField>
+		<ResponseField name="error" type="string">
+			Error message if something went wrong
 		</ResponseField>
 	</Expandable>
 </ResponseField>

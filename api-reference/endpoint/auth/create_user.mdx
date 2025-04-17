@@ -15,17 +15,20 @@ description: "This endpoint allows the creation of a new user profile on our pla
 
 ## Response
 
-<ResponseField name="success" type="boolean" required>
+<ResponseField name="success" type="boolean">
 	Indicates whether the API operation was successful
 </ResponseField>
 
-<ResponseField name="results" type="object" required>
+<ResponseField name="results" type="object">
 	<Expandable title="Results">
-		<ResponseField name="success" type="boolean" required>
+		<ResponseField name="success" type="boolean">
 			Confirms successful processing within the results payload
 		</ResponseField>
-		<ResponseField name="id" type="string" required>
-			Unique identifier hash
+		<ResponseField name="id" type="string">
+			Unique User id (you need to pass this id in all requests)
+		</ResponseField>
+		<ResponseField name="error" type="string">
+			Error message if something went wrong
 		</ResponseField>
 	</Expandable>
 </ResponseField>
