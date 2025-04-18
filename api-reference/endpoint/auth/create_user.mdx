@@ -1,6 +1,6 @@
 ---
 title: "Create User Profile"
-api: "POST /auth/create_user"
+api: "POST /auth/create_profile"
 description: "This endpoint allows the creation of a new user profile on our platform. By providing the necessary user information, you can onboard new users into the system, enabling them to access and utilize platform features and services."
 ---
 
@@ -16,13 +16,14 @@ description: "This endpoint allows the creation of a new user profile on our pla
 ## Response
 
 <ResponseField name="success" type="boolean">
-	Indicates whether the API operation was successful
+	Indicates that the HTTP response was successful (status code 200 OK).
 </ResponseField>
 
 <ResponseField name="results" type="object">
 	<Expandable title="Results">
 		<ResponseField name="success" type="boolean">
-			Confirms successful processing within the results payload
+			Indicates whether the specific operation or API action was
+			successful.
 		</ResponseField>
 		<ResponseField name="id" type="string">
 			Unique User id (you need to pass this id in all requests)

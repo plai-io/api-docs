@@ -1,13 +1,16 @@
 ---
 title: "Create Advert Link"
-api: "POST /auth/create_advert_generator_link"
+api: "POST /auth/create_link"
 description: "This endpoint generates a link that allows users to seamlessly connect their Ad accounts for the purpose of creating advertisements. By connecting these accounts, users can manage and launch campaigns across all platforms from a unified interface. This integration streamlines the process of advertisement creation and management, ensuring a smooth experience for users looking to run cross-platform ads."
 ---
 
 ## Request Body
 
 <ParamField body="userId" type="string" required>
-	User Id
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
 <ParamField body="platform" type="string" initialValue="FACEBOOK" required>
 	For Facebook or Instagram, set `platform = FACEBOOK`, for LinkedIn, set
@@ -20,13 +23,14 @@ description: "This endpoint generates a link that allows users to seamlessly con
 ## Response
 
 <ResponseField name="success" type="boolean">
-	Indicates whether the operation was successful
+	Indicates that the HTTP response was successful (status code 200 OK).
 </ResponseField>
 
 <ResponseField name="results" type="object">
 	<Expandable title="Results">
 		<ResponseField name="success" type="boolean">
-			Confirms successful processing within the results payload
+			Indicates whether the specific operation or API action was
+			successful.
 		</ResponseField>
 		<ResponseField name="link" type="string">
 			Generated URL with parameters and redirect URL

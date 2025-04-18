@@ -1,0 +1,52 @@
+---
+title: "Get User Profile"
+api: "GET /auth/get_profile"
+description: "This endpoint retrieves the current user's profile using their email address."
+---
+
+## Request Body
+
+<ParamField body="email" type="string" required>
+	Customers Email Address
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+	<Expandable title="Results">
+		<ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+		</ResponseField>
+        <ResponseField name="user" type="object">
+            <Expandable title="Users Object">
+                <ResponseField name="userId" type="string">
+                    Unique User id (you need to pass this id in all requests)
+                </ResponseField>
+                <ResponseField name="email" type="string">
+                    User Email Address
+                </ResponseField>
+                <ResponseField name="name" type="string">
+                    User name
+                </ResponseField>
+                <ResponseField name="createdAt" type="object">
+                    <Expandable title="Timestamp Object">
+                        <ResponseField name="_seconds" type="number">
+                            Seconds Timestamp
+                        </ResponseField>
+                        <ResponseField name="_nanoseconds" type="number">
+                            Nanoseconds Timestamp
+                        </ResponseField>
+                    </Expandable>
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+        <ResponseField name="error" type="string">
+            Error message if something went wrong
+        </ResponseField>
+    </Expandable>
+
+</ResponseField>

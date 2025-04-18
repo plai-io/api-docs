@@ -7,7 +7,10 @@ description: "This endpoint is used to fetch media assets (both images and video
 ## Request Body
 
 <ParamField body="userId" type="string" required>
-	User Id
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
 <ParamField
 	body="type"
@@ -27,40 +30,43 @@ description: "This endpoint is used to fetch media assets (both images and video
 <Tabs>
   <Tab title="Images Response">
     
-    <ResponseField name="success" type="boolean" required>
-        Indicates whether the operation was successful
+    <ResponseField name="success" type="boolean" >
+        Indicates that the HTTP response was successful (status code 200 OK).
     </ResponseField>
 
-    <ResponseField name="results" type="object" required>
+    <ResponseField name="results" type="object" >
         <Expandable title="Results Object">
-            <ResponseField name="success" type="boolean" required>
+            <ResponseField name="success" type="boolean" >
                 Confirms successful media retrieval
             </ResponseField>
-            <ResponseField name="media" type="array" required>
+            <ResponseField name="media" type="array" >
                 <Expandable title="Media Items">
-                    <ResponseField name="id" type="string" required>
+                    <ResponseField name="id" type="string" >
                         Unique media identifier
                     </ResponseField>
-                    <ResponseField name="format" type="array" required>
+                    <ResponseField name="format" type="array" >
                         <Expandable title="Media Formats">
-                            <ResponseField name="embed_html" type="string" required>
+                            <ResponseField name="embed_html" type="string" >
                                 HTML iframe embed code
                             </ResponseField>
-                            <ResponseField name="filter" type="string" required>
+                            <ResponseField name="filter" type="string" >
                                 Dimension descriptor
                             </ResponseField>
-                            <ResponseField name="height" type="number" required>
+                            <ResponseField name="height" type="number" >
                                 Pixel height
                             </ResponseField>
-                            <ResponseField name="picture" type="string" required>
+                            <ResponseField name="picture" type="string" >
                                 Preview image URL
                             </ResponseField>
-                            <ResponseField name="width" type="number" required>
+                            <ResponseField name="width" type="number" >
                                 Pixel width
                             </ResponseField>
                         </Expandable>
                     </ResponseField>
                 </Expandable>
+            </ResponseField>
+            <ResponseField name="error" type="string">
+                Error string if something went wrong
             </ResponseField>
         </Expandable>
     </ResponseField>
@@ -68,35 +74,38 @@ description: "This endpoint is used to fetch media assets (both images and video
   </Tab>
 
   <Tab title="Videos Response">
-    <ResponseField name="success" type="boolean" required>
+    <ResponseField name="success" type="boolean" >
     Indicates whether the API request was successful
     </ResponseField>
 
-    <ResponseField name="results" type="object" required>
+    <ResponseField name="results" type="object" >
         <Expandable title="Results Object">
-            <ResponseField name="success" type="boolean" required>
+            <ResponseField name="success" type="boolean" >
             Confirms successful media retrieval
             </ResponseField>
 
-            <ResponseField name="media" type="array" required>
-            <Expandable title="Media Items">
-                <ResponseField name="url" type="string" required>
-                    Direct URL to the media file
+            <ResponseField name="media" type="array" >
+                <Expandable title="Media Items">
+                    <ResponseField name="url" type="string" >
+                        Direct URL to the media file
 
-                </ResponseField>
+                    </ResponseField>
 
-                <ResponseField name="width" type="number" required>
-                    Width of the media in pixels
-                </ResponseField>
+                    <ResponseField name="width" type="number" >
+                        Width of the media in pixels
+                    </ResponseField>
 
-                <ResponseField name="height" type="number" required>
-                    Height of the media in pixels
-                </ResponseField>
+                    <ResponseField name="height" type="number" >
+                        Height of the media in pixels
+                    </ResponseField>
 
-                <ResponseField name="id" type="string" required>
-                    Unique identifier for the media item
-                </ResponseField>
-            </Expandable>
+                    <ResponseField name="id" type="string" >
+                        Unique identifier for the media item
+                    </ResponseField>
+                </Expandable>
+            </ResponseField>
+            <ResponseField name="error" type="string">
+                Error string if something went wrong
             </ResponseField>
         </Expandable>
     </ResponseField>

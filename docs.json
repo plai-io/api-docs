@@ -23,6 +23,7 @@
 						"pages": [
 							"api-reference/endpoint/auth/auth_overview",
 							"api-reference/endpoint/auth/create_user",
+							"api-reference/endpoint/auth/get_profile",
 							"api-reference/endpoint/auth/create_advert",
 							"api-reference/endpoint/auth/get_connected_accounts"
 						]
@@ -59,7 +60,7 @@
 	},
 	"api": {
 		"mdx": {
-			"server": "https://public-api-yifgeucula-uc.a.run.app",
+			"server": "https://public.plai.io",
 			"auth": {
 				"method": "key",
 				"name": "x-api-key"
