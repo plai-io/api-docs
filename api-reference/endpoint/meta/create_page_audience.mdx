@@ -7,7 +7,7 @@ description: "This endpoint allows you to create a custom audience based on user
 ## Request Body
 
 <ParamField body="userId" type="string" required>
-    User ID, If not already created, make a user on [create user
+	User ID, If not already created, make a user on [create user
 	page](/api-reference/endpoint/auth/create_user) first. If already created,
 	retrieve the user ID from [get profile
 	page](/api-reference/endpoint/auth/get_profile).
@@ -15,16 +15,8 @@ description: "This endpoint allows you to create a custom audience based on user
 <ParamField body="name" type="string" required>
 	Page Audience Name
 </ParamField>
-<ParamField body="fbPageId" type="string" required>
-	Facebook Page Id
-</ParamField>
-<ParamField body="instagramId" type="string">
-	Instagram Id
-
-    <Note>
-     without this it will create only facebook page audience and including this will create only instagram page audience
-    </Note>
-
+<ParamField body="type" type="string">
+	Type = FACEBOOK or INSTAGRAM
 </ParamField>
 
 ## Response
