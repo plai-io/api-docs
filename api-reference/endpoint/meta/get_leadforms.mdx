@@ -1,7 +1,7 @@
 ---
-title: "Get Custom Audiences"
-api: "POST /meta/get_custom_audiences"
-description: "This endpoint allows you to get custom audiences."
+title: "Get Lead Forms"
+api: "POST /meta/get_leadform_list"
+description: "This endpoint allows you to get list of all leadforms."
 ---
 
 ## Request Body
@@ -11,11 +11,6 @@ description: "This endpoint allows you to get custom audiences."
 	page](/api-reference/endpoint/auth/create_user) first. If already created,
 	retrieve the user ID from [get profile
 	page](/api-reference/endpoint/auth/get_profile).
-</ParamField>
-<ParamField body="pagination" type="string">
-	If the number of results exceeds the page limit, the response will include
-	pagination links (next and previous) to help you navigate through the result
-	set.
 </ParamField>
 
 ## Response
@@ -30,24 +25,21 @@ description: "This endpoint allows you to get custom audiences."
 			Indicates whether the specific operation or API action was successful.
 		</ResponseField>
 
-    	<ResponseField name="customAudiences" type="array" >
+    	<ResponseField name="leadForms" type="array" >
             <Expandable title="Custom Audiences">
                 <ResponseField name="id" type="string" >
-                    Unique audience identifier
+                    Unique lead form identifier
                 </ResponseField>
 
                 <ResponseField name="name" type="string" >
-                    Audience display name
+                    Leadform name
                 </ResponseField>
 
-                <ResponseField name="subtype" type="string"  >
-                    Audience classification type
+                <ResponseField name="status" type="string"  >
+                    Status = `Active`
                 </ResponseField>
             </Expandable>
         </ResponseField>
-
-    	<ResponseField name="next" type="string">Next Page Link</ResponseField>
-    	<ResponseField name="previous" type="string">Previous Page Link</ResponseField>
 
         <ResponseField name="error" type="string">
     		Error string if something went wrong

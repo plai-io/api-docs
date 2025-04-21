@@ -1,7 +1,7 @@
 ---
 title: "Create Advert Link"
 api: "POST /auth/create_link"
-description: "This endpoint generates a link that allows users to seamlessly connect their Ad accounts for the purpose of creating advertisements. By connecting these accounts, users can manage and launch campaigns across all platforms from a unified interface. This integration streamlines the process of advertisement creation and management, ensuring a smooth experience for users looking to run cross-platform ads."
+description: "This endpoint generates a link that allows users to seamlessly connect their Ad accounts for the purpose of creating advertisements."
 ---
 
 ## Request Body
@@ -18,6 +18,9 @@ description: "This endpoint generates a link that allows users to seamlessly con
 </ParamField>
 <ParamField body="redirectUri" type="URL">
 	The URL users are redirected to after linking their accounts
+</ParamField>
+<ParamField body="state" type="string">
+	State, (if you want to send object make sure it is stringify)
 </ParamField>
 
 ## Response

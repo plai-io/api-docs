@@ -38,10 +38,11 @@
 								"pages": [
 									"api-reference/endpoint/meta/meta_overview",
 									"api-reference/endpoint/meta/create_fb_csv_audience",
-									"api-reference/endpoint/meta/get_custom_audiences",
 									"api-reference/endpoint/meta/create_lookalike_audience",
 									"api-reference/endpoint/meta/create_leadform_audience",
-									"api-reference/endpoint/meta/create_page_audience"
+									"api-reference/endpoint/meta/create_page_audience",
+									"api-reference/endpoint/meta/get_custom_audiences",
+									"api-reference/endpoint/meta/get_leadforms"
 								]
 							},
 							{
