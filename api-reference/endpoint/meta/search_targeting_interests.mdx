@@ -15,57 +15,59 @@ description: "This endpoint allows you to search for advertising target interest
 <ParamField body="query" type="string" required>
 	Search Query
 </ParamField>
-<ParamField body="specialAdCategories" type="array" default={[]}>
-	<Info>
-		Supported Values = (HOUSING, FINANCIAL_PRODUCTS_SERVICES, EMPLOYMENT)
-	</Info>
+<ParamField body="specialAdCategories" type="string[]" default={[]}>
+	Supported Values = `HOUSING`, `FINANCIAL_PRODUCTS_SERVICES`, `EMPLOYMENT`
 </ParamField>
-<ParamField body="specialAdCountries" type="array" default={[]}>
-	Countries Codes e.g: US, UK
+<ParamField body="specialAdCountries" type="string[]" default={[]}>
+	Countries Codes e.g: `US`, `UK`
 </ParamField>
 
 ## Response
 
-<ResponseField name="success" type="boolean" required>
+<ResponseField name="success" type="boolean">
 	Indicates that the HTTP response was successful (status code 200 OK).
 </ResponseField>
 
-<ResponseField name="results" type="object" required>
+<ResponseField name="results" type="object">
 	<Expandable title="Media Results">
-		<ResponseField name="success" type="boolean" required>
-			Confirms successful media retrieval
-		</ResponseField>
+		<ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+    	</ResponseField>
 
-    	<ResponseField name="interests" type="array" required>
+    	<ResponseField name="interests" type="array">
             <Expandable title="Interest Items">
-                <ResponseField name="id" type="string" required>
+                <ResponseField name="id" type="string">
                     Unique interest identifier
                 </ResponseField>
 
-                <ResponseField name="name" type="string" required>
+                <ResponseField name="name" type="string">
                     Display name of the interest
                 </ResponseField>
 
-                <ResponseField name="type" type="string" required enum="behaviors|demographics|interests">
-                    Classification type of the interest
+                <ResponseField name="type" type="string" >
+                    Classification type of the interest: `behaviors`, `demographics`, `interests`
                 </ResponseField>
 
-                <ResponseField name="path" type="array" required>
-                        Array of paths
+                <ResponseField name="path" type="string[]">
+                    Array of paths
                 </ResponseField>
 
-                <ResponseField name="audience_size_lower_bound" type="number" required>
+                <ResponseField name="audience_size_lower_bound" type="number">
                     Minimum estimated audience size
                 </ResponseField>
 
-                <ResponseField name="audience_size_upper_bound" type="number" required>
+                <ResponseField name="audience_size_upper_bound" type="number">
                     Maximum estimated audience size
                 </ResponseField>
 
-                <ResponseField name="description" type="string" required>
+                <ResponseField name="description" type="string">
                     Detailed explanation of the interest category
                 </ResponseField>
             </Expandable>
+    </ResponseField>
+
+    <ResponseField name="error" type="string">
+        Error string if something went wrong
     </ResponseField>
     </Expandable>
 
