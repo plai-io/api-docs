@@ -43,10 +43,14 @@ contentType: multipart/form-data
 </ParamField>
 
 <ParamField body="mode" type="string" default="create">
-	Operation mode for the audience : - "create" (default): Create a new
-	audience. "append": Add more entries to an existing audience - "replace":
-	Replace all entries in an existing audience - "remove": Remove entries from
-	an existing audience Required when modifying an existing audience.
+	Operation mode for the audience :
+	<ol>
+		<li>`create` (default): Create a new audience.</li>
+		<li>`append`: Add more entries to an existing audience</li>
+		<li>`replace`: Replace all entries in an existing audience</li>
+		<li>`remove`: Remove entries from an existing audience</li>
+	</ol>
+	Required when modifying an existing audience.
 </ParamField>
 
 <ParamField body="audienceId" type="string">
