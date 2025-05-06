@@ -50,7 +50,9 @@
 								"icon": "linkedin",
 								"pages": [
 									"api-reference/endpoint/linkedin/linkedin_overview",
-									"api-reference/endpoint/linkedin/create_csv_audience"
+									"api-reference/endpoint/linkedin/create_csv_audience",
+									"api-reference/endpoint/linkedin/link_csv_audience",
+									"api-reference/endpoint/linkedin/get_audiences_list"
 								]
 							}
 						]
