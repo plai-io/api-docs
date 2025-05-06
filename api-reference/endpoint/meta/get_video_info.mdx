@@ -1,0 +1,123 @@
+---
+title: "Get Video Info"
+api: "POST /meta/get_video_info"
+description: "This endpoint is used to get video info."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="videoId" type="string" required>
+	Video ID, If not already created, make a video on [upload video
+	page](/api-reference/endpoint/meta/upload_video) first.
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was
+			successful.
+		</ResponseField>
+		<ResponseField name="video" type="object">
+			<Expandable title="Video Object">
+				<ResponseField name="thumbnails" type="object">
+					<Expandable title="Thumbnails Object">
+						<ResponseField name="data" type="array">
+							<Expandable title="Thumbnail Data Array">
+								<Expandable title="Thumbnail Object">
+									<ResponseField name="id" type="string">
+										Unique identifier for the thumbnail.
+									</ResponseField>
+									<ResponseField name="height" type="number">
+										Height of the thumbnail in pixels.
+									</ResponseField>
+									<ResponseField name="scale" type="number">
+										Scale factor of the thumbnail.
+									</ResponseField>
+									<ResponseField name="uri" type="string">
+										URL where the thumbnail can be accessed.
+									</ResponseField>
+									<ResponseField name="width" type="number">
+										Width of the thumbnail in pixels.
+									</ResponseField>
+									<ResponseField
+										name="is_preferred"
+										type="boolean"
+									>
+										Indicates if this is the preferred
+										thumbnail.
+									</ResponseField>
+								</Expandable>
+							</Expandable>
+						</ResponseField>
+					</Expandable>
+				</ResponseField>
+				<ResponseField name="source" type="string">
+					The source URL of the video file.
+				</ResponseField>
+				<ResponseField name="status" type="object">
+					<Expandable title="Status Object">
+						<ResponseField name="video_status" type="string">
+							Current status of the video (e.g., "ready").
+						</ResponseField>
+						<ResponseField name="uploading_phase" type="object">
+							<Expandable title="Uploading Phase Object">
+								<ResponseField name="status" type="string">
+									Status of the uploading phase (e.g.,
+									"complete").
+								</ResponseField>
+							</Expandable>
+						</ResponseField>
+						<ResponseField name="processing_phase" type="object">
+							<Expandable title="Processing Phase Object">
+								<ResponseField name="status" type="string">
+									Status of the processing phase (e.g.,
+									"complete").
+								</ResponseField>
+							</Expandable>
+						</ResponseField>
+						<ResponseField name="publishing_phase" type="object">
+							<Expandable title="Publishing Phase Object">
+								<ResponseField name="status" type="string">
+									Status of the publishing phase (e.g.,
+									"complete").
+								</ResponseField>
+								<ResponseField
+									name="publish_status"
+									type="string"
+								>
+									Current publish status (e.g., "published").
+								</ResponseField>
+								<ResponseField
+									name="publish_time"
+									type="string"
+								>
+									Timestamp when the video was published (ISO
+									8601 format).
+								</ResponseField>
+							</Expandable>
+						</ResponseField>
+					</Expandable>
+				</ResponseField>
+				<ResponseField name="id" type="string">
+					The unique identifier for the video.
+				</ResponseField>
+			</Expandable>
+		</ResponseField>
+		<ResponseField name="error" type="string">
+			Error string if something went wrong
+		</ResponseField>
+	</Expandable>
+</ResponseField>

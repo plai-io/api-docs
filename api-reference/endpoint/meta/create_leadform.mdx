@@ -1,0 +1,129 @@
+---
+title: "Create Leadform"
+api: "POST /meta/create_leadform"
+description: "This endpoint is used to create a leadform."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="fbPageId" type="string" required>
+	Facebook Page ID associated with the lead form
+</ParamField>
+
+<ParamField body="leadFormQuestions" type="array" required>
+	<Expandable title="Lead Form Questions Array">
+		<ParamField body="type" type="string" required>
+			Type of question (EMAIL, FULL_NAME, or CUSTOM)
+		</ParamField>
+
+    	<ParamField body="label" type="string">
+    		Custom label for CUSTOM type questions
+    	</ParamField>
+
+    	<ParamField body="options" type="array">
+    		<Expandable title="Options Array">
+    			<ParamField body="value" type="string" required>
+    				Display value of the option
+    			</ParamField>
+    			<ParamField body="key" type="string" required>
+    				Internal key for the option
+    			</ParamField>
+    		</Expandable>
+    	</ParamField>
+    </Expandable>
+
+</ParamField>
+
+<ParamField body="privacyPolicyUrl" type="string" required>
+	URL for the privacy policy
+</ParamField>
+
+<ParamField body="privacyPolicyName" type="string" required>
+	Display name for the privacy policy link
+</ParamField>
+
+<ParamField body="questionPageCustomHeadline" type="string">
+	Custom headline text for the question page
+</ParamField>
+
+<ParamField body="leadsFormName" type="string" required>
+	Name for the leads form
+</ParamField>
+
+<ParamField body="thankYouPage" type="object" required>
+	<Expandable title="Thank You Page Object">
+		<ParamField body="title" type="string" required>
+			Title displayed on thank you page
+		</ParamField>
+		<ParamField body="body" type="string" required>
+			Body text displayed on thank you page
+		</ParamField>
+		<ParamField body="button_text" type="string" required>
+			Text for the action button
+		</ParamField>
+		<ParamField body="business_phone_number" type="string">
+			Business phone number to display
+		</ParamField>
+		<ParamField body="button_type" type="string" required>
+			Type of button (VIEW_WEBSITE, etc.)
+		</ParamField>
+		<ParamField body="country_code" type="string" required>
+			Country code for phone number formatting
+		</ParamField>
+		<ParamField body="website_url" type="string" required>
+			URL for the website button
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="language" type="string" required>
+	Language code for the form (e.g., EN_US)
+</ParamField>
+
+<ParamField body="form_type" type="string" required>
+	Type of form (MORE_VOLUME, etc.)
+</ParamField>
+
+<ParamField body="intro" type="object">
+	<Expandable title="Intro Object">
+		<ParamField body="title" type="string" required>
+			Title for the introduction section
+		</ParamField>
+		<ParamField body="style" type="string" required>
+			Style of the introduction (LIST_STYLE, etc.)
+		</ParamField>
+		<ParamField body="content" type="array" required>
+			<Expandable title="Content Array">
+				List items or content for the introduction section
+			</Expandable>
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was
+			successful.
+		</ResponseField>
+		<ResponseField name="leadFormId" type="string">
+			Unique identifier for the lead form
+		</ResponseField>
+		<ResponseField name="error" type="string">
+			Error string if something went wrong
+		</ResponseField>
+	</Expandable>
+</ResponseField>

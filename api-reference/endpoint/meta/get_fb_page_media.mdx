@@ -33,24 +33,27 @@ description: "This endpoint is used to fetch media assets (both images and video
 <Tabs>
   <Tab title="Images Response">
     
-    <ResponseField name="success" type="boolean" required>
+    <ResponseField name="success" type="boolean" >
         Indicates that the HTTP response was successful (status code 200 OK).
     </ResponseField>
 
-    <ResponseField name="results" type="object" required>
+    <ResponseField name="results" type="object" >
         <Expandable title="Results Object">
-            <ResponseField name="success" type="boolean" required>
-                Confirms successful media retrieval
+            <ResponseField name="success" type="boolean" >
+    		    Indicates whether the specific operation or API action was successful.
             </ResponseField>
-            <ResponseField name="media" type="array" required>
+            <ResponseField name="media" type="array" >
                 <Expandable title="Media Items">
-                    <ResponseField name="id" type="string" required>
+                    <ResponseField name="id" type="string" >
                         Unique media identifier
                     </ResponseField>
-                       <ResponseField name="full_picture" type="string" required>
+                       <ResponseField name="full_picture" type="string" >
                         Picture Link
                     </ResponseField>
                 </Expandable>
+            </ResponseField>
+            <ResponseField name="error" type="string">
+                Error string if something went wrong
             </ResponseField>
         </Expandable>
     </ResponseField>
@@ -58,31 +61,34 @@ description: "This endpoint is used to fetch media assets (both images and video
   </Tab>
 
   <Tab title="Videos Response">
-    <ResponseField name="success" type="boolean" required>
+    <ResponseField name="success" type="boolean" >
     Indicates whether the API request was successful
     </ResponseField>
 
-    <ResponseField name="results" type="object" required>
+    <ResponseField name="results" type="object" >
         <Expandable title="Results Object">
-            <ResponseField name="success" type="boolean" required>
-            Confirms successful media retrieval
+            <ResponseField name="success" type="boolean" >
+    		    Indicates whether the specific operation or API action was successful.
             </ResponseField>
 
-            <ResponseField name="media" type="array" required>
+            <ResponseField name="media" type="array" >
             <Expandable title="Media Items">
 
-                <ResponseField name="id" type="string" required>
+                <ResponseField name="id" type="string" >
                     Unique identifier for the media item
                 </ResponseField>
 
-                <ResponseField name="source" type="string" required>
+                <ResponseField name="source" type="string" >
                     Video Source URL
                 </ResponseField>
 
-                <ResponseField name="picture" type="string" required>
+                <ResponseField name="picture" type="string" >
                     Video Thumbnail Picture
                 </ResponseField>
             </Expandable>
+            </ResponseField>
+             <ResponseField name="error" type="string">
+                Error string if something went wrong
             </ResponseField>
         </Expandable>
     </ResponseField>

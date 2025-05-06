@@ -1,0 +1,91 @@
+---
+title: "Get Audiences List"
+api: "POST /linkedin/get_audiences_list"
+description: "This endpoint is used to get the list of audiences."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was
+			successful.
+		</ResponseField>
+		<ResponseField name="audiences" type="array">
+			<Expandable title="Audience Object">
+				<ResponseField name="name" type="string">
+					The display name of the audience segment.
+				</ResponseField>
+				<ResponseField name="sourcePlatform" type="string">
+					Source platform for the audience (e.g.,
+					`LINKEDIN_BUSINESS_OBJECTIVE_BASED_AUDIENCES`,
+					`LIST_UPLOAD`).
+				</ResponseField>
+				<ResponseField name="id" type="number">
+					The unique numeric identifier for the audience.
+				</ResponseField>
+				<ResponseField name="type" type="string">
+					Audience type (e.g., `USER`, `USER_LIST_UPLOAD`).
+				</ResponseField>
+				<ResponseField name="account" type="string">
+					URN identifier for the associated LinkedIn sponsored
+					account.
+				</ResponseField>
+				<ResponseField name="destinations" type="array">
+					<Expandable title="Destination Object">
+						<ResponseField name="destination" type="string">
+							Platform where audience is used (e.g., `LINKEDIN`).
+						</ResponseField>
+						<ResponseField name="lastModified" type="number">
+							Timestamp of last modification (epoch milliseconds).
+						</ResponseField>
+						<ResponseField name="audienceSize" type="number">
+							Current size of the audience segment.
+						</ResponseField>
+						<ResponseField name="created" type="number">
+							Timestamp when audience was created (epoch
+							milliseconds).
+						</ResponseField>
+						<ResponseField
+							name="destinationSegmentId"
+							type="string"
+						>
+							Unique URN identifier for the destination segment.
+						</ResponseField>
+						<ResponseField name="status" type="string">
+							Audience status (e.g., `EXPIRED`, `READY`).
+						</ResponseField>
+						<ResponseField
+							name="matchedCount"
+							type="number"
+							optional="true"
+						>
+							Number of matched users (for `USER_LIST_UPLOAD`
+							types).
+						</ResponseField>
+					</Expandable>
+				</ResponseField>
+				<ResponseField name="inputCount" type="number" optional="true">
+					Number of inputs provided for USER_LIST_UPLOAD audiences.
+				</ResponseField>
+			</Expandable>
+		</ResponseField>
+		<ResponseField name="error" type="string">
+			Error string if something went wrong
+		</ResponseField>
+	</Expandable>
+</ResponseField>

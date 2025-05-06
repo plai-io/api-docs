@@ -1,0 +1,191 @@
+---
+title: "Get Page Posts"
+api: "POST /meta/get_page_posts"
+description: "This endpoint is used to get page posts from facebook and instagram."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="platform" type="string" required>
+	The social media platform for the operation. `FACEBOOK` or `INSTAGRAM`.
+</ParamField>
+
+<ParamField body="pagination" type="string">
+	Pagination token for retrieving additional results. Leave empty for the
+	first request. Subsequent requests should use the pagination token returned
+	in the previous response.
+</ParamField>
+
+## Response
+
+<Tabs>
+  <Tab title="Facebook Response">
+
+    <ResponseField name="success" type="boolean">
+        Indicates that the HTTP response was successful (status code 200 OK).
+    </ResponseField>
+
+    <ResponseField name="results" type="object">
+        <Expandable title="Results Object">
+            <ResponseField name="success" type="boolean">
+                Indicates whether the specific operation or API action was
+                successful.
+            </ResponseField>
+            <ResponseField name="posts" type="array">
+                <Expandable title="Posts Array">
+                    <Expandable title="Post Object">
+                        <ResponseField name="id" type="string">
+                            The unique identifier for the post.
+                        </ResponseField>
+                        <ResponseField name="createdTime" type="string">
+                            The timestamp when the post was created (ISO 8601
+                            format).
+                        </ResponseField>
+                        <ResponseField name="postUrl" type="string">
+                            The URL to view the post on Facebook.
+                        </ResponseField>
+                        <ResponseField name="mediaType" type="string">
+                            The type of media in the post (e.g., "video").
+                        </ResponseField>
+                        <ResponseField name="primaryText" type="string">
+                            The main text/content of the post including hashtags.
+                        </ResponseField>
+                        <ResponseField name="image" type="string">
+                            URL of the thumbnail/preview image for the post.
+                        </ResponseField>
+                        <ResponseField name="height" type="number">
+                            Height of the post media in pixels.
+                        </ResponseField>
+                        <ResponseField name="width" type="number">
+                            Width of the post media in pixels.
+                        </ResponseField>
+                        <ResponseField name="video" type="string">
+                            URL of the video content (if mediaType is video).
+                        </ResponseField>
+                        <ResponseField name="videoId" type="string">
+                            The unique identifier for the video.
+                        </ResponseField>
+                    </Expandable>
+                </Expandable>
+                <ResponseField name="error" type="string">
+                    Error string if something went wrong
+                </ResponseField>
+            </ResponseField>
+        </Expandable>
+    </ResponseField>
+
+  </Tab>
+
+  <Tab title="Instagram Response">
+
+    <ResponseField name="success" type="boolean">
+        Indicates that the HTTP response was successful (status code 200 OK).
+    </ResponseField>
+
+    <ResponseField name="results" type="object">
+        <Expandable title="Results Object">
+            <ResponseField name="success" type="boolean">
+                Indicates whether the specific operation or API action was
+                successful.
+            </ResponseField>
+           <ResponseField name="posts" type="array">
+                <Expandable title="Post Object">
+                    <ResponseField name="id" type="string">
+                    The unique identifier for the Instagram post.
+                    </ResponseField>
+                    <ResponseField name="caption" type="string">
+                    The caption text of the post.
+                    </ResponseField>
+                    <ResponseField name="media_type" type="string">
+                    Type of media in the post (e.g., "VIDEO").
+                    </ResponseField>
+                    <ResponseField name="thumbnail_url" type="string">
+                    URL of the thumbnail image for the post.
+                    </ResponseField>
+                    <ResponseField name="permalink" type="string">
+                    Permanent URL to access the post on Instagram.
+                    </ResponseField>
+                    <ResponseField name="timestamp" type="string">
+                    When the post was created (ISO 8601 format).
+                    </ResponseField>
+                    <ResponseField name="ig_id" type="string">
+                    Instagram's internal ID for the post.
+                    </ResponseField>
+                    <ResponseField name="boost_eligibility_info" type="object">
+                    <Expandable title="Boost Eligibility Info">
+                        <ResponseField name="eligible_to_boost" type="boolean">
+                        Whether the post is eligible for boosting/promotion.
+                        </ResponseField>
+                    </Expandable>
+                    </ResponseField>
+                    <ResponseField name="media_product_type" type="string">
+                    The type of Instagram media product (e.g., `REELS`).
+                    </ResponseField>
+                </Expandable>
+            </ResponseField>
+            <ResponseField name="error" type="string">
+                Error string if something went wrong
+            </ResponseField>
+        </Expandable>
+    </ResponseField>
+
+    </Tab>
+
+</Tabs>
+
+<ResponseExample>
+    ```json 200 (Facebook)
+    {
+        "success": true,
+        "results": {
+            "success": true,
+            "posts": [
+                {
+                    "id": "337703969429296_122169622310329585",
+                    "createdTime": "2025-04-15T19:47:40+0000",
+                    "postUrl": "https://www.facebook.com/reel/465694996566136/",
+                    "mediaType": "video",
+                    "primaryText": "#trend #sensations",
+                    "image": "https://scontent-dfw5-3.xx.fbcdn.net/v/t51.71878-10/487045751_1506048210352677_1460106608139613669_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=282d23&_nc_ohc=ltdfzNvKXjgQ7kNvwGfsR5B&_nc_oc=Adn5uL-JBf2W_4feDYpOuc8TtAZdjb6jUSlYkXtZQMfmIYl8jVX1NJx9Of2ofvoN_8h4U4Qiwo4v7UQC6DDRr1hg&_nc_zt=23&_nc_ht=scontent-dfw5-3.xx&edm=AKK4YLsEAAAA&_nc_gid=-kNdEWOVvJgyLYvvE6hG8A&oh=00_AfGeuAqiWfYDlxBGGDpV0TS6JAFnorAimRT6dFwwazhX7A&oe=6813667F",
+                    "height": 720,
+                    "width": 406,
+                    "video": "https://scontent-dfw5-3.xx.fbcdn.net/o1/v/t2/f2/m69/AQNZXVm7EVuCjtwEaGQ-F2u5WZRO0lmiQcvNTaetnRD6ryfyhnR30uBV1Jm9Lgyb-ES3v0VdW_We5G3RmcgJWXxZ.mp4?strext=1&_nc_cat=108&_nc_sid=8bf8fe&_nc_ht=scontent-dfw5-3.xx.fbcdn.net&_nc_ohc=iuKuKOO4sPkQ7kNvwF_1PGG&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5GQUNFQk9PSy4uQzMuNzIwLnByb2dyZXNzaXZlX2gyNjQtYmFzaWMtZ2VuMl83MjBwIiwieHB2X2Fzc2V0X2lkIjoxMDY2NDg5MDA4NjU0OTkxLCJ2aV91c2VjYXNlX2lkIjoxMDA5OSwiZHVyYXRpb25fcyI6MzAsInVybGdlbl9zb3VyY2UiOiJ3d3cifQ%3D%3D&ccb=17-1&_nc_zt=28&oh=00_AfHa25qHjWo7n33umOEfOfxK1e8likNXDSyCRuZuvDhT-A&oe=6813874A",
+                    "videoId": "465694996566136"
+                }
+            ]
+        }
+    }
+    ```
+
+    ```json 200 (Instagram)
+    {
+        "success": true,
+        "results": {
+            "success": true,
+            "posts": [
+                {
+                    "id": "18107270119498620",
+                    "caption": "😹",
+                    "media_type": "VIDEO",
+                    "thumbnail_url": "https://scontent-dfw5-1.cdninstagram.com/v/t51.75761-15/491502650_18401404012107524_7302255627581481598_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=1-7&_nc_sid=18de74&_nc_ohc=P-i0qZLn8qUQ7kNvwHDCtm3&_nc_oc=AdlpiNHe0qVRRQ0kxySwwICMSQvwHXTL5uUWYrPscrGMbafrWe_pdSJSVwDeALsc_CQXMZJL4HsaHDxuGNZByR6t&_nc_zt=23&_nc_ht=scontent-dfw5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=cTrDALIyERt3l3IETVjFSg&oh=00_AfFKWdkuLzKA1FyXYXgEVSbITXahmwuJp0H3vzxrnPjVWA&oe=68138A76",
+                    "permalink": "https://www.instagram.com/reel/DIzR1ATNU_0/",
+                    "timestamp": "2025-04-23T19:43:35+0000",
+                    "ig_id": "3617313334953857012",
+                    "boost_eligibility_info": {
+                        "eligible_to_boost": true
+                    },
+                    "media_product_type": "REELS"
+                }
+            ]
+        }
+    }
+    ```
+
+</ResponseExample>

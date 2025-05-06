@@ -1,0 +1,43 @@
+---
+title: "Update Campaign Status"
+api: "POST /meta/update_campaign_status"
+description: "This endpoint is used to update campaign status."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="campaignId" type="string" required>
+	Campaign ID. You can get campaign id from [get campaign insights
+	page](/api-reference/endpoint/meta/get_campaign_insights). If not created,
+	create a campaign on [create campaign
+	page](/api-reference/endpoint/meta/create_campaign).
+</ParamField>
+
+<ParamField body="status" type="string" required>
+	Status to update the campaign to.
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was
+			successful.
+		</ResponseField>
+		<ResponseField name="error" type="string">
+			Error string if something went wrong
+		</ResponseField>
+	</Expandable>
+</ResponseField>

@@ -1,0 +1,250 @@
+---
+title: "Create Campaign"
+api: "POST /meta/create_campaign"
+description: "This endpoint is used to create a campaign."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="url" type="string" required>
+	Destination URL for the ad campaign
+</ParamField>
+
+<ParamField body="ages" type="object" required>
+	<Expandable title="Age Targeting Object">
+		<ParamField body="maxAge" type="number" required>
+			Maximum target age (inclusive)
+		</ParamField>
+		<ParamField body="minAge" type="number" required>
+			Minimum target age (inclusive)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="budget" type="number" required>
+	Campaign budget amount in currency units
+</ParamField>
+
+<ParamField body="pixelId" type="string">
+	Facebook Pixel ID for conversion tracking
+</ParamField>
+
+<ParamField body="endDate" type="null">
+	Optional campaign end date (currently not set)
+</ParamField>
+
+<ParamField body="targetLocales" type="array">
+	Array of locale targeting parameters
+</ParamField>
+
+<ParamField body="campaignName" type="string" required>
+	Descriptive name for the campaign
+</ParamField>
+
+<ParamField body="audienceName" type="string" required>
+	Name of the target audience
+</ParamField>
+
+<ParamField body="callToAction" type="string" required>
+	CTA button type (LEARN_MORE, etc.)
+</ParamField>
+
+<ParamField body="pixelRule" type="string">
+	Pixel conversion rule configuration
+</ParamField>
+
+<ParamField body="description1" type="array">
+	Array of ad description objects
+</ParamField>
+
+<ParamField body="videos" type="array">
+	<Expandable title="Video Assets Array">
+		<ParamField body="video_id" type="string" required>
+			Facebook video ID
+		</ParamField>
+		<ParamField body="thumbnail_url" type="string" required>
+			URL for video thumbnail image
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="audienceId" type="array">
+	Array of audience IDs
+</ParamField>
+
+<ParamField body="primaryText" type="array" required>
+	<Expandable title="Primary Text Array">
+		<ParamField body="text" type="string" required>
+			Main ad copy text
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="images" type="array" required>
+	<Expandable title="Image Assets Array">
+		<ParamField body="url" type="string" required>
+			URL for image asset
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="headline1" type="array" required>
+	<Expandable title="Headline Variations Array">
+		<ParamField body="text" type="string" required>
+			Headline text variation
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="conversionGoal" type="string">
+	Campaign conversion goal type
+</ParamField>
+
+<ParamField body="campaignType" type="string" required>
+	Type of campaign (LEAD_GENERATION, etc.)
+</ParamField>
+
+<ParamField body="gender" type="number" required>
+	Gender targeting (1=male, 2=female, etc.)
+</ParamField>
+
+<ParamField body="locations" type="array" required>
+	<Expandable title="Location Targeting Array">
+		<ParamField body="id" type="string" required>
+			Facebook location ID
+		</ParamField>
+		<ParamField body="name" type="string" required>
+			Location display name
+		</ParamField>
+		<ParamField body="type" type="string" required>
+			Location type (neighborhood, city, etc.)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="proximityTargeting" type="array">
+	Proximity targeting parameters
+</ParamField>
+
+<ParamField body="narrowInterests" type="null">
+	Narrow interest targeting
+</ParamField>
+
+<ParamField body="furtherInterests" type="null">
+	Additional interest targeting
+</ParamField>
+
+<ParamField body="specialAdCategories" type="array">
+	Special ad category restrictions
+</ParamField>
+
+<ParamField body="specialAdCountries" type="array">
+	Countries with special ad requirements
+</ParamField>
+
+<ParamField body="leads_form_id" type="string" required>
+	Facebook Lead Form ID
+</ParamField>
+
+<ParamField body="includeInstagram" type="boolean" required>
+	Whether to include Instagram placements
+</ParamField>
+
+<ParamField body="messagingApps" type="array">
+	Messaging app targeting
+</ParamField>
+
+<ParamField body="manualPlacements" type="boolean" required>
+	Whether placements are manually selected
+</ParamField>
+
+<ParamField body="facebook_positions" type="array" required>
+	Selected Facebook ad placements
+</ParamField>
+
+<ParamField body="instagram_positions" type="array" required>
+	Selected Instagram ad placements
+</ParamField>
+
+<ParamField body="messenger_positions" type="array" required>
+	Selected Messenger ad placements
+</ParamField>
+
+<ParamField body="carousel" type="array">
+	Carousel ad configuration
+</ParamField>
+
+<ParamField body="excludedAudienceIds" type="array">
+	Audience IDs to exclude
+</ParamField>
+
+<ParamField body="excludedLocations" type="array">
+	Locations to exclude
+</ParamField>
+
+<ParamField body="utmParams" type="string" required>
+	UTM tracking parameters template
+</ParamField>
+
+<ParamField body="pagePostId" type="string">
+	Facebook page post ID
+</ParamField>
+
+<ParamField body="userDevices" type="array">
+	Device type targeting
+</ParamField>
+
+<ParamField body="userOS" type="array">
+	Operating system targeting
+</ParamField>
+
+<ParamField body="isDynamicCreative" type="boolean" required>
+	Whether to use dynamic creative
+</ParamField>
+
+<ParamField body="isCatalogCarousel" type="boolean" required>
+	Whether to use catalog carousel
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was
+			successful.
+		</ResponseField>
+		<ResponseField name="campaign" type="object">
+			<Expandable title="Campaign Object">
+				<ResponseField name="leadFormId" type="string">
+					The unique identifier for the lead form associated with this
+					campaign.
+				</ResponseField>
+				<ResponseField name="campaignId" type="string">
+					The unique identifier for the campaign.
+				</ResponseField>
+				<ResponseField name="adId" type="string[]">
+					Ad IDs Array
+				</ResponseField>
+				<ResponseField name="adGroupId" type="string">
+					The unique identifier for the ad group associated with this
+					campaign.
+				</ResponseField>
+			</Expandable>
+		</ResponseField>
+		<ResponseField name="error" type="string">
+			Error string if something went wrong
+		</ResponseField>
+	</Expandable>
+</ResponseField>

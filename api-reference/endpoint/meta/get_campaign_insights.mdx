@@ -1,0 +1,389 @@
+---
+title: "Get Campaign Insights"
+api: "POST /meta/get_campaign_insights"
+description: "This endpoint is used to fetch campaign insights for a specific campaign."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="campaignId" type="string" required>
+	The unique identifier of the campaign
+</ParamField>
+
+<ParamField body="startDate" type="string">
+	The start date for the insights period in YYYY-MM-DD format
+</ParamField>
+
+<ParamField body="endDate" type="string">
+	The end date for the insights period in YYYY-MM-DD format
+</ParamField>
+
+<ParamField body="currencySymbol" type="string" required>
+	The currency symbol to be used for monetary values
+</ParamField>
+
+<ParamField body="clientCostAdjustment" type="object" required>
+	<Expandable title="Cost Adjustment Object">
+		<ParamField body="percentage" type="number" required>
+			The percentage adjustment to be applied to costs
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was
+			successful.
+		</ResponseField>
+		<ResponseField name="insights" type="object">
+			<Expandable title="Insights Object">
+				<ResponseField name="name" type="string">
+					The name of the insights report or campaign.
+				</ResponseField>
+				<ResponseField name="stats" type="object">
+					<Expandable title="Stats Object">
+						<ResponseField name="campaignName" type="string">
+							The name of the associated campaign.
+						</ResponseField>
+						<ResponseField name="cpm" type="string">
+							Cost per thousand impressions.
+						</ResponseField>
+						<ResponseField name="reach" type="string">
+							Total number of unique users who saw the ad.
+						</ResponseField>
+						<ResponseField name="cpc" type="string">
+							Cost per click.
+						</ResponseField>
+						<ResponseField name="ctr" type="string">
+							Click-through rate (percentage).
+						</ResponseField>
+						<ResponseField name="clicks" type="string">
+							Total number of clicks.
+						</ResponseField>
+						<ResponseField name="spend" type="string">
+							Total amount spent on the campaign.
+						</ResponseField>
+						<ResponseField name="conversions" type="string">
+							Number of conversions.
+						</ResponseField>
+						<ResponseField name="cost_per_conversion" type="string">
+							Cost per conversion.
+						</ResponseField>
+						<ResponseField
+							name="conversion_rate_ranking"
+							type="string"
+						>
+							Ranking of conversion rate compared to similar
+							campaigns.
+						</ResponseField>
+						<ResponseField name="quality_ranking" type="string">
+							Quality ranking of the ad.
+						</ResponseField>
+						<ResponseField name="date_start" type="string">
+							Start date of the reporting period.
+						</ResponseField>
+						<ResponseField name="date_end" type="string">
+							End date of the reporting period.
+						</ResponseField>
+						<ResponseField name="leadCount" type="string">
+							Number of leads generated.
+						</ResponseField>
+						<ResponseField name="cost_per_action_type" type="array">
+							Array of cost per action type metrics.
+						</ResponseField>
+						<ResponseField name="actions" type="array">
+							Array of actions taken.
+						</ResponseField>
+						<ResponseField name="videoAvgTimeWatched" type="string">
+							Average time video was watched.
+						</ResponseField>
+						<ResponseField name="video30SecWatched" type="string">
+							Number of times video was watched for at least 30
+							seconds.
+						</ResponseField>
+						<ResponseField name="videoNoOfPlays" type="string">
+							Total number of video plays.
+						</ResponseField>
+						<ResponseField
+							name="video25PercentWatched"
+							type="string"
+						>
+							Number of times 25% of video was watched.
+						</ResponseField>
+						<ResponseField
+							name="video50PercentWatched"
+							type="string"
+						>
+							Number of times 50% of video was watched.
+						</ResponseField>
+						<ResponseField
+							name="video75PercentWatched"
+							type="string"
+						>
+							Number of times 75% of video was watched.
+						</ResponseField>
+						<ResponseField
+							name="video95PercentWatched"
+							type="string"
+						>
+							Number of times 95% of video was watched.
+						</ResponseField>
+						<ResponseField
+							name="video100PercentWatched"
+							type="string"
+						>
+							Number of times video was fully watched.
+						</ResponseField>
+						<ResponseField name="postSaves" type="string">
+							Number of times post was saved.
+						</ResponseField>
+						<ResponseField name="postShares" type="string">
+							Number of times post was shared.
+						</ResponseField>
+						<ResponseField name="postReactions" type="string">
+							Number of post reactions.
+						</ResponseField>
+						<ResponseField name="postComments" type="string">
+							Number of post comments.
+						</ResponseField>
+						<ResponseField name="postLikes" type="string">
+							Number of post likes.
+						</ResponseField>
+						<ResponseField name="cpmPrevious" type="string">
+							Previous period's cost per thousand impressions.
+						</ResponseField>
+						<ResponseField name="cpmPercent" type="string">
+							Percentage change in CPM from previous period.
+						</ResponseField>
+					</Expandable>
+				</ResponseField>
+				<ResponseField name="adsets" type="object">
+					<Expandable title="Adsets Object">
+						<ResponseField name="[adset_id]" type="object">
+							<Expandable title="Adset Object">
+								<ResponseField name="name" type="string">
+									Name of the adset.
+								</ResponseField>
+								<ResponseField name="stats" type="object">
+									<Expandable title="Adset Stats Object">
+										<ResponseField
+											name="campaignName"
+											type="string"
+										>
+											The name of the associated campaign.
+										</ResponseField>
+										<ResponseField name="cpm" type="string">
+											Cost per thousand impressions.
+										</ResponseField>
+										<ResponseField
+											name="reach"
+											type="string"
+										>
+											Total number of unique users who saw
+											the ad.
+										</ResponseField>
+										<ResponseField name="cpc" type="string">
+											Cost per click.
+										</ResponseField>
+										<ResponseField name="ctr" type="string">
+											Click-through rate (percentage).
+										</ResponseField>
+										<ResponseField
+											name="clicks"
+											type="string"
+										>
+											Total number of clicks.
+										</ResponseField>
+										<ResponseField
+											name="spend"
+											type="string"
+										>
+											Total amount spent on the campaign.
+										</ResponseField>
+										<ResponseField
+											name="conversions"
+											type="string"
+										>
+											Number of conversions.
+										</ResponseField>
+										<ResponseField
+											name="cost_per_conversion"
+											type="string"
+										>
+											Cost per conversion.
+										</ResponseField>
+										<ResponseField
+											name="conversion_rate_ranking"
+											type="string"
+										>
+											Ranking of conversion rate compared
+											to similar campaigns.
+										</ResponseField>
+										<ResponseField
+											name="quality_ranking"
+											type="string"
+										>
+											Quality ranking of the ad.
+										</ResponseField>
+										<ResponseField
+											name="date_start"
+											type="string"
+										>
+											Start date of the reporting period.
+										</ResponseField>
+										<ResponseField
+											name="date_end"
+											type="string"
+										>
+											End date of the reporting period.
+										</ResponseField>
+										<ResponseField
+											name="leadCount"
+											type="string"
+										>
+											Number of leads generated.
+										</ResponseField>
+										<ResponseField
+											name="cost_per_action_type"
+											type="array"
+										>
+											Array of cost per action type
+											metrics.
+										</ResponseField>
+										<ResponseField
+											name="actions"
+											type="array"
+										>
+											Array of actions taken.
+										</ResponseField>
+										<ResponseField
+											name="videoAvgTimeWatched"
+											type="string"
+										>
+											Average time video was watched.
+										</ResponseField>
+										<ResponseField
+											name="video30SecWatched"
+											type="string"
+										>
+											Number of times video was watched
+											for at least 30 seconds.
+										</ResponseField>
+										<ResponseField
+											name="videoNoOfPlays"
+											type="string"
+										>
+											Total number of video plays.
+										</ResponseField>
+										<ResponseField
+											name="video25PercentWatched"
+											type="string"
+										>
+											Number of times 25% of video was
+											watched.
+										</ResponseField>
+										<ResponseField
+											name="video50PercentWatched"
+											type="string"
+										>
+											Number of times 50% of video was
+											watched.
+										</ResponseField>
+										<ResponseField
+											name="video75PercentWatched"
+											type="string"
+										>
+											Number of times 75% of video was
+											watched.
+										</ResponseField>
+										<ResponseField
+											name="video95PercentWatched"
+											type="string"
+										>
+											Number of times 95% of video was
+											watched.
+										</ResponseField>
+										<ResponseField
+											name="video100PercentWatched"
+											type="string"
+										>
+											Number of times video was fully
+											watched.
+										</ResponseField>
+										<ResponseField
+											name="postSaves"
+											type="string"
+										>
+											Number of times post was saved.
+										</ResponseField>
+										<ResponseField
+											name="postShares"
+											type="string"
+										>
+											Number of times post was shared.
+										</ResponseField>
+										<ResponseField
+											name="postReactions"
+											type="string"
+										>
+											Number of post reactions.
+										</ResponseField>
+										<ResponseField
+											name="postComments"
+											type="string"
+										>
+											Number of post comments.
+										</ResponseField>
+										<ResponseField
+											name="postLikes"
+											type="string"
+										>
+											Number of post likes.
+										</ResponseField>
+										<ResponseField
+											name="cpmPrevious"
+											type="string"
+										>
+											Previous period's cost per thousand
+											impressions.
+										</ResponseField>
+										<ResponseField
+											name="cpmPercent"
+											type="string"
+										>
+											Percentage change in CPM from
+											previous period.
+										</ResponseField>
+									</Expandable>
+								</ResponseField>
+								<ResponseField name="ads" type="object">
+									<Expandable title="Ads Object">
+										Object containing individual ad
+										performance data.
+									</Expandable>
+								</ResponseField>
+							</Expandable>
+						</ResponseField>
+					</Expandable>
+				</ResponseField>
+			</Expandable>
+			<ResponseField name="error" type="string">
+				Error string if something went wrong
+			</ResponseField>
+		</ResponseField>
+	</Expandable>
+</ResponseField>

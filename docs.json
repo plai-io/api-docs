@@ -41,13 +41,21 @@
 									"api-reference/endpoint/meta/create_lookalike_audience",
 									"api-reference/endpoint/meta/create_leadform_audience",
 									"api-reference/endpoint/meta/create_page_audience",
+									"api-reference/endpoint/meta/create_leadform",
 									"api-reference/endpoint/meta/search_targeting_interests",
 									"api-reference/endpoint/meta/search_targeting_locations",
 									"api-reference/endpoint/meta/get_custom_audiences",
 									"api-reference/endpoint/meta/get_leadforms",
 									"api-reference/endpoint/meta/get_ad_account_media",
 									"api-reference/endpoint/meta/get_fb_page_media",
-									"api-reference/endpoint/meta/get_ig_page_media"
+									"api-reference/endpoint/meta/get_ig_page_media",
+									"api-reference/endpoint/meta/get_campaign_insights",
+									"api-reference/endpoint/meta/upload_video",
+									"api-reference/endpoint/meta/get_video_info",
+									"api-reference/endpoint/meta/get_page_posts",
+									"api-reference/endpoint/meta/get_pixels_list",
+									"api-reference/endpoint/meta/update_campaign_status",
+									"api-reference/endpoint/meta/create_campaign"
 								]
 							},
 							{
@@ -55,7 +63,9 @@
 								"icon": "linkedin",
 								"pages": [
 									"api-reference/endpoint/linkedin/linkedin_overview",
-									"api-reference/endpoint/linkedin/create_csv_audience"
+									"api-reference/endpoint/linkedin/create_csv_audience",
+									"api-reference/endpoint/linkedin/link_csv_audience",
+									"api-reference/endpoint/linkedin/get_audiences_list"
 								]
 							}
 						]
