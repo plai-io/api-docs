@@ -20,9 +20,13 @@ contentType: multipart/form-data
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
 
-<ParamField body="audienceName" type="string" required>
+<ParamField body="audienceName" type="string">
 	The name of the audience you are creating. This name will be displayed in
 	your LinkedIn Ads account.
+</ParamField>
+
+<ParamField body="mode" type="string" default="create">
+	`create` or `replace`
 </ParamField>
 
 <ParamField body="csv" type="file" required>
@@ -46,9 +50,9 @@ Upload the audience data file in `.csv` format. This file will be used to match 
 </ParamField>
 
 <ParamField body="type" type="string" required>
-	Specifies the type of audience upload. Accepted values: COMPANY_LIST_UPLOAD:
-	For uploading a list of company names. or USER_LIST_UPLOAD: For uploading a
-	list of user identifiers (e.g., emails).
+	Specifies the type of audience upload. Accepted values:
+	`COMPANY_LIST_UPLOAD`: For uploading a list of company names. or
+	`USER_LIST_UPLOAD`: For uploading a list of user identifiers (e.g., emails).
 </ParamField>
 
 ## Response
