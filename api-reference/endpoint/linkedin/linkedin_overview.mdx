@@ -32,3 +32,8 @@ Use the card below to explore the endpoint:
 >
 	Get a list of all LinkedIn audiences.
 </Card>
+
+# How to create a LinkedIn audience from a CSV file
+
+1. Create a LinkedIn audience from the CSV file using the [Create LinkedIn Audience from CSV](/api-reference/endpoint/linkedin/create_csv_audience) endpoint. This endpoint will return a csvFileId which will be used in the next step.
+2. Link the CSV file using the [Link CSV Audience](/api-reference/endpoint/linkedin/link_csv_audience) endpoint using the csvFileId from the previous step. This endpoint will return a audienceId.

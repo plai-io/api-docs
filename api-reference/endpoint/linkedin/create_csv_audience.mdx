@@ -69,13 +69,8 @@ Upload the audience data file in `.csv` format. This file will be used to match 
 
         <ResponseField name="audience" type="object" >
             <Expandable title="Audience Results">
-
-                <ResponseField name="id" type="string" >
-                    Unique identifier for the audience
-                </ResponseField>
-
-                <ResponseField name="name" type="string" >
-                    Name of the audience
+                <ResponseField name="csvFileId" type="string" >
+                    Csv File Id, this id will use in link_csv_audience endpoint to link csv. click [here](/api-reference/endpoint/linkedin/link_csv_audience) to learn more about the endpoint.
                 </ResponseField>
             </Expandable>
         </ResponseField>

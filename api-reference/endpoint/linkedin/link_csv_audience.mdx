@@ -13,16 +13,10 @@ description: "This endpoint is used to link a CSV audience to a LinkedIn."
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
 
-<ParamField body="audienceId" type="string" required>
-	Audience ID of the audience to link. If not already created, make a audience
-	on [create audience
-	page](/api-reference/endpoint/linkedin/create_csv_audience) first. If
-	already created, retrieve the audience ID from [get audience
-	page](/api-reference/endpoint/linkedin/get_audience_list).
-</ParamField>
-
 <ParamField body="csvFileId" type="string" required>
-	Csv File ID of the CSV file to link.
+	Csv File ID of the CSV file to link. If not already created, make a CSV file
+	on [create CSV audience
+	page](/api-reference/endpoint/linkedin/create_csv_audience) first.
 </ParamField>
 
 ## Response
@@ -37,6 +31,10 @@ description: "This endpoint is used to link a CSV audience to a LinkedIn."
 			Indicates whether the specific operation or API action was
 			successful.
 		</ResponseField>
+
+        <ResponseField name="audienceId" type="string">
+             Audience ID
+        </ResponseField>
         <ResponseField name="error" type="string">
              Error string if something went wrong
         </ResponseField>
