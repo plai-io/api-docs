@@ -55,7 +55,8 @@
 									"api-reference/endpoint/meta/get_page_posts",
 									"api-reference/endpoint/meta/get_pixels_list",
 									"api-reference/endpoint/meta/update_campaign_status",
-									"api-reference/endpoint/meta/create_campaign"
+									"api-reference/endpoint/meta/create_campaign",
+									"api-reference/endpoint/meta/check_leadform_tos"
 								]
 							},
 							{
