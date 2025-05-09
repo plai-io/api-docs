@@ -22,7 +22,9 @@ description: "This endpoint is used to fetch media assets (both images and video
 	Media Type
 </ParamField>
 <ParamField body="pagination" type="string" default="">
-	Pagination
+	If the number of results exceeds the page limit, the response will include
+	pagination links (`next` and `previous`) to help you navigate through the
+	result set
 </ParamField>
 
 ## Response
@@ -32,6 +34,45 @@ description: "This endpoint is used to fetch media assets (both images and video
     
     <ResponseField name="success" type="boolean" >
         Indicates that the HTTP response was successful (status code 200 OK).
+    </ResponseField>
+
+    <ResponseField name="results" type="object" >
+        <Expandable title="Results Object">
+            <ResponseField name="success" type="boolean" >
+                Indicates whether the specific operation or API action was successful.
+            </ResponseField>
+
+            <ResponseField name="media" type="array" >
+                <Expandable title="Media Items">
+                    <ResponseField name="url" type="string" >
+                        Direct URL to the media file
+
+                    </ResponseField>
+
+                    <ResponseField name="width" type="number" >
+                        Width of the media in pixels
+                    </ResponseField>
+
+                    <ResponseField name="height" type="number" >
+                        Height of the media in pixels
+                    </ResponseField>
+
+                    <ResponseField name="id" type="string" >
+                        Unique identifier for the media item
+                    </ResponseField>
+                </Expandable>
+            </ResponseField>
+            <ResponseField name="error" type="string">
+                Error string if something went wrong
+            </ResponseField>
+        </Expandable>
+    </ResponseField>
+
+  </Tab>
+
+  <Tab title="Videos Response">
+    <ResponseField name="success" type="boolean" >
+    Indicates whether the API request was successful
     </ResponseField>
 
     <ResponseField name="results" type="object" >
@@ -71,52 +112,30 @@ description: "This endpoint is used to fetch media assets (both images and video
         </Expandable>
     </ResponseField>
 
-  </Tab>
-
-  <Tab title="Videos Response">
-    <ResponseField name="success" type="boolean" >
-    Indicates whether the API request was successful
-    </ResponseField>
-
-    <ResponseField name="results" type="object" >
-        <Expandable title="Results Object">
-            <ResponseField name="success" type="boolean" >
-                Indicates whether the specific operation or API action was successful.
-            </ResponseField>
-
-            <ResponseField name="media" type="array" >
-                <Expandable title="Media Items">
-                    <ResponseField name="url" type="string" >
-                        Direct URL to the media file
-
-                    </ResponseField>
-
-                    <ResponseField name="width" type="number" >
-                        Width of the media in pixels
-                    </ResponseField>
-
-                    <ResponseField name="height" type="number" >
-                        Height of the media in pixels
-                    </ResponseField>
-
-                    <ResponseField name="id" type="string" >
-                        Unique identifier for the media item
-                    </ResponseField>
-                </Expandable>
-            </ResponseField>
-            <ResponseField name="error" type="string">
-                Error string if something went wrong
-            </ResponseField>
-        </Expandable>
-    </ResponseField>
-
     </Tab>
 
 </Tabs>
 
 <ResponseExample>
     ```json 200 (IMAGES)
-   {
+    {
+        "success":true,
+        "results":{
+            "success":true,
+            "media":[
+                {
+                    "url":"https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/458397097_120212188508890153_5643706261073051043_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=890911&_nc_eui2=AeEb31a9FMRMAR99chReYCjZNy7E6NJ-DsU3LsTo0n4Oxa-6orXAzPLD3SUNeacQy6gdHVFFw3UMBKjcIZ7h6VEW&_nc_ohc=Vgv_WkUc4y4Q7kNvgGHEwR8&_nc_oc=AdmVeH5LXBRNcMi7xjpQPNh8t7j9lMC6c3iWMNQ5Up77fDG4QFcziAJGv9FztzMyv8cSbVifb_himrkLK5cXB2IZ&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AJcBmwoEAAAA&_nc_gid=jb2uOjyDnEnPtP44f-xPUg&oh=00_AYENmPdDcrUWqDw0xdryQXMKv2RmTaPfjpgOYXD_M6B1nA&oe=67E70714",
+                    "width":1080,
+                    "height":1920,
+                    "id":"3184782144999967:2ec2d87ca494ba28f676b385df9c98ca"
+                }
+            ]
+        }
+    }
+    ```
+
+    ```json 200 (VIDEOS)
+    {
         "success":true,
         "results":{
             "success":true,
@@ -132,23 +151,6 @@ description: "This endpoint is used to fetch media assets (both images and video
                             "width":130
                         }
                     ]
-                }
-            ]
-        }
-    }
-    ```
-
-    ```json 200 (VIDEOS)
-    {
-        "success":true,
-        "results":{
-            "success":true,
-            "media":[
-                {
-                    "url":"https://scontent-ord5-2.xx.fbcdn.net/v/t45.1600-4/458397097_120212188508890153_5643706261073051043_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=890911&_nc_eui2=AeEb31a9FMRMAR99chReYCjZNy7E6NJ-DsU3LsTo0n4Oxa-6orXAzPLD3SUNeacQy6gdHVFFw3UMBKjcIZ7h6VEW&_nc_ohc=Vgv_WkUc4y4Q7kNvgGHEwR8&_nc_oc=AdmVeH5LXBRNcMi7xjpQPNh8t7j9lMC6c3iWMNQ5Up77fDG4QFcziAJGv9FztzMyv8cSbVifb_himrkLK5cXB2IZ&_nc_zt=1&_nc_ht=scontent-ord5-2.xx&edm=AJcBmwoEAAAA&_nc_gid=jb2uOjyDnEnPtP44f-xPUg&oh=00_AYENmPdDcrUWqDw0xdryQXMKv2RmTaPfjpgOYXD_M6B1nA&oe=67E70714",
-                    "width":1080,
-                    "height":1920,
-                    "id":"3184782144999967:2ec2d87ca494ba28f676b385df9c98ca"
                 }
             ]
         }

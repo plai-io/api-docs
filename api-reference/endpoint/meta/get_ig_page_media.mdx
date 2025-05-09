@@ -12,21 +12,19 @@ description: "This endpoint is used to fetch media assets (both images and video
 	retrieve the user ID from [get profile
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
-<ParamField body="instagramId" type="string" required>
+{/* <ParamField body="instagramId" type="string" required>
 	Instagram Page ID
-</ParamField>
+</ParamField> */}
 <ParamField body="pagination" type="string" default="">
-	Pagination
+	If the number of results exceeds the page limit, the response will include
+	pagination links (`next` and `previous`) to help you navigate through the
+	result set
 </ParamField>
 
 ## Response
 
 <ResponseField name="success" type="boolean">
 	Indicates that the HTTP response was successful (status code 200 OK).
-</ResponseField>
-
-<ResponseField name="success" type="boolean">
-	Indicates whether the API request was successful
 </ResponseField>
 
 <ResponseField name="results" type="object" >
@@ -49,10 +47,8 @@ description: "This endpoint is used to fetch media assets (both images and video
     				<ResponseField
     					name="media_type"
     					type="string"
-
-    					default="IMAGE|VIDEO|CAROUSEL_ALBUM"
     				>
-    					Type of media content
+    					Type of media content : `IMAGE` or `VIDEO` or `CAROUSEL_ALBUM`
     				</ResponseField>
 
     				<ResponseField name="media_url" type="string" >
@@ -92,10 +88,8 @@ description: "This endpoint is used to fetch media assets (both images and video
     				<ResponseField
     					name="media_product_type"
     					type="string"
-    					default="FEED|STORY|REELS"
-
     				>
-    					Placement type of the media
+    					Placement type of the media : `FEED` or `STORY` or `REELS`
     				</ResponseField>
     		</Expandable>
     	</ResponseField>

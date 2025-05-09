@@ -1,7 +1,7 @@
 ---
 title: "Get Page Posts"
 api: "POST /meta/get_page_posts"
-description: "This endpoint is used to get page posts from facebook and instagram."
+description: "This endpoint is used to get page posts from facebook and instagram. You can use this posts to create boost post ads."
 ---
 
 ## Request Body
@@ -18,9 +18,7 @@ description: "This endpoint is used to get page posts from facebook and instagra
 </ParamField>
 
 <ParamField body="pagination" type="string">
-	Pagination token for retrieving additional results. Leave empty for the
-	first request. Subsequent requests should use the pagination token returned
-	in the previous response.
+	Pagination
 </ParamField>
 
 ## Response
@@ -40,7 +38,6 @@ description: "This endpoint is used to get page posts from facebook and instagra
             </ResponseField>
             <ResponseField name="posts" type="array">
                 <Expandable title="Posts Array">
-                    <Expandable title="Post Object">
                         <ResponseField name="id" type="string">
                             The unique identifier for the post.
                         </ResponseField>
@@ -52,7 +49,7 @@ description: "This endpoint is used to get page posts from facebook and instagra
                             The URL to view the post on Facebook.
                         </ResponseField>
                         <ResponseField name="mediaType" type="string">
-                            The type of media in the post (e.g., "video").
+                            The type of media in the post : `photo` or `video` or `album`
                         </ResponseField>
                         <ResponseField name="primaryText" type="string">
                             The main text/content of the post including hashtags.
@@ -67,13 +64,12 @@ description: "This endpoint is used to get page posts from facebook and instagra
                             Width of the post media in pixels.
                         </ResponseField>
                         <ResponseField name="video" type="string">
-                            URL of the video content (if mediaType is video).
+                            URL of the video content (if mediaType is `VIDEO`).
                         </ResponseField>
                         <ResponseField name="videoId" type="string">
                             The unique identifier for the video.
                         </ResponseField>
                     </Expandable>
-                </Expandable>
                 <ResponseField name="error" type="string">
                     Error string if something went wrong
                 </ResponseField>
@@ -104,7 +100,7 @@ description: "This endpoint is used to get page posts from facebook and instagra
                     The caption text of the post.
                     </ResponseField>
                     <ResponseField name="media_type" type="string">
-                    Type of media in the post (e.g., "VIDEO").
+                    Type of media in the post: `VIDEO` or `IMAGE` or `CAROUSEL_ALBUM`
                     </ResponseField>
                     <ResponseField name="thumbnail_url" type="string">
                     URL of the thumbnail image for the post.

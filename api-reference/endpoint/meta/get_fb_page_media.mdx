@@ -12,9 +12,9 @@ description: "This endpoint is used to fetch media assets (both images and video
 	retrieve the user ID from [get profile
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
-<ParamField body="fbPageId" type="string" required>
+{/* <ParamField body="fbPageId" type="string" required>
 	Facebook Page ID
-</ParamField>
+</ParamField> */}
 <ParamField
 	body="type"
 	type="string"
@@ -25,7 +25,9 @@ description: "This endpoint is used to fetch media assets (both images and video
 	Media Type
 </ParamField>
 <ParamField body="pagination" type="string" default="">
-	Pagination
+	If the number of results exceeds the page limit, the response will include
+	pagination links (`next` and `previous`) to help you navigate through the
+	result set
 </ParamField>
 
 ## Response

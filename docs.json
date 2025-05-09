@@ -61,8 +61,8 @@
 									"api-reference/endpoint/meta/get_fb_page_media",
 									"api-reference/endpoint/meta/get_ig_page_media",
 									"api-reference/endpoint/meta/get_page_posts",
-									"api-reference/endpoint/meta/get_video_info",
-									"api-reference/endpoint/meta/upload_video"
+									"api-reference/endpoint/meta/upload_video",
+									"api-reference/endpoint/meta/get_video_info"
 								]
 							},
 							{

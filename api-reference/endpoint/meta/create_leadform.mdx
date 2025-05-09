@@ -13,14 +13,10 @@ description: "This endpoint is used to create a leadform."
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
 
-<ParamField body="fbPageId" type="string" required>
-	Facebook Page ID associated with the lead form
-</ParamField>
-
 <ParamField body="leadFormQuestions" type="array" required>
 	<Expandable title="Lead Form Questions Array">
 		<ParamField body="type" type="string" required>
-			Type of question (EMAIL, FULL_NAME, or CUSTOM)
+			Type of question `CUSTOM`, `CITY`, `COMPANY_NAME`, `COUNTRY`, `DOB`, `EMAIL`, `GENDER`, `FIRST_NAME`, `FULL_NAME`, `JOB_TITLE`, `LAST_NAME`, `MARITIAL_STATUS`, `WHATSAPP_NUMBER`, `EDUCATION_LEVEL`, `WEBSITE`, `PHONE`, `PHONE_OTP`, `POST_CODE`, `PROVINCE`, `RELATIONSHIP_STATUS`, `STATE`, `STREET_ADDRESS`, `ZIP`, `WORK_EMAIL`, `MILITARY_STATUS`, `WORK_PHONE_NUMBER`, `SLIDER`, `STORE_LOOKUP`, `STORE_LOOKUP_WITH_TYPEAHEAD`, `DATE_TIME`, `ID_CPF`, `ID_AR_DNI`, `ID_CL_RUT`, `ID_CO_CC`, `ID_EC_CI`, `ID_PE_DNI`, `ID_MX_RFC`, `JOIN_CODE`, `USER_PROVIDED_PHONE_NUMBER`, `FACEBOOK_LEAD_ID`, `EMAIL_ALIAS`, `MESSENGER`, `VIN`, `LICENSE_PLATE`
 		</ParamField>
 
     	<ParamField body="label" type="string">
@@ -72,10 +68,12 @@ description: "This endpoint is used to create a leadform."
 			Business phone number to display
 		</ParamField>
 		<ParamField body="button_type" type="string" required>
-			Type of button (VIEW_WEBSITE, etc.)
+			Type of button: `VIEW_WEBSITE`, `CALL_BUSINESS`, `MESSAGE_BUSINESS`,
+			`DOWNLOAD`, `SCHEDULE_APPOINTMENT`, `VIEW_ON_FACEBOOK`,
+			`PROMO_CODE`, `NONE`, `WHATSAPP`, `P2B_MESSENGER`
 		</ParamField>
 		<ParamField body="country_code" type="string" required>
-			Country code for phone number formatting
+			ISO 3166-1 alpha-2 country codes e.g: `US`,`UK`
 		</ParamField>
 		<ParamField body="website_url" type="string" required>
 			URL for the website button
@@ -84,11 +82,15 @@ description: "This endpoint is used to create a leadform."
 </ParamField>
 
 <ParamField body="language" type="string" required>
-	Language code for the form (e.g., EN_US)
+	Language code for the form: `AR_AR`, `CS_CZ`, `DA_DK`, `DE_DE`, `EL_GR`,
+	`EN_GB`, `EN_US`, `ES_ES`, `ES_LA`, `FI_FI`, `FR_FR`, `HE_IL`, `HI_IN`,
+	`HU_HU`, `ID_ID`, `IT_IT`, `JA_JP`, `KO_KR`, `NB_NO`, `NL_NL`, `PL_PL`,
+	`PT_BR`, `PT_PT`, `RO_RO`, `RU_RU`, `SV_SE`, `TH_TH`, `TR_TR`, `VI_VN`,
+	`ZH_CN`, `ZH_HK`, `ZH_TW`
 </ParamField>
 
 <ParamField body="form_type" type="string" required>
-	Type of form (MORE_VOLUME, etc.)
+	Type of form: `MORE_VOLUME` or `HIGHER_INTENT`
 </ParamField>
 
 <ParamField body="intro" type="object">
@@ -97,14 +99,13 @@ description: "This endpoint is used to create a leadform."
 			Title for the introduction section
 		</ParamField>
 		<ParamField body="style" type="string" required>
-			Style of the introduction (LIST_STYLE, etc.)
+			Styles: `LIST_STYLE`, `PARAGRAPH_STYLE`
 		</ParamField>
-		<ParamField body="content" type="array" required>
-			<Expandable title="Content Array">
-				List items or content for the introduction section
-			</Expandable>
-		</ParamField>
-	</Expandable>
+		<ParamField body="content" type="string[]" required>
+			List items or content for the introduction section
+    	</ParamField>
+    </Expandable>
+
 </ParamField>
 
 ## Response

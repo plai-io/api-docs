@@ -15,13 +15,13 @@ description: "This endpoint allows you to create a Lookalike Audience based on a
 <ParamField body="sourceType" type="string" required >
 	Source Type = `PAGE` or `AUDIENCE`
 </ParamField>
-<ParamField body="sourceId" type="string" required>
+<ParamField body="sourceId" type="string">
 	<Info>
-		If source is `PAGE`, you must include the page id parameter. This should be the Facebook Page ID from which the audience will be created.
+		If sourceType is `PAGE`, you must include the page id parameter. This should be the Facebook Page ID from which the audience will be created.
 	</Info>
 
     <Info>
-    If source is `AUDIENCE`, you must include the audience id parameter. This should be the Custom Audience ID that will be used.
+    If sourceType is `AUDIENCE`, you must include the `sourceId` parameter.
     </Info>
 
 </ParamField>
@@ -29,7 +29,7 @@ description: "This endpoint allows you to create a Lookalike Audience based on a
 	Audience Name
 </ParamField>
 <ParamField body="countryCode" type="string" required>
-	Country Code e.g: `US`,`UK`
+	ISO 3166-1 alpha-2 country codes e.g: `US`,`UK`
 </ParamField>
 
 ## Response
