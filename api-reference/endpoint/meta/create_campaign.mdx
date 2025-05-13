@@ -2,31 +2,10 @@
 title: "Create Campaign"
 api: "POST /meta/create_campaign"
 description: "This endpoint is used to create a campaign."
+playground: "none"
 ---
 
 ## Request Body
-
-<ParamField body="userId" type="string" required>
-	User ID, If not already created, make a user on [create user
-	page](/api-reference/endpoint/auth/create_user) first. If already created,
-	retrieve the user ID from [get profile
-	page](/api-reference/endpoint/auth/get_profile).
-</ParamField>
-
-<ParamField body="url" type="string" required>
-	Destination URL for the ad campaign
-</ParamField>
-
-<ParamField body="ages" type="object" required>
-	<Expandable title="Age Targeting Object">
-		<ParamField body="maxAge" type="number" required>
-			Maximum target age (inclusive)
-		</ParamField>
-		<ParamField body="minAge" type="number" required>
-			Minimum target age (inclusive)
-		</ParamField>
-	</Expandable>
-</ParamField>
 
 <ParamField body="campaignType" type="string" required>
 	Type of campaign = `LINK_CLICKS`, `LEAD_GENERATION`, `CONVERSIONS`,
@@ -34,39 +13,14 @@ description: "This endpoint is used to create a campaign."
 	`OUTCOME_AWARENESS`, `CATALOG`
 </ParamField>
 
-<ParamField body="conversionGoal" type="string">
-	Campaign conversion goal type
+{/* Get Campaign Goal Parameters */}
 
-    <Note>
-    	If Campaign Type is `CONVERSIONS` or `OUTCOME_SALES` than conversionGoal is required.
-    </Note>
-
-</ParamField>
-
-<ParamField body="currency" type="number" required>
-	Currency Code (`USD`, `EUR`, etc.)
+<ParamField body="url" type="string" required>
+	Destination URL for the ad campaign
 </ParamField>
 
 <ParamField body="budget" type="number" required>
 	Campaign budget amount in currency units
-</ParamField>
-
-<ParamField body="pixelId" type="string">
-	Facebook Pixel ID for conversion tracking
-
-    <Note>
-    	If Campaign Type is `CONVERSIONS` or `OUTCOME_SALES` than pixelId is required.
-    </Note>
-
-</ParamField>
-
-<ParamField body="endDate" type="null">
-	Optional campaign end date (currently not set)
-</ParamField>
-
-<ParamField body="targetLocales" type="number[]">
-	Array of locale targeting parameters, you can get the list of locales
-	[here](https://developers.facebook.com/docs/marketing-apis/reference/ad-account/targeting-specs#locales)
 </ParamField>
 
 <ParamField body="campaignName" type="string" required>
@@ -87,146 +41,14 @@ description: "This endpoint is used to create a campaign."
     `APPLY_NOW`, `DOWNLOAD`, `GET_QUOTE`, `LEARN_MORE`, `SIGN_UP`, `SUBSCRIBE`,
     `BOOK_TRAVEL`
 
-    {/* If Campaign Type is `CONVERSIONS`, supported call to action types are
-    `SEND_MESSAGE`, `BOOK_NOW`, `CONTACT_US`, `GET_PROMOTIONS`, `GET_QUOTE`, `INQUIRE_NOW`, `LEARN_MORE`, `SHOP_NOW`, `SIGN_UP`, `SUBSCRIBE`, `ORDER_NOW`, `APPLY_NOW` */}
-
 </ParamField>
 
-<ParamField body="videos" type="array">
-	<Expandable title="Video Assets Array">
-		<ParamField body="video_id" type="string" required>
-			Facebook video ID
-		</ParamField>
-		<ParamField body="thumbnail_url" type="string" required>
-			URL for video thumbnail image
-		</ParamField>
-	</Expandable>
-
-    <Note>
-    	Videos not required for `POST_ENGAGEMENT` campaign type. For other campaign types, it is required.
-    </Note>
-
+<ParamField body="startDate" type="string">
+	Start Date Format: `YYYY-MM-DD`
 </ParamField>
 
-<ParamField body="audienceId" type="array">
-	Array of audience IDs, you can get the audienceId from list of audiences
-	[here](/api-reference/endpoint/meta/get_custom_audiences)
-</ParamField>
-
-<ParamField body="primaryText" type="array">
-	<Expandable title="Primary Text Array">
-		<ParamField body="text" type="string" required>
-			Main ad copy text
-		</ParamField>
-	</Expandable>
-
-    <Note>
-    	Primary text not required for `POST_ENGAGEMENT` campaign type. For other campaign types, it is required.
-    </Note>
-
-</ParamField>
-
-<ParamField body="images" type="array">
-	<Expandable title="Image Assets Array">
-		<ParamField body="url" type="string" required>
-			URL for image asset
-		</ParamField>
-	</Expandable>
-
-    <Note>
-    	Images not required for `POST_ENGAGEMENT` campaign type. For other campaign types, it is required.
-    </Note>
-
-</ParamField>
-
-<ParamField body="headline1" type="array">
-	<Expandable title="Headline Variations Array">
-		<ParamField body="text" type="string" required>
-			Headline text variation
-		</ParamField>
-	</Expandable>
-
-    <Note>
-    	Headline not required for `POST_ENGAGEMENT` campaign type. For other campaign types, it is required.
-    </Note>
-
-</ParamField>
-
-<ParamField body="gender" type="number">
-	Gender targeting (1=male, 2=female, etc.)
-</ParamField>
-
-<ParamField body="locations" type="array">
-	<Expandable title="Location Targeting Array">
-		<ParamField body="id" type="string" required>
-			Facebook location ID
-		</ParamField>
-		<ParamField body="name" type="string" required>
-			Location display name
-		</ParamField>
-		<ParamField body="type" type="string" required>
-			Location type (city, etc.)
-		</ParamField>
-		<ParamField body="distance_unit" type="string" required>
-			Distance unit (mile, etc.)
-		</ParamField>
-	</Expandable>
-
-    <Note>
-    	If audienceId is provided, then `location` is Optional and not required.
-    </Note>
-
-</ParamField>
-
-<ParamField body="proximityTargeting" type="array">
-	Proximity targeting parameters
-
-    <Note>
-    	If audienceId is provided, then `proximityTargeting` is Optional and not required.
-    </Note>
-
-</ParamField>
-
-<ParamField body="interests" type="array">
-	<Expandable title="Location Targeting Array">
-		<ParamField body="id" type="string" required>
-			Interest Id
-		</ParamField>
-		<ParamField body="name" type="string" required>
-			Interest Name
-		</ParamField>
-		<ParamField body="type" type="string" required>
-			Interest Type = `interests`
-		</ParamField>
-	</Expandable>
-</ParamField>
-
-<ParamField body="narrowInterests" type="array">
-	<Expandable title="Location Targeting Array">
-		<ParamField body="id" type="string" required>
-			Interest Id
-		</ParamField>
-		<ParamField body="name" type="string" required>
-			Interest Name
-		</ParamField>
-		<ParamField body="type" type="string" required>
-			Interest Type = `interests`
-		</ParamField>
-	</Expandable>
-</ParamField>
-
-<ParamField body="furtherInterests" type="array">
-	<Expandable title="Location Targeting Array">
-		<ParamField body="id" type="string" required>
-			Interest Id
-		</ParamField>
-		<ParamField body="name" type="string" required>
-			Interest Name
-		</ParamField>
-		<ParamField body="type" type="string" required>
-			Interest Type = `interests`
-		</ParamField>
-	</Expandable>
+<ParamField body="endDate" type="string">
+	End Date Format: `YYYY-MM-DD`
 </ParamField>
 
 <ParamField body="specialAdCategories" type="string[]">
@@ -238,107 +60,8 @@ description: "This endpoint is used to create a campaign."
 	ISO 3166-1 alpha-2 country codes e.g: `US`,`UK`
 </ParamField>
 
-<ParamField body="leads_form_id" type="string">
-	Facebook Lead Form ID, its required when campaignType is `LEAD_GENERATION`
-</ParamField>
-
-<ParamField body="includeInstagram" type="boolean" required>
-	Whether to include Instagram placements
-</ParamField>
-
-<ParamField body="messagingApps" type="array">
-	Messaging apps = `MESSENGER`, `INSTAGRAM`, `WHATSAPP`
-</ParamField>
-
-<ParamField body="manualPlacements" type="boolean" required>
-	Whether placements are manually selected
-</ParamField>
-
-<ParamField body="facebook_positions" type="string[]">
-	Facebook ad placements = `feed`, `right_hand_column`, `marketplace`,
-	`video_feeds`, `story`, `search`, `instream_video`, `facebook_reels`,
-	`facebook_reels_overlay`, `profile_feed`, `notification`
-</ParamField>
-
-<ParamField body="instagram_positions" type="string[]">
-	Instagram ad placements = `stream`, `story`, `explore`, `explore_home`,
-	`reels`, `profile_feed`, `ig_search`, `profile_reels`
-</ParamField>
-
-<ParamField body="messenger_positions" type="string[]">
-	Messenger ad placements = `messenger_home`, `story`
-</ParamField>
-
-<ParamField body="carousel" type="array">
-	<Expandable title="Carousel Array">
-		<ParamField body="name" type="string" required>
-			Carousel Name
-		</ParamField>
-		<ParamField body="description" type="string">
-			Carousel Description
-		</ParamField>
-		<ParamField body="picture" type="string">
-			Carousel Picture URL
-		</ParamField>
-		<ParamField body="video_id" type="string">
-			Carousel Video ID
-		</ParamField>
-		<ParamField body="link" type="string">
-			Carousel Link URL
-		</ParamField>
-	</Expandable>
-
-    <Note>
-    	Carousel not required for `POST_ENGAGEMENT` campaign type. For other campaign types, it is required.
-    </Note>
-
-</ParamField>
-
-<ParamField body="excludedAudienceIds" type="string[]">
-	Audience IDs to exclude
-</ParamField>
-
-<ParamField body="excludedLocations" type="array">
-	<Expandable title="Location Targeting Array">
-		<ParamField body="id" type="string" required>
-			Facebook location ID
-		</ParamField>
-		<ParamField body="name" type="string" required>
-			Location display name
-		</ParamField>
-		<ParamField body="type" type="string" required>
-			Location type (city, etc.)
-		</ParamField>
-		<ParamField body="distance_unit" type="string" required>
-			Distance unit (mile, etc.)
-		</ParamField>
-	</Expandable>
-</ParamField>
-
 <ParamField body="utmParams" type="string">
 	UTM tracking parameters template, expected variables that can be used in it: `{{campaign.id}},{{adset.id}},{{ad.id}},{{campaign.name}},{{adset.name}},{{ad.name}}`
-</ParamField>
-
-<ParamField body="pagePostId" type="string">
-	Facebook page post ID, required when campaignType is `POST_ENGAGEMENT`
-</ParamField>
-
-<ParamField body="userDevices" type="string[]">
-	Device names, you can get the list of devices from
-	[here](https://developers.facebook.com/docs/marketing-apis/reference/ad-account/targeting-specs#devices)
-</ParamField>
-
-<ParamField body="userOS" type="string[]">
-	Operating system names, you can get the list of operating systems from
-	[here](https://developers.facebook.com/docs/marketing-apis/reference/ad-account/targeting-specs#operating_systems)
-</ParamField>
-
-<ParamField body="isDynamicCreative" type="boolean" required>
-	Whether to use dynamic creative
-</ParamField>
-
-<ParamField body="isCatalogCarousel" type="boolean" required>
-	Whether to use catalog carousel
 </ParamField>
 
 ## Response

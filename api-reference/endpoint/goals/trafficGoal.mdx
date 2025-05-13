@@ -1,0 +1,169 @@
+---
+title: "Traffic Goal"
+description: "This page is used to create a traffic goal campaign."
+---
+
+<Note>
+	Use Below Extra Parameters with Create Campaign API
+	[here](/api-reference/endpoint/meta/create_campaign).
+</Note>
+
+## Targeting Parameters
+
+<ParamField body="gender" type="number">
+	Gender targeting (1=male, 2=female, etc.)
+</ParamField>
+
+<ParamField body="ages" type="object">
+	<Expandable title="Age Targeting Object">
+		<ParamField body="maxAge" type="number" required>
+			Maximum target age (inclusive)
+		</ParamField>
+		<ParamField body="minAge" type="number" required>
+			Minimum target age (inclusive)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="locations" type="array">
+	<Expandable title="Location Targeting Array">
+		<ParamField body="id" type="string" required>
+			Facebook location ID
+		</ParamField>
+		<ParamField body="name" type="string" required>
+			Location display name
+		</ParamField>
+		<ParamField body="type" type="string" required>
+			Location type (city, etc.)
+		</ParamField>
+		<ParamField body="distance_unit" type="string" required>
+			Distance unit (mile, etc.)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="excludedLocations" type="array">
+	<Expandable title="Location Targeting Array">
+		<ParamField body="id" type="string" required>
+			Facebook location ID
+		</ParamField>
+		<ParamField body="name" type="string" required>
+			Location display name
+		</ParamField>
+		<ParamField body="type" type="string" required>
+			Location type (city, etc.)
+		</ParamField>
+		<ParamField body="distance_unit" type="string" required>
+			Distance unit (mile, etc.)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="proximityTargeting" type="array">
+	<Expandable title="Proximity Targeting Array">
+		<ParamField body="countryName" type="string" required>
+			2 char country code like `US`, `UK`, etc.
+		</ParamField>
+		<ParamField body="distance_unit" type="string" required>
+			Distance Unit like `mile`, `km`
+		</ParamField>
+		<ParamField body="latitude" type="string" required>
+			Latitude of the location
+		</ParamField>
+		<ParamField body="longitude" type="string" required>
+			Longitude of the location
+		</ParamField>
+		<ParamField body="radius" type="string" required>
+			Radius value
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="interests" type="array">
+	<Expandable title="Interests Array">
+		<ParamField body="id" type="string" required>
+			Interest Id
+		</ParamField>
+		<ParamField body="name" type="string" required>
+			Interest Name
+		</ParamField>
+		<ParamField body="type" type="string" required>
+			Interest Type = `interests`
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="narrowInterests" type="array">
+	<Expandable title="Narrow Interests Array">
+		<ParamField body="id" type="string" required>
+			Interest Id
+		</ParamField>
+		<ParamField body="name" type="string" required>
+			Interest Name
+		</ParamField>
+		<ParamField body="type" type="string" required>
+			Interest Type = `interests`
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="furtherInterests" type="array">
+	<Expandable title="Further Interests Array">
+		<ParamField body="id" type="string" required>
+			Interest Id
+		</ParamField>
+		<ParamField body="name" type="string" required>
+			Interest Name
+		</ParamField>
+		<ParamField body="type" type="string" required>
+			Interest Type = `interests`
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="targetLocales" type="number[]">
+	Array of locale targeting parameters, you can get the list of locales
+	[here](https://developers.facebook.com/docs/marketing-apis/reference/ad-account/targeting-specs#locales)
+</ParamField>
+
+<ParamField body="audienceId" type="array">
+	Array of audience IDs, you can get the audienceId from list of audiences
+	[here](/api-reference/endpoint/meta/get_custom_audiences)
+</ParamField>
+
+<ParamField body="excludedAudienceIds" type="string[]">
+	Audience IDs to exclude
+</ParamField>
+
+<ParamField body="manualPlacements" type="boolean">
+	Whether placements are manually selected
+</ParamField>
+
+<ParamField body="facebook_positions" type="string[]">
+	Facebook ad placements = `feed`, `right_hand_column`, `marketplace`,
+	`video_feeds`, `story`, `search`, `instream_video`, `facebook_reels`,
+	`facebook_reels_overlay`, `profile_feed`, `notification`
+</ParamField>
+
+<ParamField body="instagram_positions" type="string[]">
+	Instagram ad placements = `stream`, `story`, `explore`, `explore_home`,
+	`reels`, `profile_feed`, `ig_search`, `profile_reels`
+</ParamField>
+
+<ParamField body="messenger_positions" type="string[]">
+	Messenger ad placements = `messenger_home`, `story`
+</ParamField>
+
+<ParamField body="userDevices" type="string[]">
+	Device names, you can get the list of devices from
+	[here](/api-reference/endpoint/meta/get_targeting_systems_lookup)
+</ParamField>
+
+<ParamField body="userOS" type="string[]">
+	Operating system names, you can get the list of operating systems from
+	[here](/api-reference/endpoint/meta/get_targeting_systems_lookup)
+</ParamField>
+
+<ParamField body="includeInstagram" type="boolean">
+	Whether to include Instagram placements
+</ParamField>

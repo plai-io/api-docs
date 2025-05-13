@@ -71,16 +71,33 @@
 								"pages": [
 									"api-reference/endpoint/meta/search_targeting_interests",
 									"api-reference/endpoint/meta/search_targeting_locations",
-									"api-reference/endpoint/meta/get_pixels_list"
+									"api-reference/endpoint/meta/get_pixels_list",
+									"api-reference/endpoint/meta/get_targeting_systems_lookup"
 								]
 							},
 							{
 								"group": "Campaign",
 								"icon": "megaphone",
 								"pages": [
+									"api-reference/endpoint/meta/campaign_overview",
 									"api-reference/endpoint/meta/get_campaign_insights",
 									"api-reference/endpoint/meta/update_campaign_status",
-									"api-reference/endpoint/meta/create_campaign"
+									"api-reference/endpoint/meta/create_campaign",
+									{
+										"group": "Campaign Goals",
+										"icon": "flag",
+										"pages": [
+											"api-reference/endpoint/goals/trafficGoal",
+											"api-reference/endpoint/goals/leadGoal",
+											"api-reference/endpoint/goals/conversionsGoal",
+											"api-reference/endpoint/goals/salesGoal",
+											"api-reference/endpoint/goals/awarenessGoal",
+											"api-reference/endpoint/goals/phoneCallGoal",
+											"api-reference/endpoint/goals/engagementGoal",
+											"api-reference/endpoint/goals/boostPostGoal",
+											"api-reference/endpoint/goals/catalogGoal"
+										]
+									}
 								]
 							}
 						]

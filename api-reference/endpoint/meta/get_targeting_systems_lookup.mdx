@@ -1,0 +1,142 @@
+---
+title: "Get Targeting Systems"
+api: "POST /meta/get_targeting_systems_lookup"
+description: "This endpoint is used to get targeting systems lookup, like os and devices names."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="type" type="string" required>
+	Type = `os` or `device`
+</ParamField>
+
+## Response
+
+<Tabs>
+  <Tab title="OS Type Response">
+        
+    <ResponseField name="success" type="boolean">
+        Indicates that the HTTP response was successful (status code 200 OK).
+    </ResponseField>
+
+    <ResponseField name="results" type="object">
+        <Expandable title="Results Object">
+            <ResponseField name="success" type="boolean">
+                Indicates whether the specific operation or API action was
+                successful.
+            </ResponseField>
+
+             <ResponseField name="targetingSystems" type="array">
+                <Expandable title="Targeting System Object">
+                    <ResponseField name="type" type="string">
+                        OS Type = `os_type`
+                    </ResponseField>
+                    <ResponseField name="name" type="string">
+                        OS Name
+                    </ResponseField>
+                    <ResponseField name="platform" type="string">
+                        The platform name (e.g., `Android`, `Windows`, `iOS`).
+                    </ResponseField>
+                    <ResponseField name="description" type="string">
+                        Description of OS
+                    </ResponseField>
+                </Expandable>
+            </ResponseField>
+
+            <ResponseField name="error" type="string">
+                Error string if something went wrong
+            </ResponseField>
+        </Expandable>
+    </ResponseField>
+
+  </Tab>
+
+  <Tab title="Device Type Response">
+    <ResponseField name="success" type="boolean" >
+    Indicates whether the API request was successful
+    </ResponseField>
+
+    <ResponseField name="results" type="object" >
+        <Expandable title="Results Object">
+            <ResponseField name="success" type="boolean" >
+    		    Indicates whether the specific operation or API action was successful.
+            </ResponseField>
+
+             <ResponseField name="targetingSystems" type="array">
+                <Expandable title="Targeting System Object">
+                    <ResponseField name="name" type="string">
+                        The display name of the targeting system (e.g., `iPad`).
+                    </ResponseField>
+                    <ResponseField name="description" type="string">
+                        Description of the targeting system (e.g., `iPads (all)`).
+                    </ResponseField>
+                    <ResponseField name="platform" type="string">
+                        The platform being targeted (e.g., `iOS`).
+                    </ResponseField>
+                    <ResponseField name="type" type="string">
+                        The type of targeting (e.g., `user_device`).
+                    </ResponseField>
+                    <ResponseField name="audience_size_lower_bound" type="number">
+                        Estimated minimum audience size for this targeting.
+                    </ResponseField>
+                    <ResponseField name="audience_size_upper_bound" type="number">
+                        Estimated maximum audience size for this targeting.
+                    </ResponseField>
+                </Expandable>
+            </ResponseField>
+
+            <ResponseField name="error" type="string">
+                Error string if something went wrong
+            </ResponseField>
+        </Expandable>
+    </ResponseField>
+
+    </Tab>
+
+</Tabs>
+
+<ResponseExample>
+    ```json 200 (DEVICE Type)
+    {
+        "success": true,
+        "results": {
+            "success": true,
+            "targetingSystems": [
+                {
+                    "type": "user_os",
+                    "name": "user_os",
+                    "platform": "Android",
+                    "description": "1.0;1.1;1.5;1.6;2.0;2.1;2.2;2.3;3.0;3.1;3.2;4.0;4.1;4.2;4.3;4.4;5.0;5.1;6.0;7.0;7.1;8.0;8.1;9.0;10.0;11.0;12.0;13.0;14.0;15.0"
+                }
+            ]
+        }
+    }
+    ```
+
+    ```json 200 (DEVICE Type)
+    {
+        "success": true,
+        "results": {
+            "success": true,
+            "targetingSystems": [
+                {
+                    "name": "iPad",
+                    "description": "iPads (all)",
+                    "platform": "iOS",
+                    "type": "user_device",
+                    "audience_size_lower_bound": 180527210,
+                    "audience_size_upper_bound": 212300000
+                }
+            ]
+        }
+    }
+    ```
+
+</ResponseExample>
