@@ -8,7 +8,156 @@ description: "This page is used to create a traffic goal campaign."
 	[here](/api-reference/endpoint/meta/create_campaign).
 </Note>
 
-## Targeting Parameters
+### Dynamic Ads Parameters
+
+<ParamField body="images" type="array">
+	<Expandable title="Image Assets Array">
+		<ParamField body="url" type="string" required>
+			URL for image asset
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="videos" type="array">
+	<Expandable title="Video Assets Array">
+		<ParamField body="video_id" type="string" required>
+			Facebook video ID
+		</ParamField>
+		<ParamField body="thumbnail_url" type="string" required>
+			URL for video thumbnail image
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="primaryText" type="array">
+	<Expandable title="Primary Text Array">
+		<ParamField body="text" type="string" required>
+			Main ad copy text
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="headline1" type="array">
+	<Expandable title="Headline Variations Array">
+		<ParamField body="text" type="string" required>
+			Headline text variation
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="callToAction" type="string" required>
+	Supported call to action types are `LEARN_MORE`, `SHOP_NOW`, `SIGN_UP`,
+	`DOWNLOAD`, `WATCH_MORE`, `APPLY_NOW`, `SUBSCRIBE`, `GET_QUOTE`,
+	`CONTACT_US`, `ORDER_NOW`, `REQUEST_TIME`, `GET_SHOWTIMES`, `LISTEN_NOW`,
+	`SEE_MENU`, `BOOK_TRAVEL`
+</ParamField>
+
+<ParamField body="campaignType" type="string" required>
+	For Traffic Goal, campaignType is `LINK_CLICKS`
+</ParamField>
+
+### Standard Ads Parameters
+
+<ParamField body="carousel" type="array">
+	<Expandable title="Carousel Array">
+		<ParamField body="name" type="string" required>
+			Carousel Name
+		</ParamField>
+		<ParamField body="description" type="string">
+			Carousel Description
+		</ParamField>
+		<ParamField body="picture" type="string">
+			Carousel Picture URL
+		</ParamField>
+		<ParamField body="video_id" type="string">
+			Carousel Video ID
+		</ParamField>
+		<ParamField body="link" type="string">
+			Carousel Link URL
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="isDynamicCreative" type="boolean" >
+	Whether it's dynamic creative, useable with images/videos
+
+    <Note>
+    	Use `isDynamicCreative` = `false`, to create multiple standard
+    	`non-dynamic` ads in a single AdSet.
+    </Note>
+
+</ParamField>
+
+<ParamField body="multipleCreatives" type="array">
+
+    <Expandable title="Multiple Creative Configuration">
+    	<ParamField body="url" type="string" required>
+    		Destination URL
+    	</ParamField>
+
+    	<ParamField body="callToAction" type="string" required>
+    		Call to Action
+    	</ParamField>
+
+    	<ParamField body="headline1" type="string">
+    		Headline
+    	</ParamField>
+
+    	<ParamField body="image" type="string">
+    		Image URL
+    	</ParamField>
+
+    	<ParamField body="video" type="object">
+    		<Expandable title="Video Data">
+    			<ParamField body="video_id" type="string">
+    				Video ID
+    			</ParamField>
+    			<ParamField body="thumbnail_url" type="string">
+    				Thumbnail URL
+    			</ParamField>
+    		</Expandable>
+    	</ParamField>
+
+    	<ParamField body="phoneNumber" type="string">
+    		Phone Number (for Call Ads)
+    	</ParamField>
+
+    	<ParamField
+    		body="greetingText"
+    		type="string"
+    	>
+    		Greeting Text
+    	</ParamField>
+
+    	<ParamField body="conversations" type="array">
+    		<Expandable title="Conversations Array">
+    			<ParamField body="title" type="string" required>
+    				Conversation Title
+    			</ParamField>
+    		</Expandable>
+    	</ParamField>
+
+    </Expandable>
+
+</ParamField>
+
+<ParamField body="callToAction" type="string" required>
+	Supported call to action types are `LEARN_MORE`, `SHOP_NOW`, `SIGN_UP`,
+	`DOWNLOAD`, `WATCH_MORE`, `APPLY_NOW`, `SUBSCRIBE`, `GET_QUOTE`,
+	`CONTACT_US`, `ORDER_NOW`, `REQUEST_TIME`, `GET_SHOWTIMES`, `LISTEN_NOW`,
+	`SEE_MENU`, `BOOK_TRAVEL`
+</ParamField>
+
+<ParamField body="campaignType" type="string" required>
+	For Traffic Goal, campaignType is `LINK_CLICKS`
+</ParamField>
+
+### Targeting Parameters
 
 <ParamField body="gender" type="number">
 	Gender targeting (1=male, 2=female, etc.)

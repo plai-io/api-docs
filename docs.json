@@ -87,6 +87,7 @@
 										"group": "Campaign Goals",
 										"icon": "flag",
 										"pages": [
+											"api-reference/endpoint/goals/overview",
 											"api-reference/endpoint/goals/trafficGoal",
 											"api-reference/endpoint/goals/leadGoal",
 											"api-reference/endpoint/goals/conversionsGoal",
@@ -94,8 +95,7 @@
 											"api-reference/endpoint/goals/awarenessGoal",
 											"api-reference/endpoint/goals/phoneCallGoal",
 											"api-reference/endpoint/goals/engagementGoal",
-											"api-reference/endpoint/goals/boostPostGoal",
-											"api-reference/endpoint/goals/catalogGoal"
+											"api-reference/endpoint/goals/boostPostGoal"
 										]
 									}
 								]

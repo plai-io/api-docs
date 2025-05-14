@@ -25,67 +25,124 @@ description: "Overview of the campaign endpoints and how to create a campaign."
 
         <Card
             title="🚗 Traffic Campaign"
-            href="/api-reference/endpoint/goal/traffic_goal"
+            href="/api-reference/endpoint/goals/trafficGoal"
         >
             This page has all the parameters for traffic campaign.
         </Card>
 
         <Card
             title="📝 Leads Campaign"
-            href="/api-reference/endpoint/goal/traffic_goal"
+            href="/api-reference/endpoint/goals/leadGoal"
         >
             This page has all the parameters for leads campaign.
         </Card>
 
         <Card
             title="🔄 Conversion Campaign"
-            href="/api-reference/endpoint/goal/traffic_goal"
+            href="/api-reference/endpoint/goals/conversionsGoal"
         >
             This page has all the parameters for conversion campaign.
         </Card>
 
         <Card
             title="💰 Sales Campaign"
-            href="/api-reference/endpoint/goal/traffic_goal"
+            href="/api-reference/endpoint/goals/salesGoal"
         >
             This page has all the parameters for sales campaign.
         </Card>
 
         <Card
             title="📢 Awareness Campaign"
-            href="/api-reference/endpoint/goal/traffic_goal"
+            href="/api-reference/endpoint/goals/awarenessGoal"
         >
             This page has all the parameters for awareness campaign.
         </Card>
 
         <Card
             title="📞 Phone Calls Campaign"
-            href="/api-reference/endpoint/goal/traffic_goal"
+            href="/api-reference/endpoint/goals/phoneCallGoal"
         >
             This page has all the parameters for phone calls campaign.
         </Card>
 
         <Card
             title="💬 Engagement Campaign"
-            href="/api-reference/endpoint/goal/traffic_goal"
+            href="/api-reference/endpoint/goals/engagementGoal"
         >
             This page has all the parameters for engagement campaign.
         </Card>
 
         <Card
             title="📈 Boost Post Campaign"
-            href="/api-reference/endpoint/goal/traffic_goal"
+            href="/api-reference/endpoint/goals/boostPostGoal"
         >
             This page has all the parameters for boost post campaign.
         </Card>
 
-        <Card
+        {/* <Card
             title="📚 Catalog Campaign"
-            href="/api-reference/endpoint/goal/traffic_goal"
+            href="/api-reference/endpoint/goals/catalogGoal"
         >
             This page has all the parameters for catalog campaign.
-        </Card>
+        </Card> */}
 
     </Step>
 
 </Steps>
+
+### Dynamic Creative Ads
+
+Dynamic creative ads automatically test different combinations of your ad elements (images, videos, headlines, text, CTAs, etc.) to find the best-performing combinations for each audience segment.
+
+How it works:
+
+-   You upload multiple images/videos, headlines, descriptions, etc.
+-   Facebook mixes and matches these to create many variations.
+-   The algorithm optimizes delivery to show the best combinations to each person.
+
+**Example**
+
+You upload:
+
+-   3 images
+-   2 headlines
+-   2 descriptions
+
+> → Facebook can create 3 x 2 x 2 = 12 ad variations and automatically test them.
+
+**Benifits**
+
+-   Saves time vs creating many individual ads
+-   Better performance through automatic optimization
+-   Personalized experience for different users
+
+> **Use case**: Best for performance-focused campaigns (e.g., conversions, traffic, leads)
+
+### Standard / Non-Dynamic Creative Ads
+
+You create one static ad (or manually create multiple individual ads), where each version has fixed creative elements.
+
+How it works:
+
+-   You manually design each ad with one combination of image/video + text + CTA.
+-   Facebook delivers that exact version to the audience without variation.
+
+**Example**
+
+You create Ad 1:
+
+-   Image A + Headline A + Text A
+
+Ad 2:
+
+-   Image B + Headline B + Text B
+
+> You have to manually test which ad performs better.
+
+**Benifits**
+
+-   Full control over how your ad appears
+-   Useful when branding consistency is key
+-   Better for storytelling or highly specific messaging
+
+> **Use case**: Best for branding campaigns, awareness, or highly designed creatives

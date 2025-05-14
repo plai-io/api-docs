@@ -7,3 +7,318 @@ description: "This page is used to create a conversions goal campaign."
 	Use Below Extra Parameters with Create Campaign API
 	[here](/api-reference/endpoint/meta/create_campaign).
 </Note>
+
+### Dynamic Ads Parameters
+
+<ParamField body="images" type="array">
+	<Expandable title="Image Assets Array">
+		<ParamField body="url" type="string" required>
+			URL for image asset
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="videos" type="array">
+	<Expandable title="Video Assets Array">
+		<ParamField body="video_id" type="string" required>
+			Facebook video ID
+		</ParamField>
+		<ParamField body="thumbnail_url" type="string" required>
+			URL for video thumbnail image
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="primaryText" type="array">
+	<Expandable title="Primary Text Array">
+		<ParamField body="text" type="string" required>
+			Main ad copy text
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="headline1" type="array">
+	<Expandable title="Headline Variations Array">
+		<ParamField body="text" type="string" required>
+			Headline text variation
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="pixelId" type="string" required>
+	Facebook Pixel ID for conversion tracking
+</ParamField>
+
+<ParamField body="conversionGoal" type="string" required>
+	Campaign conversion goal type, values: `SEARCH`, `CONTACT`, `FIND_LOCATION`,
+	`SCHEDULE`, `START_TRIAL`, `SUBMIT_APPLICATION`, `SUBSCRIBE`, `LEAD`,
+	`COMPLETE_REGISTRATION`
+</ParamField>
+
+<ParamField body="campaignType" type="string" required>
+	For Conversions Goal, campaignType is `CONVERSIONS`
+</ParamField>
+
+### Standard Ads Parameters
+
+<ParamField body="carousel" type="array">
+	<Expandable title="Carousel Array">
+		<ParamField body="name" type="string" required>
+			Carousel Name
+		</ParamField>
+		<ParamField body="description" type="string">
+			Carousel Description
+		</ParamField>
+		<ParamField body="picture" type="string">
+			Carousel Picture URL
+		</ParamField>
+		<ParamField body="video_id" type="string">
+			Carousel Video ID
+		</ParamField>
+		<ParamField body="link" type="string">
+			Carousel Link URL
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="isDynamicCreative" type="boolean" >
+	Whether it's dynamic creative, useable with images/videos
+
+    <Note>
+    	Use `isDynamicCreative` = `false`, to create multiple standard
+    	`non-dynamic` ads in a single AdSet.
+    </Note>
+
+</ParamField>
+
+<ParamField body="multipleCreatives" type="array">
+
+    <Expandable title="Multiple Creative Configuration">
+    	<ParamField body="url" type="string" required>
+    		Destination URL
+    	</ParamField>
+
+    	<ParamField body="callToAction" type="string" required>
+    		Call to Action
+    	</ParamField>
+
+    	<ParamField body="headline1" type="string">
+    		Headline
+    	</ParamField>
+
+    	<ParamField body="image" type="string">
+    		Image URL
+    	</ParamField>
+
+    	<ParamField body="video" type="object">
+    		<Expandable title="Video Data">
+    			<ParamField body="video_id" type="string">
+    				Video ID
+    			</ParamField>
+    			<ParamField body="thumbnail_url" type="string">
+    				Thumbnail URL
+    			</ParamField>
+    		</Expandable>
+    	</ParamField>
+
+    	<ParamField body="phoneNumber" type="string">
+    		Phone Number (for Call Ads)
+    	</ParamField>
+
+    	<ParamField
+    		body="greetingText"
+    		type="string"
+    	>
+    		Greeting Text
+    	</ParamField>
+
+    	<ParamField body="conversations" type="array">
+    		<Expandable title="Conversations Array">
+    			<ParamField body="title" type="string" required>
+    				Conversation Title
+    			</ParamField>
+    		</Expandable>
+    	</ParamField>
+
+    </Expandable>
+
+</ParamField>
+
+<ParamField body="pixelId" type="string" required>
+	Facebook Pixel ID for conversion tracking
+</ParamField>
+
+<ParamField body="conversionGoal" type="string" required>
+	Campaign conversion goal type, values: `SEARCH`, `CONTACT`, `FIND_LOCATION`,
+	`SCHEDULE`, `START_TRIAL`, `SUBMIT_APPLICATION`, `SUBSCRIBE`, `LEAD`,
+	`COMPLETE_REGISTRATION`
+</ParamField>
+
+<ParamField body="campaignType" type="string" required>
+	For Conversions Goal, campaignType is `CONVERSIONS`
+</ParamField>
+
+### Targeting Parameters
+
+<ParamField body="gender" type="number">
+	Gender targeting (1=male, 2=female, etc.)
+</ParamField>
+
+<ParamField body="ages" type="object">
+	<Expandable title="Age Targeting Object">
+		<ParamField body="maxAge" type="number" required>
+			Maximum target age (inclusive)
+		</ParamField>
+		<ParamField body="minAge" type="number" required>
+			Minimum target age (inclusive)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="locations" type="array">
+	<Expandable title="Location Targeting Array">
+		<ParamField body="id" type="string" required>
+			Facebook location ID
+		</ParamField>
+		<ParamField body="name" type="string" required>
+			Location display name
+		</ParamField>
+		<ParamField body="type" type="string" required>
+			Location type (city, etc.)
+		</ParamField>
+		<ParamField body="distance_unit" type="string" required>
+			Distance unit (mile, etc.)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="excludedLocations" type="array">
+	<Expandable title="Location Targeting Array">
+		<ParamField body="id" type="string" required>
+			Facebook location ID
+		</ParamField>
+		<ParamField body="name" type="string" required>
+			Location display name
+		</ParamField>
+		<ParamField body="type" type="string" required>
+			Location type (city, etc.)
+		</ParamField>
+		<ParamField body="distance_unit" type="string" required>
+			Distance unit (mile, etc.)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="proximityTargeting" type="array">
+	<Expandable title="Proximity Targeting Array">
+		<ParamField body="countryName" type="string" required>
+			2 char country code like `US`, `UK`, etc.
+		</ParamField>
+		<ParamField body="distance_unit" type="string" required>
+			Distance Unit like `mile`, `km`
+		</ParamField>
+		<ParamField body="latitude" type="string" required>
+			Latitude of the location
+		</ParamField>
+		<ParamField body="longitude" type="string" required>
+			Longitude of the location
+		</ParamField>
+		<ParamField body="radius" type="string" required>
+			Radius value
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="interests" type="array">
+	<Expandable title="Interests Array">
+		<ParamField body="id" type="string" required>
+			Interest Id
+		</ParamField>
+		<ParamField body="name" type="string" required>
+			Interest Name
+		</ParamField>
+		<ParamField body="type" type="string" required>
+			Interest Type = `interests`
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="narrowInterests" type="array">
+	<Expandable title="Narrow Interests Array">
+		<ParamField body="id" type="string" required>
+			Interest Id
+		</ParamField>
+		<ParamField body="name" type="string" required>
+			Interest Name
+		</ParamField>
+		<ParamField body="type" type="string" required>
+			Interest Type = `interests`
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="furtherInterests" type="array">
+	<Expandable title="Further Interests Array">
+		<ParamField body="id" type="string" required>
+			Interest Id
+		</ParamField>
+		<ParamField body="name" type="string" required>
+			Interest Name
+		</ParamField>
+		<ParamField body="type" type="string" required>
+			Interest Type = `interests`
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="targetLocales" type="number[]">
+	Array of locale targeting parameters, you can get the list of locales
+	[here](https://developers.facebook.com/docs/marketing-apis/reference/ad-account/targeting-specs#locales)
+</ParamField>
+
+<ParamField body="audienceId" type="array">
+	Array of audience IDs, you can get the audienceId from list of audiences
+	[here](/api-reference/endpoint/meta/get_custom_audiences)
+</ParamField>
+
+<ParamField body="excludedAudienceIds" type="string[]">
+	Audience IDs to exclude
+</ParamField>
+
+<ParamField body="manualPlacements" type="boolean">
+	Whether placements are manually selected
+</ParamField>
+
+<ParamField body="facebook_positions" type="string[]">
+	Facebook ad placements = `feed`, `right_hand_column`, `marketplace`,
+	`video_feeds`, `story`, `search`, `instream_video`, `facebook_reels`,
+	`facebook_reels_overlay`, `profile_feed`, `notification`
+</ParamField>
+
+<ParamField body="instagram_positions" type="string[]">
+	Instagram ad placements = `stream`, `story`, `explore`, `explore_home`,
+	`reels`, `profile_feed`, `ig_search`, `profile_reels`
+</ParamField>
+
+<ParamField body="messenger_positions" type="string[]">
+	Messenger ad placements = `messenger_home`, `story`
+</ParamField>
+
+<ParamField body="userDevices" type="string[]">
+	Device names, you can get the list of devices from
+	[here](/api-reference/endpoint/meta/get_targeting_systems_lookup)
+</ParamField>
+
+<ParamField body="userOS" type="string[]">
+	Operating system names, you can get the list of operating systems from
+	[here](/api-reference/endpoint/meta/get_targeting_systems_lookup)
+</ParamField>
+
+<ParamField body="includeInstagram" type="boolean">
+	Whether to include Instagram placements
+</ParamField>
