@@ -1,0 +1,55 @@
+---
+title: "Get Custom Conversions"
+api: "POST /meta/get_custom_conversions"
+description: "Get custom conversions for a campaign"
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+<ParamField body="pixelId" type="string">
+	Facebook Pixel ID
+</ParamField>
+<ParamField body="campaignType" type="string">
+	Campaign Type, Supported values are: `CONVERSIONS`, `OUTCOME_SALES`
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object" >
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean" >
+			Indicates whether the specific operation or API action was successful.
+		</ResponseField>
+
+    	<ResponseField name="customConversions" type="array" >
+            <Expandable title="Custom Conversions Object">
+                <ResponseField name="name" type="string" >
+                    Custom conversion name
+                </ResponseField>
+
+                <ResponseField name="value" type="string" >
+                    Custom conversion value, this value is used in create campaign api, [here](/api-reference/endpoint/meta/create_campaign), for conversion and sales goal.
+                </ResponseField>
+
+                <ResponseField name="is_custom_event" type="boolean"  >
+                    Whether the conversion is a custom event
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+
+        <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+    </Expandable>
+
+</ResponseField>

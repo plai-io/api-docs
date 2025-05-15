@@ -81,6 +81,7 @@
 								"pages": [
 									"api-reference/endpoint/meta/campaign_overview",
 									"api-reference/endpoint/meta/get_campaign_insights",
+									"api-reference/endpoint/meta/get_custom_conversions",
 									"api-reference/endpoint/meta/update_campaign_status",
 									"api-reference/endpoint/meta/create_campaign",
 									{
