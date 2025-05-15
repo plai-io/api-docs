@@ -1,8 +1,15 @@
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
 <ParamField body="url" type="string" required>
 	Your website URL
 </ParamField>
 
-<ParamField body="currency" type="number" required>
+<ParamField body="currency" type="string" required>
 	Currency Code (`USD`, `EUR`, etc.)
 </ParamField>
 
