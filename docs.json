@@ -88,15 +88,49 @@
 										"group": "Campaign Goals",
 										"icon": "flag",
 										"pages": [
-											"api-reference/endpoint/goals/overview",
-											"api-reference/endpoint/goals/trafficGoal",
-											"api-reference/endpoint/goals/leadGoal",
-											"api-reference/endpoint/goals/conversionsGoal",
-											"api-reference/endpoint/goals/salesGoal",
-											"api-reference/endpoint/goals/awarenessGoal",
-											"api-reference/endpoint/goals/phoneCallGoal",
-											"api-reference/endpoint/goals/engagementGoal",
-											"api-reference/endpoint/goals/boostPostGoal"
+											{
+												"group": "Traffic Goal",
+												"icon": "arrow-right",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/traffic_dynamic",
+													"api-reference/endpoint/meta/campaign/traffic_standard"
+												]
+											},
+											{
+												"group": "Leads Goal",
+												"icon": "users",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/leads_dynamic",
+													"api-reference/endpoint/meta/campaign/leads_standard"
+												]
+											},
+											{
+												"group": "Sales Goal",
+												"icon": "chart-area",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/sales_dynamic",
+													"api-reference/endpoint/meta/campaign/sales_standard"
+												]
+											},
+											{
+												"group": "Awareness Goal",
+												"icon": "megaphone",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/awareness_dynamic",
+													"api-reference/endpoint/meta/campaign/awareness_standard"
+												]
+											},
+											{
+												"group": "Conversion Goal",
+												"icon": "badge-check",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/conversion_dynamic",
+													"api-reference/endpoint/meta/campaign/conversion_standard"
+												]
+											},
+											"api-reference/endpoint/meta/campaign/engagement",
+											"api-reference/endpoint/meta/campaign/phone_call",
+											"api-reference/endpoint/meta/campaign/boost_post"
 										]
 									}
 								]

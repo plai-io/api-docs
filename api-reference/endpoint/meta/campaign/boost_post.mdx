@@ -1,0 +1,65 @@
+---
+title: "Boost Post"
+api: "POST /meta/create_campaign"
+description: "This page is used to create a boost post campaign. Boost post ads are used to promote an existing post on your Facebook or Instagram page to reach a larger audience and increase engagement like likes, comments, shares, or views."
+---
+
+import CampaignParams from "/snippets/create_campaign_params.mdx";
+import CampaignTargeting from "/snippets/create_campaign_targeting.mdx";
+import CampaignResponse from "/snippets/create_campaign_response.mdx";
+
+## Request Body
+
+<CampaignParams />
+
+<CampaignTargeting />
+
+### Boost Post Ad Parameters
+
+<ParamField body="campaignType" type="string" required>
+	For Boost Post Goal, campaignType is `POST_ENGAGEMENT`
+</ParamField>
+
+<ParamField body="conversations" type="array">
+	<Expandable title="Conversations Array">
+		<ParamField body="title" type="string" required>
+			Conversation Title
+		</ParamField>
+	</Expandable>
+
+    <Note>
+    	Only For Messenger Use and When Call to Action is `Send Message`
+    </Note>
+
+</ParamField>
+
+<ParamField body="greetingText" type="string">
+	Greeting Text
+
+    <Note>
+    	Use When Call to Action is `Send Message`
+    </Note>
+
+</ParamField>
+
+<ParamField body="messagingApps" type="array" >
+	Messaging apps = `MESSENGER`, `INSTAGRAM`, `WHATSAPP`
+
+    <Note>
+    	Use When Call to Action is `Send Message`
+    </Note>
+
+</ParamField>
+
+<ParamField body="pagePostId" type="string" required>
+	Facebook page post ID, you can get post id from
+	[here](/api-reference/endpoint/meta/get_page_posts)
+</ParamField>
+
+<ParamField body="callToAction" type="string" required>
+	Call to Action, Supported Call to Action is `Send Message`
+</ParamField>
+
+## Response
+
+<CampaignResponse />

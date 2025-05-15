@@ -1,0 +1,68 @@
+---
+title: " Dynamic Ad Campaign"
+api: "POST /meta/create_campaign"
+description: "This endpoint is used to create a campaign for leads dynamic ads. Lead generation ads are ad campaigns designed to collect contact information (like name, email, phone number) directly from users on Meta platforms without needing them to leave the app."
+---
+
+import CampaignParams from "/snippets/create_campaign_params.mdx";
+import CampaignTargeting from "/snippets/create_campaign_targeting.mdx";
+import CampaignResponse from "/snippets/create_campaign_response.mdx";
+
+## Request Body
+
+<CampaignParams />
+
+<CampaignTargeting />
+
+### Dynamic Ads Parameters
+
+<ParamField body="campaignType" type="string" required>
+	For Lead Goal, campaignType is `LEAD_GENERATION`
+</ParamField>
+
+<ParamField body="images" type="array">
+	<Expandable title="Image Assets Array">
+		<ParamField body="url" type="string" required>
+			URL for image asset
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="videos" type="array">
+	<Expandable title="Video Assets Array">
+		<ParamField body="video_id" type="string" required>
+			Facebook video ID, get facebook video id from [here](/api-reference/endpoint/meta/get_ad_account_media)
+		</ParamField>
+		<ParamField body="thumbnail_url" type="string" required>
+			URL for video thumbnail image, get video thumbnail url from [here](/api-reference/endpoint/meta/get_ad_account_media)
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="primaryText" type="array">
+	<Expandable title="Primary Text Array">
+		<ParamField body="text" type="string" required>
+			Main ad copy text
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="headline1" type="array">
+	<Expandable title="Headline Variations Array">
+		<ParamField body="text" type="string" required>
+			Headline text variation
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="leads_form_id" type="string" required>
+	Facebook Lead Form ID
+</ParamField>
+
+## Response
+
+<CampaignResponse />

@@ -1,0 +1,114 @@
+---
+title: "Engagement Goal"
+api: "POST /meta/create_campaign"
+description: "This page is used to create a engagement goal campaign. Engagement ads are designed to get more interactions on your content, such as likes, comments, shares, event responses, or post saves on Meta platforms."
+---
+
+import CampaignParams from "/snippets/create_campaign_params.mdx";
+import CampaignTargeting from "/snippets/create_campaign_targeting.mdx";
+import CampaignResponse from "/snippets/create_campaign_response.mdx";
+
+## Request Body
+
+<CampaignParams />
+
+<CampaignTargeting />
+
+### Dynamic Ads Parameters
+
+<ParamField body="campaignType" type="string" required>
+	For Engagement Goal, campaignType is `OUTCOME_ENGAGEMENT`
+</ParamField>
+
+<ParamField body="images" type="array">
+	<Expandable title="Image Assets Array">
+		<ParamField body="url" type="string" required>
+			URL for image asset
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="videos" type="array">
+	<Expandable title="Video Assets Array">
+		<ParamField body="video_id" type="string" required>
+			Facebook video ID, get facebook video id from [here](/api-reference/endpoint/meta/get_ad_account_media)
+		</ParamField>
+		<ParamField body="thumbnail_url" type="string" required>
+			URL for video thumbnail image, get video thumbnail url from [here](/api-reference/endpoint/meta/get_ad_account_media)
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="carousel" type="array">
+	<Expandable title="Carousel Array">
+		<ParamField body="name" type="string" required>
+			Carousel Name
+		</ParamField>
+		<ParamField body="description" type="string">
+			Carousel Description
+		</ParamField>
+		<ParamField body="picture" type="string">
+			Carousel Picture URL
+		</ParamField>
+		<ParamField body="video_id" type="string">
+			Carousel Video ID
+		</ParamField>
+		<ParamField body="link" type="string">
+			Carousel Link URL
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="primaryText" type="array">
+	<Expandable title="Primary Text Array">
+		<ParamField body="text" type="string" required>
+			Main ad copy text
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="headline1" type="array">
+	<Expandable title="Headline Variations Array">
+		<ParamField body="text" type="string" required>
+			Headline text variation
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="greetingText" type="string" required>
+	Greeting Text
+</ParamField>
+
+<ParamField body="conversations" type="array" required>
+	<Expandable title="Conversations Array">
+		<ParamField body="title" type="string" required>
+			Conversation Title
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="messagingApps" type="array" required>
+	Messaging apps = `MESSENGER`, `INSTAGRAM`, `WHATSAPP`
+</ParamField>
+
+<ParamField body="phoneNumber" type="string">
+	Phone Number
+</ParamField>
+
+<ParamField body="isDynamicCreative" type="boolean" >
+	Whether it's dynamic creative, useable with images/videos
+
+    <Note>
+    	`isDynamicCreative` should be `false` for Engagement Goal
+    </Note>
+
+</ParamField>
+
+## Response
+
+<CampaignResponse />

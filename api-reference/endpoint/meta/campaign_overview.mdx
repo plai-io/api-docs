@@ -23,68 +23,87 @@ description: "Overview of the campaign endpoints and how to create a campaign."
     	Goal has different parameters, use this parameter with required
     	parameters from First Step.
 
-        <Card
-            title="🚗 Traffic Campaign"
-            href="/api-reference/endpoint/goals/trafficGoal"
-        >
-            This page has all the parameters for traffic campaign.
+        <Card title="🚗 Traffic Campaign">
+            Traffic campaigns are designed to drive users to a specific destination like a website, app, or messaging platform.
+
+            <CardGroup cols={2}>
+                <Card title="Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/traffic_dynamic" />
+                <Card title="Standard Ad Campaign" href="/api-reference/endpoint/meta/campaign/traffic_standard"/>
+            </CardGroup>
+
         </Card>
 
-        <Card
-            title="📝 Leads Campaign"
-            href="/api-reference/endpoint/goals/leadGoal"
-        >
-            This page has all the parameters for leads campaign.
+        <Card title="📝 Leads Campaign" >
+            Lead generation campaigns are ad campaigns designed to collect contact
+            information (like name, email, phone number) directly from users on Meta
+            platforms without needing them to leave the app.
+
+            <CardGroup cols={2}>
+                <Card title="Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/leads_dynamic" />
+                <Card title="Standard Ad Campaign" href="/api-reference/endpoint/meta/campaign/leads_standard"/>
+            </CardGroup>
+
         </Card>
 
         <Card
             title="🔄 Conversion Campaign"
-            href="/api-reference/endpoint/goals/conversionsGoal"
         >
-            This page has all the parameters for conversion campaign.
+            Conversion campaigns are designed to drive users to take specific actions, such as completing a purchase, downloading an app, or signing up for a service.
+
+            <CardGroup cols={2}>
+                <Card title="Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/conversion_dynamic" />
+                <Card title="Standard Ad Campaign" href="/api-reference/endpoint/meta/campaign/conversion_standard"/>
+            </CardGroup>
+
         </Card>
 
-        <Card
-            title="💰 Sales Campaign"
-            href="/api-reference/endpoint/goals/salesGoal"
-        >
-            This page has all the parameters for sales campaign.
+        <Card title="💰 Sales Campaign" >
+            Sales campaigns are designed to drive purchases or conversions, showing your ads to people most likely to buy your product or service.
+
+            <CardGroup cols={2}>
+                <Card title="Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/sales_dynamic" />
+                <Card title="Standard Ad Campaign" href="/api-reference/endpoint/meta/campaign/sales_standard"/>
+            </CardGroup>
+
         </Card>
 
         <Card
             title="📢 Awareness Campaign"
-            href="/api-reference/endpoint/goals/awarenessGoal"
         >
-            This page has all the parameters for awareness campaign.
+            Awareness campaigns are designed to increase recognition of your brand, product, or service by showing your ads to people most likely to remember them.
+
+            <CardGroup cols={2}>
+                <Card title="Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/awareness_dynamic" />
+                <Card title="Standard Ad Campaign" href="/api-reference/endpoint/meta/campaign/awareness_standard"/>
+            </CardGroup>
+
         </Card>
 
         <Card
             title="📞 Phone Calls Campaign"
-            href="/api-reference/endpoint/goals/phoneCallGoal"
+            href="/api-reference/endpoint/meta/campaign/phone_call"
         >
-            This page has all the parameters for phone calls campaign.
+            Phone call campaigns are designed to encourage users to tap and call your
+            business directly from the ad, making it easy to generate phone inquiries or
+            leads.
         </Card>
 
         <Card
             title="💬 Engagement Campaign"
-            href="/api-reference/endpoint/goals/engagementGoal"
+            href="/api-reference/endpoint/meta/campaign/engagement"
         >
-            This page has all the parameters for engagement campaign.
+            Engagement campaigns are designed to get more interactions on your content,
+            such as likes, comments, shares, event responses, or post saves on Meta
+            platforms.
         </Card>
 
         <Card
             title="📈 Boost Post Campaign"
-            href="/api-reference/endpoint/goals/boostPostGoal"
+            href="/api-reference/endpoint/meta/campaign/boost_post"
         >
-            This page has all the parameters for boost post campaign.
-        </Card>
+            Boost post campaigns are used to promote an existing post on your Facebook or Instagram page to reach a larger audience and increase engagement like likes, comments, shares, or views.
 
-        {/* <Card
-            title="📚 Catalog Campaign"
-            href="/api-reference/endpoint/goals/catalogGoal"
-        >
-            This page has all the parameters for catalog campaign.
-        </Card> */}
+        </Card>
 
     </Step>
 

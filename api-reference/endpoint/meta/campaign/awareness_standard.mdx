@@ -1,0 +1,124 @@
+---
+title: "Standard Ad Campaign"
+api: "POST /meta/create_campaign"
+description: "This endpoint is used to create a campaign for awareness standard ads. Awareness ads are designed to increase recognition of your brand, product, or service by showing your ads to people most likely to remember them."
+---
+
+import CampaignParams from "/snippets/create_campaign_params.mdx";
+import CampaignTargeting from "/snippets/create_campaign_targeting.mdx";
+import CampaignResponse from "/snippets/create_campaign_response.mdx";
+
+## Request Body
+
+<CampaignParams />
+
+<CampaignTargeting />
+
+### Standard Ads Parameters
+
+<ParamField body="campaignType" type="string" required>
+	For Awareness Goal, campaignType is `OUTCOME_AWARENESS`
+</ParamField>
+
+<ParamField body="carousel" type="array">
+	<Expandable title="Carousel Array">
+		<ParamField body="name" type="string" required>
+			Carousel Name
+		</ParamField>
+		<ParamField body="description" type="string">
+			Carousel Description
+		</ParamField>
+		<ParamField body="picture" type="string">
+			Carousel Picture URL
+		</ParamField>
+		<ParamField body="video_id" type="string">
+			Carousel Video ID
+		</ParamField>
+		<ParamField body="link" type="string">
+			Carousel Link URL
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="isDynamicCreative" type="boolean" >
+	Whether it's dynamic creative, useable with images/videos
+
+    <Note>
+    	Use `isDynamicCreative` = `false`, to create multiple standard
+    	`non-dynamic` ads in a single AdSet.
+    </Note>
+
+</ParamField>
+
+<ParamField body="multipleCreatives" type="array">
+
+    <Expandable title="Multiple Creative Configuration">
+    	<ParamField body="url" type="string" required>
+    		Destination URL
+    	</ParamField>
+
+    	<ParamField body="callToAction" type="string" required>
+    		Call to Action
+    	</ParamField>
+
+    	<ParamField body="headline1" type="string">
+    		Headline
+    	</ParamField>
+
+    	<ParamField body="image" type="string">
+    		Image URL
+    	</ParamField>
+
+    	<ParamField body="video" type="object">
+    		<Expandable title="Video Data">
+    			<ParamField body="video_id" type="string">
+    				Video ID
+    			</ParamField>
+    			<ParamField body="thumbnail_url" type="string">
+    				Thumbnail URL
+    			</ParamField>
+    		</Expandable>
+    	</ParamField>
+
+    	<ParamField body="phoneNumber" type="string">
+    		Phone Number (for Call Ads)
+    	</ParamField>
+
+    	<ParamField
+    		body="greetingText"
+    		type="string"
+    	>
+    		Greeting Text
+    	</ParamField>
+
+    	<ParamField body="conversations" type="array">
+    		<Expandable title="Conversations Array">
+    			<ParamField body="title" type="string" required>
+    				Conversation Title
+    			</ParamField>
+    		</Expandable>
+    	</ParamField>
+
+    </Expandable>
+
+</ParamField>
+
+<ParamField body="optimizationGoal" type="string" required>
+	<Note>
+		Campaign Type is `OUTCOME_AWARENESS`, supported values `REACH`,
+		`THRUPLAY`
+	</Note>
+	<Note>
+		Use Optimization Goal `REACH`, When you want to increase reach of your
+		campaign and show your ads to as many people as possible.
+	</Note>
+	<Note>
+		Use Optimization Goal `THRUPLAY`, When you want to show your ads to
+		people who will watch the entire video.
+	</Note>
+</ParamField>
+
+## Response
+
+<CampaignResponse />
