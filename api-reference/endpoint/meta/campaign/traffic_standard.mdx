@@ -41,6 +41,15 @@ import CampaignResponse from "/snippets/create_campaign_response.mdx";
 
 </ParamField>
 
+<ParamField body="primaryText" type="array">
+	<Note>Use this with carousel ads only</Note>
+	<Expandable title="Primary Text Array">
+		<ParamField body="text" type="string" required>
+			Main ad copy text
+		</ParamField>
+	</Expandable>
+</ParamField>
+
 <ParamField body="isDynamicCreative" type="boolean" >
 	Whether it's dynamic creative, useable with images/videos
 
@@ -59,7 +68,14 @@ import CampaignResponse from "/snippets/create_campaign_response.mdx";
     	</ParamField>
 
     	<ParamField body="callToAction" type="string" required>
-    		Call to Action
+    		Supported call to action types are: `LEARN_MORE`, `SHOP_NOW`, `SIGN_UP`,
+    		`DOWNLOAD`, `WATCH_MORE`, `APPLY_NOW`, `SUBSCRIBE`, `GET_QUOTE`,
+    		`CONTACT_US`, `ORDER_NOW`, `REQUEST_TIME`, `GET_SHOWTIMES`, `LISTEN_NOW`,
+    		`SEE_MENU`, `BOOK_TRAVEL`
+    	</ParamField>
+
+    	<ParamField body="primaryText" type="string" required>
+    		Primary Text
     	</ParamField>
 
     	<ParamField body="headline1" type="string">
@@ -81,34 +97,15 @@ import CampaignResponse from "/snippets/create_campaign_response.mdx";
     		</Expandable>
     	</ParamField>
 
-    	<ParamField body="phoneNumber" type="string">
-    		Phone Number (for Call Ads)
-    	</ParamField>
-
-    	<ParamField
-    		body="greetingText"
-    		type="string"
-    	>
-    		Greeting Text
-    	</ParamField>
-
-    	<ParamField body="conversations" type="array">
-    		<Expandable title="Conversations Array">
-    			<ParamField body="title" type="string" required>
-    				Conversation Title
-    			</ParamField>
-    		</Expandable>
-    	</ParamField>
-
     </Expandable>
 
 </ParamField>
 
-<ParamField body="callToAction" type="string" required>
-	Supported call to action types are `LEARN_MORE`, `SHOP_NOW`, `SIGN_UP`,
-	`DOWNLOAD`, `WATCH_MORE`, `APPLY_NOW`, `SUBSCRIBE`, `GET_QUOTE`,
-	`CONTACT_US`, `ORDER_NOW`, `REQUEST_TIME`, `GET_SHOWTIMES`, `LISTEN_NOW`,
-	`SEE_MENU`, `BOOK_TRAVEL`
+<ParamField body="callToAction" type="string">
+	<Note>Use this with carousel ads only</Note>
+	Supported call to action types are `LEARN_MORE`, `SHOP_NOW`, `SIGN_UP`, `DOWNLOAD`,
+	`WATCH_MORE`, `APPLY_NOW`, `SUBSCRIBE`, `GET_QUOTE`, `CONTACT_US`, `ORDER_NOW`,
+	`REQUEST_TIME`, `GET_SHOWTIMES`, `LISTEN_NOW`, `SEE_MENU`, `BOOK_TRAVEL`
 </ParamField>
 
 ## Response

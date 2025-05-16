@@ -41,6 +41,15 @@ import CampaignResponse from "/snippets/create_campaign_response.mdx";
 
 </ParamField>
 
+<ParamField body="primaryText" type="array">
+	<Note>Use this with carousel ads only</Note>
+	<Expandable title="Primary Text Array">
+		<ParamField body="text" type="string" required>
+			Main ad copy text
+		</ParamField>
+	</Expandable>
+</ParamField>
+
 <ParamField body="isDynamicCreative" type="boolean" >
 	Whether it's dynamic creative, useable with images/videos
 
@@ -59,7 +68,13 @@ import CampaignResponse from "/snippets/create_campaign_response.mdx";
     	</ParamField>
 
     	<ParamField body="callToAction" type="string" required>
-    		Call to Action
+    		Supported call to action types are `LEARN_MORE`, `SIGN_UP`, `DOWNLOAD`, `APPLY_NOW`,
+    		`SUBSCRIBE`, `GET_QUOTE`, `BOOK_TRAVEL`
+    	</ParamField>
+
+
+    	<ParamField body="primaryText" type="string" required>
+    		Primary Text
     	</ParamField>
 
     	<ParamField body="headline1" type="string">
@@ -106,6 +121,12 @@ import CampaignResponse from "/snippets/create_campaign_response.mdx";
 
 <ParamField body="leads_form_id" type="string" required>
 	Facebook Lead Form ID
+</ParamField>
+
+<ParamField body="callToAction" type="string">
+	<Note>Use this with carousel ads only</Note>
+	Supported call to action types are `LEARN_MORE`, `SIGN_UP`, `DOWNLOAD`, `APPLY_NOW`,
+	`SUBSCRIBE`, `GET_QUOTE`, `BOOK_TRAVEL`
 </ParamField>
 
 ## Response

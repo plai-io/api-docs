@@ -1,7 +1,7 @@
 ### Targeting Parameters
 
 <ParamField body="gender" type="string">
-	Gender targeting , values = `ALL`, `1` for male, `2` for female
+	Gender targeting , `1` for male, `2` for female, otherwise leave it empty
 </ParamField>
 
 <ParamField body="ages" type="object">
@@ -116,7 +116,7 @@
 	[here](https://developers.facebook.com/docs/marketing-apis/reference/ad-account/targeting-specs#locales)
 </ParamField>
 
-<ParamField body="audienceId" type="array">
+<ParamField body="audienceId" type="string[]">
 	Array of audience IDs, you can get the audienceId from list of audiences
 	[here](/api-reference/endpoint/meta/get_custom_audiences)
 </ParamField>
@@ -152,8 +152,4 @@
 <ParamField body="userOS" type="string[]">
 	Operating system names, you can get the list of operating systems from
 	[here](/api-reference/endpoint/meta/get_targeting_systems_lookup)
-</ParamField>
-
-<ParamField body="includeInstagram" type="boolean">
-	Whether to include Instagram placements
 </ParamField>
