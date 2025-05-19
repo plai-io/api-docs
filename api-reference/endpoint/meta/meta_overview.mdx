@@ -1,9 +1,37 @@
 ---
-title: "Meta Audience Overview"
-description: "The Meta Ads Audience API provides a powerful set of endpoints for managing and expanding your custom audiences on Facebook. Whether you're importing data from a CSV, generating lookalike audiences, or creating audiences from lead forms or page engagement, this API helps streamline audience targeting and campaign personalization."
+title: "Meta Api Overview"
+description: "This page gives you api endpoints to manage your Meta (Facebook and Instagram) ads.
+You can create campaigns, build and view audiences, use lead forms, and handle media.
+It helps make your ad setup, management, and reporting faster and easier."
 ---
 
 Use the following endpoints to interact with various audience sources:
+
+### Campaign Endpoints
+
+<Card
+	title="🎯 Create Campaign"
+	href="/api-reference/endpoint/meta/create_campaign"
+>
+	Create a campaign allows users to create a new marketing or promotional
+	campaign
+</Card>
+
+<Card
+	title="📊 Get Campaign Insights"
+	href="/api-reference/endpoint/meta/get_campaign_insights"
+>
+	Fetches detailed performance metrics and analytics for Meta advertising
+	campaigns.
+</Card>
+
+<Card
+	title="🔄 Update Campaign Status"
+	href="/api-reference/endpoint/meta/update_campaign_status"
+>
+	Updates the active status of Meta advertising campaigns (pause, active, or
+	delete).
+</Card>
 
 ### Audience Endpoints
 
@@ -24,7 +52,7 @@ Use the following endpoints to interact with various audience sources:
 </Card>
 
 <Card
-	title="📋 Create Leadform Audience"
+	title="📋 Create Lead form Audience"
 	href="/api-reference/endpoint/meta/create_leadform_audience"
 >
 	Generate audiences from Facebook Lead Forms submissions. Engage users who've
@@ -49,70 +77,25 @@ Use the following endpoints to interact with various audience sources:
 ### Lead Form Endpoints
 
 <Card
-	title="✅ Check Leadform TOS"
+	title="✅ Check Lead form TOS"
 	href="/api-reference/endpoint/meta/check_leadform_tos"
 >
 	Check if the user has accepted the Leadform Terms of Service.
 </Card>
 
 <Card
-	title="📝 Get Leadforms"
+	title="📝 Get Lead forms"
 	href="/api-reference/endpoint/meta/get_leadforms"
 >
 	Retrieve a list of your existing leadforms.
 </Card>
 
 <Card
-	title="📋 Create Leadform"
+	title="📋 Create Lead form"
 	href="/api-reference/endpoint/meta/create_leadform"
 >
 	Creates a new lead generation form for collecting user information through
 	Meta ads.
-</Card>
-
-### Media Endpoints
-
-<Card
-	title="🖼️ Get Ad Account Media"
-	href="/api-reference/endpoint/meta/get_ad_account_media"
->
-	Retrieves all media assets associated with a Meta ad account.
-</Card>
-
-<Card
-	title="📱 Get Facebook Page Media"
-	href="/api-reference/endpoint/meta/get_fb_page_media"
->
-	Fetches all media content (images, videos, posts) from a specific Facebook
-	page.
-</Card>
-
-<Card
-	title="📸 Get Instagram Page Media"
-	href="/api-reference/endpoint/meta/get_ig_page_media"
->
-	Retrieves all media content (photos, videos, stories) from a specific
-	Instagram business account.
-</Card>
-
-<Card title="🎥 Upload Video" href="/api-reference/endpoint/meta/upload_video">
-	Uploads video content to Meta's servers for use in advertisements.
-</Card>
-
-<Card
-	title="ℹ️ Get Video Info"
-	href="/api-reference/endpoint/meta/get_video_info"
->
-	Retrieves detailed information about a specific video asset, including
-	status, dimensions, and usage.
-</Card>
-
-<Card
-	title="📄 Get Page Posts"
-	href="/api-reference/endpoint/meta/get_page_posts"
->
-	Fetches all posts from a Facebook page, including their content, dimensions,
-	and media attachments.
 </Card>
 
 ### Targeting Endpoints
@@ -140,29 +123,48 @@ Use the following endpoints to interact with various audience sources:
 	tracking and conversion measurement.
 </Card>
 
-### Campaign Endpoints
+### Media Endpoints
 
 <Card
-	title="🎯 Create Campaign"
-	href="/api-reference/endpoint/meta/create_campaign"
+	title="🖼️ Get Ad Account Media"
+	href="/api-reference/endpoint/meta/get_ad_account_media"
 >
-	Create a campaign to start targeting your audience.
+	Retrieves all media assets associated with a Meta ad account.
 </Card>
 
 <Card
-	title="📊 Get Campaign Insights"
-	href="/api-reference/endpoint/meta/get_campaign_insights"
+	title="📱 Get Facebook Page Media"
+	href="/api-reference/endpoint/meta/get_fb_page_media"
 >
-	Fetches detailed performance metrics and analytics for Meta advertising
-	campaigns.
+	Fetches all media content (images, videos) from a selected Facebook page.
 </Card>
 
 <Card
-	title="🔄 Update Campaign Status"
-	href="/api-reference/endpoint/meta/update_campaign_status"
+	title="📸 Get Instagram Page Media"
+	href="/api-reference/endpoint/meta/get_ig_page_media"
 >
-	Updates the active status of Meta advertising campaigns (pause, resume, or
-	delete).
+	Retrieves all media content (photos, videos, stories) from a selected
+	Instagram business account.
+</Card>
+
+<Card title="🎥 Upload Video" href="/api-reference/endpoint/meta/upload_video">
+	Uploads video content to your ad account for use in advertisements.
+</Card>
+
+<Card
+	title="ℹ️ Get Video Info"
+	href="/api-reference/endpoint/meta/get_video_info"
+>
+	Retrieves detailed information about a specific video asset, including
+	status, dimensions, and usage.
+</Card>
+
+<Card
+	title="📄 Get Page Posts"
+	href="/api-reference/endpoint/meta/get_page_posts"
+>
+	Fetches all posts from a Facebook page, including their content, dimensions,
+	and media attachments.
 </Card>
 
 > 📘 Each route includes detailed request/response formats, parameters, and example use cases in its dedicated section.

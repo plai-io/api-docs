@@ -72,6 +72,9 @@ import CampaignResponse from "/snippets/create_campaign_response.mdx";
     		`SUBSCRIBE`, `GET_QUOTE`, `BOOK_TRAVEL`
     	</ParamField>
 
+    	<ParamField body="leads_form_id" type="string" required>
+    		Facebook Lead Form ID
+    	</ParamField>
 
     	<ParamField body="primaryText" type="string" required>
     		Primary Text
@@ -119,7 +122,8 @@ import CampaignResponse from "/snippets/create_campaign_response.mdx";
 
 </ParamField>
 
-<ParamField body="leads_form_id" type="string" required>
+<ParamField body="leads_form_id" type="string">
+	<Note>Use this with carousel ads only</Note>
 	Facebook Lead Form ID
 </ParamField>
 

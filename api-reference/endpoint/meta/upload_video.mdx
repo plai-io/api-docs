@@ -1,7 +1,7 @@
 ---
 title: "Upload Video"
 api: "POST /meta/upload_video"
-description: "This endpoint is used to upload your video and get video id."
+description: "This endpoint is used to upload your video to your ad account and get video id."
 ---
 
 ## Request Body
@@ -15,8 +15,7 @@ description: "This endpoint is used to upload your video and get video id."
 
 <ParamField body="videoUrl" type="string" required>
 	URL pointing to the video file. Must be a publicly accessible HTTPS URL
-	(e.g., Google Cloud Storage URL). Example:
-	"https://storage.googleapis.com/plai-v3.appspot.com/..."
+	(e.g., Google Cloud Storage URL).
 </ParamField>
 
 ## Response

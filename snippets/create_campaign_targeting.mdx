@@ -16,46 +16,67 @@
 </ParamField>
 
 <ParamField body="locations" type="array">
+	Get locations data from
+	[here](/api-reference/endpoint/meta/search_targeting_locations)
 	<Expandable title="Location Targeting Array">
 		<ParamField body="id" type="string" required>
 			Facebook location ID
 		</ParamField>
-		<ParamField body="name" type="string" required>
-			Location display name
-		</ParamField>
 		<ParamField body="type" type="string" required>
 			Location type (city, etc.)
 		</ParamField>
-		<ParamField body="distance_unit" type="string" required>
+		<ParamField body="distance_unit" type="string">
+			<Note>Use Distance Unit when type is `city`</Note>
 			Distance unit (mile, etc.)
+		</ParamField>
+		<ParamField body="radius" type="number">
+			<Note>Use Radius when type is `city`</Note>
+			Radius value
+		</ParamField>
+		<ParamField body="countryCode" type="string">
+			ISO 3166-1 alpha-2 country codes e.g: `US`,`UK`
+		</ParamField>
+		<ParamField body="countryName" type="string">
+			Country Name
 		</ParamField>
 	</Expandable>
 </ParamField>
 
 <ParamField body="excludedLocations" type="array">
+	Get excluded locations data from
+	[here](/api-reference/endpoint/meta/search_targeting_locations)
 	<Expandable title="Location Targeting Array">
 		<ParamField body="id" type="string" required>
 			Facebook location ID
 		</ParamField>
-		<ParamField body="name" type="string" required>
-			Location display name
-		</ParamField>
 		<ParamField body="type" type="string" required>
 			Location type (city, etc.)
 		</ParamField>
-		<ParamField body="distance_unit" type="string" required>
+		<ParamField body="distance_unit" type="string">
+			<Note>Use Distance Unit when type is `city`</Note>
 			Distance unit (mile, etc.)
+		</ParamField>
+		<ParamField body="radius" type="number">
+			<Note>Use Radius when type is `city`</Note>
+			Radius value
+		</ParamField>
+		<ParamField body="countryCode" type="string">
+			ISO 3166-1 alpha-2 country codes e.g: `US`,`UK`
+		</ParamField>
+		<ParamField body="countryName" type="string">
+			Country Name
 		</ParamField>
 	</Expandable>
 </ParamField>
 
 <ParamField body="proximityTargeting" type="array">
+	You have to get the proximity targeting data on your own.
 	<Expandable title="Proximity Targeting Array">
-		<ParamField body="countryName" type="string" required>
-			2 char country code like `US`, `UK`, etc.
+		<ParamField body="countryName" type="string">
+			Country Name
 		</ParamField>
 		<ParamField body="distance_unit" type="string" required>
-			Distance Unit like `mile`, `km`
+			Distance Unit, values: `mile`, `kilometer`
 		</ParamField>
 		<ParamField body="latitude" type="string" required>
 			Latitude of the location
@@ -63,7 +84,7 @@
 		<ParamField body="longitude" type="string" required>
 			Longitude of the location
 		</ParamField>
-		<ParamField body="radius" type="string" required>
+		<ParamField body="radius" type="number" required>
 			Radius value
 		</ParamField>
 	</Expandable>

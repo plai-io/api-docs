@@ -12,14 +12,8 @@ description: "This endpoint is used to fetch media assets (both images and video
 	retrieve the user ID from [get profile
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
-<ParamField
-	body="type"
-	type="string"
-	default="IMAGE | VIDEO"
-	placeholder="IMAGE | VIDEO"
-	required
->
-	Media Type
+<ParamField body="type" type="string" required>
+	Media Type, Values: `IMAGE` or `VIDEO`
 </ParamField>
 <ParamField body="pagination" type="string" default="">
 	If the number of results exceeds the page limit, the response will include

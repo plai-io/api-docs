@@ -1,7 +1,7 @@
 ---
-title: "Get Search Targeting Interests"
+title: "Search Targeting Interests"
 api: "POST /meta/search_targeting_interests"
-description: "This endpoint allows you to search for advertising target interests based on specific criteria such as the user ID, selected categories, and target countries. It helps in identifying relevant interest groups to improve the accuracy and effectiveness of ad targeting."
+description: "This endpoint allows you to search for advertising target interests based on specific criteria. It helps in identifying relevant interest groups to improve the accuracy and effectiveness of ad targeting."
 ---
 
 ## Request Body
@@ -13,7 +13,7 @@ description: "This endpoint allows you to search for advertising target interest
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
 <ParamField body="query" type="string" required>
-	Search Query
+	Search Query, for example: `Marketing`
 </ParamField>
 <ParamField body="specialAdCategories" type="string[]" default={[]}>
 	Supported Values = `HOUSING`, `FINANCIAL_PRODUCTS_SERVICES`, `EMPLOYMENT`
