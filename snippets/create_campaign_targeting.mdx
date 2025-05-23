@@ -5,11 +5,17 @@
 </ParamField>
 
 <ParamField body="gender" type="string">
-	Gender targeting , `1` for male, `2` for female, and if you want to target
-	all genders skip this parameter
+	<Warning>
+		If Special Ad Category is provided, then age targeting will be ignored.
+	</Warning>
+	Gender targeting , `1` for male, `2` for female, and if you want to target all
+	genders skip this parameter
 </ParamField>
 
 <ParamField body="ages" type="object">
+	<Warning>
+		If Special Ad Category is provided, then age targeting will be ignored.
+	</Warning>
 	<Expandable title="Age Targeting Object">
 		<ParamField body="minAge" type="number" required>
 			Minimum target age (inclusive)
@@ -21,6 +27,9 @@
 </ParamField>
 
 <ParamField body="locations" type="object[]" required>
+	<Warning>
+		The locations parameter must include only locations within the country specified in the `specialAdCountries` field. For example, if you set `specialAdCountries` to `US`, then all locations added must be within the United States. Adding locations from other countries will result in an error.
+	</Warning>
     <Note>If Audience ID is provided, then location targeting is optional</Note>
 	List of areas where you want to show your ads. Get locations data from [here](/api-reference/endpoint/meta/search_targeting_locations)
     <Expandable title="Location Targeting Object">
