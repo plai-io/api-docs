@@ -65,11 +65,15 @@ import CampaignResponse from "/snippets/create_campaign_response.mdx";
     				<Note>
     					Video ID is required if image is not provided
     				</Note>
+    				<Warning>
+    					- You have to first upload the video [here](/api-reference/endpoint/meta/upload_video) and then use the video id in the request body.
+    					- You can get the thumbnail url from the [here](/api-reference/endpoint/meta/get_video_info)
+    				</Warning>
     				<Expandable title="Video Data">
-    					<ParamField body="video_id" type="string">
+    					<ParamField body="video_id" type="string" required>
     						Video ID
     					</ParamField>
-    					<ParamField body="thumbnail_url" type="string">
+    					<ParamField body="thumbnail_url" type="string" required>
     						Thumbnail URL
     					</ParamField>
     				</Expandable>
