@@ -1,0 +1,140 @@
+---
+title: "Non Dynamic Ad"
+api: "POST /meta/create_campaign"
+description: "This endpoint is used to create a campaign for leads non dynamic ads. Lead generation ads are ad campaigns designed to collect contact information (like name, email, phone number) directly from users on Meta platforms without needing them to leave the app."
+playground: "none"
+---
+
+import CampaignParams from "/snippets/create_campaign_params.mdx";
+import CampaignTargeting from "/snippets/create_campaign_targeting.mdx";
+import CampaignResponse from "/snippets/create_campaign_response.mdx";
+
+## Request Body
+
+<CampaignParams />
+
+<CampaignTargeting />
+
+### Non Dynamic Ads Parameters
+
+<ParamField body="campaignType" type="string" required>
+	For Lead Goal, campaignType is `LEAD_GENERATION`
+</ParamField>
+
+<Tabs>
+	<Tab title="Image/Video Ads">
+
+    	<ParamField body="multipleCreatives" type="object[]">
+    		<Warning>
+    			- Atleast 1 creative is required.
+    			- Maximum 10 creatives are allowed.
+    		</Warning>
+    		<Expandable title="Multiple Creative Configuration">
+    			<ParamField body="url" type="string" required>
+    				Destination URL
+    			</ParamField>
+
+    			<ParamField body="callToAction" type="string" required>
+    				Supported call to action types are `LEARN_MORE`, `SIGN_UP`, `DOWNLOAD`, `APPLY_NOW`,
+    				`SUBSCRIBE`, `GET_QUOTE`, `BOOK_TRAVEL`
+    			</ParamField>
+
+    			<ParamField body="leadsFormId" type="string" required>
+    				Facebook Lead Form ID, get facebook lead form id from
+    				[here](/api-reference/endpoint/meta/get_leadforms)
+    			</ParamField>
+
+    			<ParamField body="primaryText" type="string" required>
+    				Primary Text
+    			</ParamField>
+
+    			<ParamField body="headlines" type="string">
+    				Headline
+    			    <Warning>Headline max length is 255 characters. however, for non-English languages, the limit is determined by the number of bytes rather than the number of visible characters</Warning>
+    			</ParamField>
+
+    			<ParamField body="image" type="string">
+    				<Note>
+    					Image URL is required if video is not provided
+    					- Minimum Image Size: 400x400px
+    					- Supported Aspect Ratios: 1:1, 16:9, 9:16
+    				</Note>
+    				Image URL
+    			</ParamField>
+
+    			<ParamField body="video" type="object">
+    				<Note>
+    					Video ID is required if image is not provided
+    				</Note>
+    				<Expandable title="Video Data">
+    					<ParamField body="video_id" type="string">
+    						Video ID
+    					</ParamField>
+    					<ParamField body="thumbnail_url" type="string">
+    						Thumbnail URL
+    					</ParamField>
+    				</Expandable>
+    			</ParamField>
+
+    		</Expandable>
+    	</ParamField>
+
+    </Tab>
+    <Tab title="Carousel Ads">
+    	<ParamField body="carousel" type="object[]">
+    		<Warning>
+    			- Atleast 2 carousel items are required.
+    			- Maximum 10 carousel items are allowed.
+    		</Warning>
+    		<Expandable title="Carousel Array">
+    			<ParamField body="name" type="string" required>
+    				Carousel Name
+    			</ParamField>
+    			<ParamField body="description" type="string">
+    				Carousel Description
+    			</ParamField>
+    			<ParamField body="picture" type="string">
+    				<Note>
+    					Carousel Picture URL is required if video is not provided
+    				</Note>
+    				Carousel Picture URL
+    			</ParamField>
+    			<ParamField body="video_id" type="string">
+    				<Note>
+    					Carousel Video ID is required if picture is not provided
+    				</Note>
+    				Carousel Video ID
+    			</ParamField>
+    			<ParamField body="link" type="string">
+    				Carousel Link URL
+    			</ParamField>
+    		</Expandable>
+
+    	</ParamField>
+
+    	<ParamField body="primaryText" type="object[]">
+    		<Expandable title="Primary Text Array">
+    			<ParamField body="text" type="string" required>
+    				Main ad copy text
+    			</ParamField>
+    		</Expandable>
+    	</ParamField>
+
+    	<ParamField body="leadsFormId" type="string">
+    		Facebook Lead Form ID, get facebook lead form id from
+    		[here](/api-reference/endpoint/meta/get_leadforms)
+    	</ParamField>
+
+    </Tab>
+
+</Tabs>
+
+<ParamField body="callToAction" type="string">
+	<Note>Use this with carousel ads only</Note>
+	Supported call to action types are `LEARN_MORE`, `SIGN_UP`, `DOWNLOAD`, `APPLY_NOW`,
+	`SUBSCRIBE`, `GET_QUOTE`, `BOOK_TRAVEL`
+</ParamField>
+
+## Response
+
+<CampaignResponse />

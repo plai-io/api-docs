@@ -1,0 +1,48 @@
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="campaignName" type="string" required>
+	Descriptive name for the campaign
+</ParamField>
+
+<ParamField body="budget" type="number" required>
+	Campaigns daily budget amount.
+</ParamField>
+
+<ParamField body="startDate" type="string">
+	Start Date Format: `YYYY-MM-DD`, use to schedule the campaign to start at a
+	specific date.
+</ParamField>
+
+<ParamField body="endDate" type="string">
+	End Date Format: `YYYY-MM-DD`, use to schedule the campaign to end at a
+	specific date.
+</ParamField>
+
+<ParamField body="url" type="string" required>
+	Your Website URL
+</ParamField>
+
+<ParamField body="specialAdCategories" type="string[]">
+	Special ad categories = `HOUSING`, `FINANCIAL_PRODUCTS_SERVICES`,
+	`EMPLOYMENT`
+	<Note>
+		- `HOUSING`: Ads related to property sales, rentals, or home-related
+		services. <br />
+		- `FINANCIAL_PRODUCTS_SERVICES`: Ads promoting credit cards, loans, insurance,
+		or other financial services. <br /> - `EMPLOYMENT`: Ads offering job opportunities
+		or recruitment-related services.
+	</Note>
+</ParamField>
+
+<ParamField body="specialAdCountries" type="string[]">
+	ISO 3166-1 alpha-2 country codes e.g: `US`,`UK`
+</ParamField>
+
+<ParamField body="utmParams" type="string">
+	UTM tracking parameters template, expected variables that can be used in it: `{{campaign.id}},{{adset.id}},{{ad.id}},{{campaign.name}},{{adset.name}},{{ad.name}}`
+</ParamField>

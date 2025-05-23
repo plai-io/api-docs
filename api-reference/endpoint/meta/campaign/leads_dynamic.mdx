@@ -1,0 +1,92 @@
+---
+title: "Dynamic Ad"
+api: "POST /meta/create_campaign"
+description: "This endpoint is used to create a campaign for leads dynamic ads. Lead generation ads are ad campaigns designed to collect contact information (like name, email, phone number) directly from users on Meta platforms without needing them to leave the app."
+playground: "none"
+---
+
+import CampaignParams from "/snippets/create_campaign_params.mdx";
+import CampaignTargeting from "/snippets/create_campaign_targeting.mdx";
+import CampaignResponse from "/snippets/create_campaign_response.mdx";
+
+## Request Body
+
+<CampaignParams />
+
+<CampaignTargeting />
+
+### Dynamic Ads Parameters
+
+<ParamField body="campaignType" type="string" required>
+	For Lead Goal, campaignType is `LEAD_GENERATION`
+</ParamField>
+
+<ParamField body="images" type="object[]">
+	<Note>
+		You can add up to 10 total images and videos in one dynamic ad, atlease 1 image is required if video is not provided.
+		- Minimum Image Size: 400x400px
+		- Supported Aspect Ratios: 1:1, 16:9, 9:16
+	</Note>
+	<Expandable title="Image Assets Array">
+		<ParamField body="url" type="string" required>
+			URL for image asset
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="videos" type="object[]">
+	<Note>
+		You can add up to 10 total images and videos in one dynamic ad, atlease 1 video is required if image is not provided.
+	</Note>
+	<Expandable title="Video Assets Array">
+		<ParamField body="video_id" type="string" required>
+			Facebook video ID, get facebook video id from [here](/api-reference/endpoint/meta/get_ad_account_media)
+		</ParamField>
+		<ParamField body="thumbnail_url" type="string" required>
+			URL for video thumbnail image, get video thumbnail url from [here](/api-reference/endpoint/meta/get_ad_account_media)
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="primaryText" type="object[]">
+	<Note>
+		You can add up to 5 primary text variations, atleast 1 primary text is
+		required
+	</Note>
+	<Expandable title="Primary Text Array">
+		<ParamField body="text" type="string" required>
+			Main ad copy text
+		</ParamField>
+	</Expandable>
+
+</ParamField>
+
+<ParamField body="headlines" type="object[]">
+	<Note>You can include up to 5 headline variations.</Note>
+	<Expandable title="Headline Variations Array">
+		<ParamField body="text" type="string" required>
+			Headline text variation
+		</ParamField>
+	</Expandable>
+	<Warning>
+		Headline max length is 255 characters. however, for non-English
+		languages, the limit is determined by the number of bytes rather than
+		the number of visible characters
+	</Warning>
+</ParamField>
+
+<ParamField body="leadsFormId" type="string" required>
+	Facebook Lead Form ID, get facebook lead form id from
+	[here](/api-reference/endpoint/meta/get_leadforms)
+</ParamField>
+
+<ParamField body="callToAction" type="string" required>
+	Supported call to action types are `LEARN_MORE`, `SIGN_UP`, `DOWNLOAD`,
+	`APPLY_NOW`, `SUBSCRIBE`, `GET_QUOTE`, `BOOK_TRAVEL`
+</ParamField>
+
+## Response
+
+<CampaignResponse />

@@ -1,0 +1,33 @@
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was
+			successful.
+		</ResponseField>
+		<ResponseField name="campaign" type="object">
+			<Expandable title="Campaign Object">
+				<ResponseField name="leadFormId" type="string">
+					The unique identifier for the lead form associated with this
+					campaign.
+				</ResponseField>
+				<ResponseField name="campaignId" type="string">
+					The unique identifier for the campaign.
+				</ResponseField>
+				<ResponseField name="adId" type="string[]">
+					Ad IDs Array
+				</ResponseField>
+				<ResponseField name="adGroupId" type="string">
+					The unique identifier for the ad group associated with this
+					campaign.
+				</ResponseField>
+			</Expandable>
+		</ResponseField>
+		<ResponseField name="error" type="string">
+			Error string if something went wrong
+		</ResponseField>
+	</Expandable>
+</ResponseField>

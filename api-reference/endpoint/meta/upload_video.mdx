@@ -1,7 +1,7 @@
 ---
-title: "Check LeadForm TOS"
-api: "POST /meta/check_leadform_tos"
-description: "This endpoint checks whether the user has accepted the Terms of Service for their connected facebook page. It is used to verify compliance before allowing actions such as advertising or lead form creation."
+title: "Upload Video"
+api: "POST /meta/upload_video"
+description: "This endpoint is used to upload your video to your ad account and get video id."
 ---
 
 ## Request Body
@@ -12,9 +12,11 @@ description: "This endpoint checks whether the user has accepted the Terms of Se
 	retrieve the user ID from [get profile
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
-{/* <ParamField body="fbPageId" type="string" required>
-	Facebook Page Id
-</ParamField> */}
+
+<ParamField body="videoUrl" type="string" required>
+	URL pointing to the video file. Must be a publicly accessible HTTPS URL
+	(e.g., Google Cloud Storage URL).
+</ParamField>
 
 ## Response
 
@@ -23,13 +25,13 @@ description: "This endpoint checks whether the user has accepted the Terms of Se
 </ResponseField>
 
 <ResponseField name="results" type="object">
-	<Expandable title="Results">
+	<Expandable title="Results Object">
 		<ResponseField name="success" type="boolean">
 			Indicates whether the specific operation or API action was
 			successful.
 		</ResponseField>
-		<ResponseField name="hasAgreeToTos" type="boolean">
-			Confirms if user agreed to terms of services
+		<ResponseField name="videoId" type="string">
+			Unique identifier for the video
 		</ResponseField>
 		<ResponseField name="error" type="string">
 			Error string if something went wrong

@@ -12,32 +12,30 @@ description: "This endpoint is used to fetch media assets (both images and video
 	retrieve the user ID from [get profile
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
-<ParamField body="instagramId" type="string" required>
+{/* <ParamField body="instagramId" type="string" required>
 	Instagram Page ID
-</ParamField>
+</ParamField> */}
 <ParamField body="pagination" type="string" default="">
-	Pagination
+	If the number of results exceeds the page limit, the response will include
+	pagination links (`next` and `previous`) to help you navigate through the
+	result set
 </ParamField>
 
 ## Response
 
-<ResponseField name="success" type="boolean" required>
+<ResponseField name="success" type="boolean">
 	Indicates that the HTTP response was successful (status code 200 OK).
 </ResponseField>
 
-<ResponseField name="success" type="boolean" required>
-	Indicates whether the API request was successful
-</ResponseField>
-
-<ResponseField name="results" type="object" required>
+<ResponseField name="results" type="object" >
 	<Expandable title="Media Results">
-		<ResponseField name="success" type="boolean" required>
-			Confirms successful media retrieval
+		<ResponseField name="success" type="boolean" >
+			Indicates whether the specific operation or API action was successful.
 		</ResponseField>
 
-    	<ResponseField name="media" type="array" required>
+    	<ResponseField name="media" type="object[]" >
     		<Expandable title="Media Items">
-    				<ResponseField name="id" type="string" required>
+    				<ResponseField name="id" type="string" >
     					Unique Instagram media ID
     				</ResponseField>
 
@@ -49,17 +47,15 @@ description: "This endpoint is used to fetch media assets (both images and video
     				<ResponseField
     					name="media_type"
     					type="string"
-    					required
-    					default="IMAGE|VIDEO|CAROUSEL_ALBUM"
     				>
-    					Type of media content
+    					Type of media content : `IMAGE` or `VIDEO` or `CAROUSEL_ALBUM`
     				</ResponseField>
 
-    				<ResponseField name="media_url" type="string" required>
+    				<ResponseField name="media_url" type="string" >
     					Direct URL to the media file
     				</ResponseField>
 
-    				<ResponseField name="permalink" type="string" required>
+    				<ResponseField name="permalink" type="string" >
     					Permanent link to the Instagram post
 
     				</ResponseField>
@@ -68,12 +64,12 @@ description: "This endpoint is used to fetch media assets (both images and video
     					name="timestamp"
     					type="string"
     					format="ISO 8601"
-    					required
+
     				>
     					When the media was published
     				</ResponseField>
 
-    				<ResponseField name="ig_id" type="string" required>
+    				<ResponseField name="ig_id" type="string" >
     					Instagram's internal ID for the media
     				</ResponseField>
 
@@ -82,7 +78,7 @@ description: "This endpoint is used to fetch media assets (both images and video
     						<ResponseField
     							name="eligible_to_boost"
     							type="boolean"
-    							required
+
     						>
     							Whether the post can be boosted as an ad
     						</ResponseField>
@@ -92,12 +88,13 @@ description: "This endpoint is used to fetch media assets (both images and video
     				<ResponseField
     					name="media_product_type"
     					type="string"
-    					default="FEED|STORY|REELS"
-    					required
     				>
-    					Placement type of the media
+    					Placement type of the media : `FEED` or `STORY` or `REELS`
     				</ResponseField>
     		</Expandable>
+    	</ResponseField>
+    	 <ResponseField name="error" type="string">
+                Error string if something went wrong
     	</ResponseField>
     </Expandable>
 

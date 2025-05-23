@@ -1,7 +1,7 @@
 ---
-title: "Check LeadForm TOS"
-api: "POST /meta/check_leadform_tos"
-description: "This endpoint checks whether the user has accepted the Terms of Service for their connected facebook page. It is used to verify compliance before allowing actions such as advertising or lead form creation."
+title: "Update Campaign Status"
+api: "POST /meta/update_campaign_status"
+description: "This endpoint is used to update campaign status."
 ---
 
 ## Request Body
@@ -12,9 +12,17 @@ description: "This endpoint checks whether the user has accepted the Terms of Se
 	retrieve the user ID from [get profile
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
-{/* <ParamField body="fbPageId" type="string" required>
-	Facebook Page Id
-</ParamField> */}
+
+<ParamField body="campaignId" type="string" required>
+	Campaign ID. You can get campaign id from [get campaign insights
+	page](/api-reference/endpoint/meta/get_campaign_insights). If not created,
+	create a campaign on [create campaign
+	page](/api-reference/endpoint/meta/create_campaign).
+</ParamField>
+
+<ParamField body="status" type="string" required>
+	Status to update the campaign to, values: `PAUSED` or `ACTIVE` or `DELETE`
+</ParamField>
 
 ## Response
 
@@ -23,13 +31,10 @@ description: "This endpoint checks whether the user has accepted the Terms of Se
 </ResponseField>
 
 <ResponseField name="results" type="object">
-	<Expandable title="Results">
+	<Expandable title="Results Object">
 		<ResponseField name="success" type="boolean">
 			Indicates whether the specific operation or API action was
 			successful.
-		</ResponseField>
-		<ResponseField name="hasAgreeToTos" type="boolean">
-			Confirms if user agreed to terms of services
 		</ResponseField>
 		<ResponseField name="error" type="string">
 			Error string if something went wrong

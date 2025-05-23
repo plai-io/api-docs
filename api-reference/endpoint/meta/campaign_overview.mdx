@@ -1,0 +1,148 @@
+---
+title: "Campaign Overview"
+description: "Overview of the campaign endpoints and how to create a campaign."
+---
+
+### Create a Campaign:
+
+Select the campaign goal. Each
+Goal has different parameters
+
+<Card title="🚗 Traffic Ad">
+    Traffic campaigns are designed to drive users to a specific destination like a website, or specific page on your website.
+
+    <CardGroup cols={2}>
+        <Card title="Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/traffic_dynamic" />
+        <Card title="Non Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/traffic_standard"/>
+    </CardGroup>
+
+</Card>
+
+<Card title="📝 Leads Ad" >
+    Lead generation campaigns are ad campaigns designed to collect contact
+    information (like name, email, phone number) directly from users on Meta
+    instant form.
+
+    <CardGroup cols={2}>
+        <Card title="Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/leads_dynamic" />
+        <Card title="Non Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/leads_standard"/>
+    </CardGroup>
+
+</Card>
+
+<Card
+    title="🔄 Conversion Ad"
+>
+    Conversion campaigns are designed to drive users to take specific actions, such as completing a purchase, downloading an app, or signing up for a service.
+
+    <CardGroup cols={2}>
+        <Card title="Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/conversion_dynamic" />
+        <Card title="Non Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/conversion_standard"/>
+    </CardGroup>
+
+</Card>
+
+<Card title="💰 Sales Ad" >
+    Sales campaigns are designed to drive purchases or conversions, showing your ads to people most likely to buy your product or service.
+
+    <CardGroup cols={2}>
+        <Card title="Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/sales_dynamic" />
+        <Card title="Non Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/sales_standard"/>
+    </CardGroup>
+
+</Card>
+
+<Card
+    title="📢 Awareness Ad"
+>
+    Awareness campaigns are designed to increase recognition of your brand, product, or service by showing your ads to people most likely to remember them.
+
+    <CardGroup cols={2}>
+        <Card title="Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/awareness_dynamic" />
+        <Card title="Non Dynamic Ad Campaign" href="/api-reference/endpoint/meta/campaign/awareness_standard"/>
+    </CardGroup>
+
+</Card>
+
+<Card
+	title="📞 Phone Calls Ad"
+	href="/api-reference/endpoint/meta/campaign/phone_call"
+>
+	Phone call campaigns are designed to encourage users to tap and call your
+	business directly from the ad, making it easy to generate phone inquiries or
+	leads.
+</Card>
+
+<Card
+	title="💬 Message Ad"
+	href="/api-reference/endpoint/meta/campaign/engagement"
+>
+	Message ad campaigns are designed to get more interactions on your content,
+	such as likes, comments, shares, event responses, or post saves on Meta
+	platforms.
+</Card>
+
+<Card
+    title="📈 Boost Post"
+    href="/api-reference/endpoint/meta/campaign/boost_post"
+>
+    Boost post campaigns are used to promote an existing post on your Facebook or Instagram page to reach a larger audience and increase engagement like likes, comments, shares, or views.
+
+</Card>
+
+### Dynamic Creative Ads
+
+Dynamic creative ads automatically test different combinations of your ad elements (images, videos, headlines, text, CTAs, etc.) to find the best-performing combinations for each audience segment.
+
+How it works:
+
+-   You upload multiple images/videos, headlines, descriptions, etc.
+-   Facebook mixes and matches these to create many variations.
+-   The algorithm optimizes delivery to show the best combinations to each person.
+
+**Example**
+
+You upload:
+
+-   3 images
+-   2 headlines
+-   2 descriptions
+
+> → Facebook can create 3 x 2 x 2 = 12 ad variations and automatically test them.
+
+**Benifits**
+
+-   Saves time vs creating many individual ads
+-   Better performance through automatic optimization
+-   Personalized experience for different users
+
+> **Use case**: Best for performance-focused campaigns (e.g., conversions, traffic, leads)
+
+### Non-Dynamic Creative Ads
+
+You create one static ad (or manually create multiple individual ads), where each version has fixed creative elements.
+
+How it works:
+
+-   You manually design each ad with one combination of image/video + text + CTA.
+-   Facebook delivers that exact version to the audience without variation.
+
+**Example**
+
+You create Ad 1:
+
+-   Image A + Headline A + Text A
+
+Ad 2:
+
+-   Image B + Headline B + Text B
+
+> You have to manually test which ad performs better.
+
+**Benifits**
+
+-   Full control over how your ad appears
+-   Useful when branding consistency is key
+-   Better for storytelling or highly specific messaging
+
+> **Use case**: Best for branding campaigns, awareness, or highly designed creatives

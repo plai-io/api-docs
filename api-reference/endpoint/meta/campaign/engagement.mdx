@@ -1,0 +1,97 @@
+---
+title: "Engagement Ad"
+api: "POST /meta/create_campaign"
+description: "This page is used to create a engagement goal campaign. Engagement ads are designed to get more interactions on your content, such as likes, comments, shares, event responses, or post saves on Meta platforms."
+playground: "none"
+---
+
+import CampaignParams from "/snippets/create_campaign_params.mdx";
+import CampaignTargeting from "/snippets/create_campaign_targeting.mdx";
+import CampaignResponse from "/snippets/create_campaign_response.mdx";
+
+## Request Body
+
+<CampaignParams />
+
+<CampaignTargeting />
+
+### Engagement Ads Parameters
+
+<ParamField body="campaignType" type="string" required>
+	For Engagement Goal, campaignType is `OUTCOME_ENGAGEMENT`
+</ParamField>
+
+<ParamField body="messagingApps" type="string[]" required>
+	Messaging apps = `MESSENGER`, `INSTAGRAM`, `WHATSAPP`
+</ParamField>
+
+<ParamField body="multipleCreatives" type="object[]">
+	<Warning>
+		- Atleast 1 creative is required.
+		- Maximum 10 creatives are allowed.
+	</Warning>
+	<Expandable title="Multiple Creative Configuration">
+		<ParamField body="url" type="string" required>
+			Destination URL
+		</ParamField>
+
+    	<ParamField body="primaryText" type="string" required>
+    		Primary Text
+    	</ParamField>
+
+    	<ParamField body="headlines" type="string">
+    		Headline
+    		<Warning>Headline max length is 255 characters. however, for non-English languages, the limit is determined by the number of bytes rather than the number of visible characters</Warning>
+    	</ParamField>
+
+    	<ParamField body="phoneNumber" type="string" >
+    		Phone Number, e.g: +13434343434
+    	</ParamField>
+
+    	<ParamField body="image" type="string">
+    		<Note>
+    			Image URL is required if video is not provided
+    			- Minimum Image Size: 400x400px
+    			- Supported Aspect Ratios: 1:1, 16:9, 9:16
+    		</Note>
+    		Image URL
+    	</ParamField>
+
+    	<ParamField body="video" type="object">
+    		<Note>
+    			Video ID is required if image is not provided
+    		</Note>
+    		<Expandable title="Video Data">
+    			<ParamField body="video_id" type="string">
+    				Video ID
+    			</ParamField>
+    			<ParamField body="thumbnail_url" type="string">
+    				Thumbnail URL
+    			</ParamField>
+    		</Expandable>
+    	</ParamField>
+
+    	<ParamField body="greetingText" type="string" required>
+    		Greeting Text
+    	</ParamField>
+
+    	<ParamField body="conversations" type="object[]" required>
+    		<Expandable title="Conversations Array">
+    			<ParamField body="title" type="string" required>
+    				Conversation Title
+    			</ParamField>
+    		</Expandable>
+    	</ParamField>
+
+    	<ParamField body="callToAction" type="string" required>
+    		Supported call to action types are: `SEND_MESSAGE`, `BOOK_NOW`,
+    		`CONTACT_US`, `GET_PROMOTIONS`, `GET_QUOTE`, `INQUIRE_NOW`, `LEARN_MORE`,
+    		`SHOP_NOW`, `SIGN_UP`, `SUBSCRIBE`, `ORDER_NOW`, `APPLY_NOW`
+    	</ParamField>
+    </Expandable>
+
+</ParamField>
+
+## Response
+
+<CampaignResponse />

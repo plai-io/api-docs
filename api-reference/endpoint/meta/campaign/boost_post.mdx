@@ -1,0 +1,41 @@
+---
+title: "Boost Post"
+api: "POST /meta/create_campaign"
+description: "This page is used to create a boost post campaign. Boost post ads are used to promote an existing post on your Facebook or Instagram page to reach a larger audience and increase engagement like likes, comments, shares, or views."
+playground: "none"
+---
+
+import CampaignParams from "/snippets/create_campaign_params.mdx";
+import CampaignTargeting from "/snippets/create_campaign_targeting.mdx";
+import CampaignResponse from "/snippets/create_campaign_response.mdx";
+
+## Request Body
+
+<CampaignParams />
+
+<CampaignTargeting />
+
+### Boost Post Ad Parameters
+
+<ParamField body="campaignType" type="string" required>
+	For Boost Post Goal, campaignType is `POST_ENGAGEMENT`
+</ParamField>
+
+<ParamField body="pagePostId" type="string" required>
+	Facebook page post ID, you can get post id from
+	[here](/api-reference/endpoint/meta/get_page_posts)
+</ParamField>
+
+<ParamField body="callToAction" type="string" required>
+	<Note>For `Facebook`, Supported Call to Action is `SEND_MESSAGE`</Note>
+	<Note>
+		For `Instagram`, Supported Call to Action is `LEARN_MORE`, `SHOP_NOW`,
+		`SIGN_UP`, `DOWNLOAD`, `WATCH_MORE`, `APPLY_NOW`, `SUBSCRIBE`,
+		`GET_QUOTE`, `CONTACT_US`, `ORDER_NOW`, `REQUEST_TIME`, `GET_SHOWTIMES`,
+		`LISTEN_NOW`, `SEE_MENU`, `BOOK_TRAVEL`
+	</Note>
+</ParamField>
+
+## Response
+
+<CampaignResponse />

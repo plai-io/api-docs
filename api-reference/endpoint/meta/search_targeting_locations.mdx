@@ -1,7 +1,7 @@
 ---
-title: "Get Search Targeting Locations"
+title: "Search Targeting Locations"
 api: "POST /meta/search_targeting_locations"
-description: "This endpoint allows you to search for advertising target Locations based on search query. It helps in identifying relevant interest locations to improve the accuracy and effectiveness of ad targeting."
+description: "This endpoint allows you to search for advertising target Locations based on search query. It helps in identifying relevant locations to improve the accuracy and effectiveness of ad targeting."
 ---
 
 ## Request Body
@@ -13,60 +13,65 @@ description: "This endpoint allows you to search for advertising target Location
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
 <ParamField body="query" type="string" required>
-	Search Query
+	Location Search Query, for example: `New York`
 </ParamField>
 
 ## Response
 
-<ResponseField name="success" type="boolean" required>
+<ResponseField name="success" type="boolean">
 	Indicates that the HTTP response was successful (status code 200 OK).
 </ResponseField>
 
-<ResponseField name="results" type="object" required>
+<ResponseField name="results" type="object" >
 	<Expandable title="Media Results">
-		<ResponseField name="success" type="boolean" required>
-			Confirms successful media retrieval
+		<ResponseField name="success" type="boolean" >
+			Indicates whether the specific operation or API action was successful.
 		</ResponseField>
 
-    	<ResponseField name="locations" type="array" required>
+    	<ResponseField name="locations" type="object[]" >
       <Expandable title="Location Items">
-          <ResponseField name="key" type="string" required>
+          <ResponseField name="key" type="string" >
             Unique location identifier
           </ResponseField>
 
-          <ResponseField name="name" type="string" required>
+          <ResponseField name="name" type="string" >
             Display name of the location
           </ResponseField>
 
-          <ResponseField name="region" type="string" required>
+          <ResponseField name="region" type="string" >
             Administrative region/state
           </ResponseField>
 
-          <ResponseField name="country_name" type="string" required>
+          <ResponseField name="country_name" type="string" >
             Full country name
           </ResponseField>
 
-          <ResponseField name="type" type="string" required enum="city|country|region|zip">
-            Geographic granularity level (city, subcity, neighborhood)
+          <ResponseField name="type" type="string" >
+            Geographic level : `city`, `subcity`, `neighborhood`
           </ResponseField>
 
-          <ResponseField name="country_code" type="string" required format="ISO 3166-1 alpha-2">
+          <ResponseField name="country_code" type="string"  format="ISO 3166-1 alpha-2">
             2-letter country code
           </ResponseField>
 
-          <ResponseField name="region_id" type="number" required>
+          <ResponseField name="region_id" type="number" >
             Internal region identifier
           </ResponseField>
 
-          <ResponseField name="supports_region" type="boolean" required>
+          <ResponseField name="supports_region" type="boolean" >
             Whether regional targeting is available
           </ResponseField>
 
-          <ResponseField name="supports_city" type="boolean" required>
+          <ResponseField name="supports_city" type="boolean" >
             Whether city-level targeting is available
           </ResponseField>
       </Expandable>
     </ResponseField>
+
+    <ResponseField name="error" type="string">
+     Error string if something went wrong
+
+  </ResponseField>
     </Expandable>
 
 </ResponseField>

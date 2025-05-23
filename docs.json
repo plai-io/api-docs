@@ -29,32 +29,140 @@
 						]
 					},
 					{
-						"group": "Audiences",
-						"icon": "users",
+						"group": "Meta APIs",
+						"icon": "meta",
 						"pages": [
+							"api-reference/endpoint/meta/meta_overview",
 							{
-								"group": "Meta Audience",
-								"icon": "meta",
+								"group": "Campaign",
+								"icon": "megaphone",
 								"pages": [
-									"api-reference/endpoint/meta/meta_overview",
+									"api-reference/endpoint/meta/campaign_overview",
+									{
+										"group": "Campaign Goals",
+										"icon": "flag",
+										"pages": [
+											{
+												"group": "Traffic",
+												"icon": "arrow-right",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/traffic_dynamic",
+													"api-reference/endpoint/meta/campaign/traffic_standard"
+												]
+											},
+											{
+												"group": "Leads",
+												"icon": "users",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/leads_dynamic",
+													"api-reference/endpoint/meta/campaign/leads_standard"
+												]
+											},
+											{
+												"group": "Sales",
+												"icon": "chart-area",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/sales_dynamic",
+													"api-reference/endpoint/meta/campaign/sales_standard"
+												]
+											},
+											{
+												"group": "Awareness",
+												"icon": "megaphone",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/awareness_dynamic",
+													"api-reference/endpoint/meta/campaign/awareness_standard"
+												]
+											},
+											{
+												"group": "Conversion",
+												"icon": "badge-check",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/conversion_dynamic",
+													"api-reference/endpoint/meta/campaign/conversion_standard"
+												]
+											},
+											{
+												"group": "Message Ads",
+												"icon": "message",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/engagement"
+												]
+											},
+											{
+												"group": "Phone Call",
+												"icon": "phone",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/phone_call"
+												]
+											},
+											{
+												"group": "Boost Post",
+												"icon": "arrow-up-right",
+												"pages": [
+													"api-reference/endpoint/meta/campaign/boost_post"
+												]
+											}
+										]
+									},
+									"api-reference/endpoint/meta/get_campaign_insights",
+									"api-reference/endpoint/meta/update_campaign_status"
+								]
+							},
+							{
+								"group": "Audience",
+								"icon": "users",
+								"pages": [
 									"api-reference/endpoint/meta/create_fb_csv_audience",
 									"api-reference/endpoint/meta/create_lookalike_audience",
 									"api-reference/endpoint/meta/create_leadform_audience",
 									"api-reference/endpoint/meta/create_page_audience",
-									"api-reference/endpoint/meta/get_custom_audiences",
+									"api-reference/endpoint/meta/get_custom_audiences"
+								]
+							},
+							{
+								"group": "Lead Form",
+								"icon": "align-left",
+								"pages": [
+									"api-reference/endpoint/meta/check_leadform_tos",
+									"api-reference/endpoint/meta/create_leadform",
 									"api-reference/endpoint/meta/get_leadforms"
 								]
 							},
 							{
-								"group": "Linkedin Audience",
-								"icon": "linkedin",
+								"group": "Targeting",
+								"icon": "circle-plus",
 								"pages": [
-									"api-reference/endpoint/linkedin/linkedin_overview",
-									"api-reference/endpoint/linkedin/create_csv_audience",
-									"api-reference/endpoint/linkedin/link_csv_audience",
-									"api-reference/endpoint/linkedin/get_audiences_list"
+									"api-reference/endpoint/meta/search_targeting_interests",
+									"api-reference/endpoint/meta/search_targeting_locations",
+									"api-reference/endpoint/meta/get_pixels_list",
+									"api-reference/endpoint/meta/get_custom_conversions",
+									"api-reference/endpoint/meta/get_targeting_systems_lookup",
+									"api-reference/endpoint/meta/get_targeting_locales"
+								]
+							},
+							{
+								"group": "Media",
+								"icon": "clapperboard",
+								"pages": [
+									"api-reference/endpoint/meta/get_ad_account_media",
+									"api-reference/endpoint/meta/get_fb_page_media",
+									"api-reference/endpoint/meta/get_ig_page_media",
+									"api-reference/endpoint/meta/get_page_posts",
+									"api-reference/endpoint/meta/upload_video",
+									"api-reference/endpoint/meta/get_video_info"
 								]
 							}
+						]
+					},
+					{
+						"group": "Linkedin APIs",
+						"icon": "linkedin",
+						"pages": [
+							"api-reference/endpoint/linkedin/linkedin_overview",
+							"api-reference/endpoint/linkedin/create_csv_audience",
+							"api-reference/endpoint/linkedin/link_csv_audience",
+							"api-reference/endpoint/linkedin/get_audiences_list"
 						]
 					}
 				]

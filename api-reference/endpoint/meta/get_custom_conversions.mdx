@@ -1,7 +1,7 @@
 ---
-title: "Get Custom Audiences"
-api: "POST /meta/get_custom_audiences"
-description: "This endpoint allows you to get custom audiences."
+title: "Get Custom Conversions"
+api: "POST /meta/get_custom_conversions"
+description: "Get custom conversions for a campaign"
 ---
 
 ## Request Body
@@ -12,10 +12,12 @@ description: "This endpoint allows you to get custom audiences."
 	retrieve the user ID from [get profile
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
-<ParamField body="pagination" type="string">
-	If the number of results exceeds the page limit, the response will include
-	pagination links (next and previous) to help you navigate through the result
-	set.
+<ParamField body="pixelId" type="string" required>
+	Facebook Pixel ID, you can get the pixel id from
+	[here](/api-reference/endpoint/meta/get_pixels_list)
+</ParamField>
+<ParamField body="campaignType" type="string" required>
+	Campaign Type, Supported values are: `CONVERSIONS`, `OUTCOME_SALES`
 </ParamField>
 
 ## Response
@@ -30,24 +32,21 @@ description: "This endpoint allows you to get custom audiences."
 			Indicates whether the specific operation or API action was successful.
 		</ResponseField>
 
-    	<ResponseField name="customAudiences" type="object[]" >
-            <Expandable title="Custom Audiences">
-                <ResponseField name="id" type="string" >
-                    Unique audience identifier
-                </ResponseField>
-
+    	<ResponseField name="customConversions" type="object[]" >
+            <Expandable title="Custom Conversions Object">
                 <ResponseField name="name" type="string" >
-                    Audience display name
+                    Custom conversion name
                 </ResponseField>
 
-                <ResponseField name="subtype" type="string"  >
-                    Audience classification type
+                <ResponseField name="value" type="string" >
+                    Custom conversion value, this value is used in create campaign api, [here](/api-reference/endpoint/meta/create_campaign), for conversion and sales goal.
+                </ResponseField>
+
+                <ResponseField name="is_custom_event" type="boolean"  >
+                    Whether the conversion is a custom event
                 </ResponseField>
             </Expandable>
         </ResponseField>
-
-    	<ResponseField name="next" type="string">Next Page Link</ResponseField>
-    	<ResponseField name="previous" type="string">Previous Page Link</ResponseField>
 
         <ResponseField name="error" type="string">
     		Error string if something went wrong
