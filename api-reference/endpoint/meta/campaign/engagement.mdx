@@ -77,6 +77,11 @@ import CampaignResponse from "/snippets/create_campaign_response.mdx";
 
     	<ParamField body="greetingText" type="string" required>
     		Greeting Text
+    		<Note>
+    			- You can use placeholders like `{{user_first_name}}`, `{{user_last_name}}`, `{{user_full_name}}`, and `{{page_name}}` to make your greeting more personal.
+    			- These will automatically fill in with the user’s or page’s name.
+    			- For example: Hi, `{{user_first_name}}`! Please let us know how we can help you.
+    		</Note>
     	</ParamField>
 
     	<ParamField body="conversations" type="object[]" required>
