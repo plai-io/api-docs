@@ -90,7 +90,7 @@
 
 </ParamField>
 
-<ParamField body="videos" type="array">
+<ParamField body="videos" type="object[]">
 	<Expandable title="Video Assets Array">
 		<ParamField body="video_id" type="string" required>
 			Facebook video ID
@@ -106,12 +106,12 @@
 
 </ParamField>
 
-<ParamField body="audienceId" type="array">
+<ParamField body="audienceId" type="object[]">
 	Array of audience IDs, you can get the audienceId from list of audiences
 	[here](/api-reference/endpoint/meta/get_custom_audiences)
 </ParamField>
 
-<ParamField body="primaryText" type="array">
+<ParamField body="primaryText" type="object[]">
 	<Expandable title="Primary Text Array">
 		<ParamField body="text" type="string" required>
 			Main ad copy text
@@ -124,7 +124,7 @@
 
 </ParamField>
 
-<ParamField body="images" type="array">
+<ParamField body="images" type="object[]">
 	<Expandable title="Image Assets Array">
 		<ParamField body="url" type="string" required>
 			URL for image asset
@@ -137,7 +137,7 @@
 
 </ParamField>
 
-<ParamField body="headline1" type="array">
+<ParamField body="headlines" type="object[]">
 	<Expandable title="Headline Variations Array">
 		<ParamField body="text" type="string" required>
 			Headline text variation
@@ -147,6 +147,7 @@
     <Note>
     	Headline not required for `POST_ENGAGEMENT` campaign type. For other campaign types, it is required.
     </Note>
+    <Warning>Headline max length is 255 characters. however, for non-English languages, the limit is determined by the number of bytes rather than the number of visible characters</Warning>
 
 </ParamField>
 
@@ -154,7 +155,7 @@
 	Gender targeting (1=male, 2=female, etc.)
 </ParamField>
 
-<ParamField body="locations" type="array">
+<ParamField body="locations" type="object[]">
 	<Expandable title="Location Targeting Array">
 		<ParamField body="id" type="string" required>
 			Facebook location ID
@@ -201,7 +202,7 @@
 
 </ParamField>
 
-<ParamField body="interests" type="array">
+<ParamField body="interests" type="object[]">
 	<Expandable title="Location Targeting Array">
 		<ParamField body="id" type="string" required>
 			Interest Id
@@ -215,7 +216,7 @@
 	</Expandable>
 </ParamField>
 
-<ParamField body="narrowInterests" type="array">
+<ParamField body="narrowInterests" type="object[]">
 	<Expandable title="Location Targeting Array">
 		<ParamField body="id" type="string" required>
 			Interest Id
@@ -229,7 +230,7 @@
 	</Expandable>
 </ParamField>
 
-<ParamField body="furtherInterests" type="array">
+<ParamField body="furtherInterests" type="object[]">
 	<Expandable title="Location Targeting Array">
 		<ParamField body="id" type="string" required>
 			Interest Id
@@ -260,7 +261,7 @@
 	Whether to include Instagram placements
 </ParamField>
 
-<ParamField body="messagingApps" type="array">
+<ParamField body="messagingApps" type="string[]">
 	Messaging apps = `MESSENGER`, `INSTAGRAM`, `WHATSAPP`
 </ParamField>
 
@@ -283,7 +284,7 @@
 	Messenger ad placements = `messenger_home`, `story`
 </ParamField>
 
-<ParamField body="carousel" type="array">
+<ParamField body="carousel" type="object[]">
 	<Expandable title="Carousel Array">
 		<ParamField body="name" type="string" required>
 			Carousel Name
@@ -312,7 +313,7 @@
 	Audience IDs to exclude
 </ParamField>
 
-<ParamField body="excludedLocations" type="array">
+<ParamField body="excludedLocations" type="object[]">
 	<Expandable title="Location Targeting Array">
 		<ParamField body="id" type="string" required>
 			Facebook location ID
@@ -359,7 +360,7 @@
 	Greeting Text, required when campaignType is `OUTCOME_ENGAGEMENT`
 </ParamField>
 
-<ParamField body="conversations" type="array">
+<ParamField body="conversations" type="object[]">
 	<Expandable title="Conversations Array">
 		<ParamField body="title" type="string" required>
 			Conversation Title
@@ -396,7 +397,7 @@
 	Product Set ID, required when campaignType is `CATALOG`
 </ParamField>
 
-<ParamField body="multipleCreatives" type="array">
+<ParamField body="multipleCreatives" type="object[]">
 	use with `isDynamicCreative` = `false`, to create multiple standard
 	`non-dynamic` ads in a single AdSe
 
@@ -414,18 +415,28 @@
     		type="string"
     	>
     		Leads Form ID (Required for `LEAD_GENERATION` Campaign)
+    		<Warning>
+    			You can get the lead form id from [get lead
+    			forms](/api-reference/endpoint/meta/get_lead_forms)
+    			endpoint.
+    		</Warning>
     	</ParamField>
 
     	<ParamField body="primaryText" type="string" required>
     		Primary Text
     	</ParamField>
 
-    	<ParamField body="headline1" type="string">
+    	<ParamField body="headlines" type="string">
     		Headline
+    		<Warning>Headline max length is 255 characters. however, for non-English languages, the limit is determined by the number of bytes rather than the number of visible characters</Warning>
     	</ParamField>
 
     	<ParamField body="image" type="string">
     		Image URL
+    		<Warning>
+    			- Minimum Image Size: 400x400px
+    			- Supported Aspect Ratios: 1:1, 16:9, 9:16
+    		</Warning>
     	</ParamField>
 
     	<ParamField body="video" type="object">
@@ -450,7 +461,7 @@
     		Greeting Text (Required for `OUTCOME_ENGAGEMENT`)
     	</ParamField>
 
-    	<ParamField body="conversations" type="array">
+    	<ParamField body="conversations" type="object[]">
     		<Expandable title="Conversations Array">
     			<ParamField body="title" type="string" required>
     				Conversation Title
@@ -484,6 +495,11 @@
 				<ResponseField name="leadFormId" type="string">
 					The unique identifier for the lead form associated with this
 					campaign.
+					<Warning>
+						You can get the lead form id from [get lead
+						forms](/api-reference/endpoint/meta/get_lead_forms)
+						endpoint.
+					</Warning>
 				</ResponseField>
 				<ResponseField name="campaignId" type="string">
 					The unique identifier for the campaign.

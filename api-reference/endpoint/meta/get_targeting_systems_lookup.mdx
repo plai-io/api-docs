@@ -33,7 +33,7 @@ description: "This endpoint is used to get device targeting lookup, like os and 
                 successful.
             </ResponseField>
 
-             <ResponseField name="targetingSystems" type="array">
+             <ResponseField name="targetingSystems" type="object[]">
                 <Expandable title="Targeting System Object">
                     <ResponseField name="type" type="string">
                         OS Type = `os_type`
@@ -69,7 +69,7 @@ description: "This endpoint is used to get device targeting lookup, like os and 
     		    Indicates whether the specific operation or API action was successful.
             </ResponseField>
 
-             <ResponseField name="targetingSystems" type="array">
+             <ResponseField name="targetingSystems" type="object[]">
                 <Expandable title="Targeting System Object">
                     <ResponseField name="name" type="string">
                         The display name of the targeting system (e.g., `iPad`).
@@ -103,7 +103,7 @@ description: "This endpoint is used to get device targeting lookup, like os and 
 </Tabs>
 
 <ResponseExample>
-    ```json 200 (DEVICE Type)
+    ```json 200 (OS Type)
     {
         "success": true,
         "results": {

@@ -36,7 +36,7 @@ description: "This endpoint is used to fetch media assets (both images and video
                 Indicates whether the specific operation or API action was successful.
             </ResponseField>
 
-            <ResponseField name="media" type="array" >
+            <ResponseField name="media" type="object[]" >
                 <Expandable title="Media Items">
                     <ResponseField name="url" type="string" >
                         Direct URL to the media file
@@ -74,12 +74,12 @@ description: "This endpoint is used to fetch media assets (both images and video
             <ResponseField name="success" type="boolean" >
     		    Indicates whether the specific operation or API action was successful.
             </ResponseField>
-            <ResponseField name="media" type="array" >
+            <ResponseField name="media" type="object[]" >
                 <Expandable title="Media Items">
                     <ResponseField name="id" type="string" >
                         Unique media identifier
                     </ResponseField>
-                    <ResponseField name="format" type="array" >
+                    <ResponseField name="format" type="object[]" >
                         <Expandable title="Media Formats">
                             <ResponseField name="embed_html" type="string" >
                                 HTML iframe embed code

@@ -1,24 +1,57 @@
 ### Targeting Parameters
 
+<ParamField body="adSetName" type="string" required>
+	Name of the ad set audience
+</ParamField>
+
 <ParamField body="gender" type="string">
-	Gender targeting , `1` for male, `2` for female, otherwise leave it empty
+	Gender targeting , `1` for male, `2` for female, and if you want to target
+	all genders skip this parameter
 </ParamField>
 
 <ParamField body="ages" type="object">
 	<Expandable title="Age Targeting Object">
-		<ParamField body="maxAge" type="number" required>
-			Maximum target age (inclusive)
-		</ParamField>
 		<ParamField body="minAge" type="number" required>
 			Minimum target age (inclusive)
 		</ParamField>
+		<ParamField body="maxAge" type="number" required>
+			Maximum target age (inclusive)
+		</ParamField>
 	</Expandable>
 </ParamField>
 
-<ParamField body="locations" type="array">
-	Get locations data from
-	[here](/api-reference/endpoint/meta/search_targeting_locations)
-	<Expandable title="Location Targeting Array">
+<ParamField body="locations" type="object[]" required>
+    <Note>If Audience ID is provided, then location targeting is optional</Note>
+	List of areas where you want to show your ads. Get locations data from [here](/api-reference/endpoint/meta/search_targeting_locations)
+    <Expandable title="Location Targeting Object">
+    	<ParamField body="id" type="string" required>
+    		Facebook location ID
+    	</ParamField>
+    	<ParamField body="type" type="string" required>
+    		Location type (city, etc.)
+    	</ParamField>
+    	<ParamField body="distance_unit" type="string">
+    		<Note>Use Distance Unit when type is `city`</Note>
+    		Distance unit (`mile` or `km`)
+    	</ParamField>
+    	<ParamField body="radius" type="number">
+    		<Note>Use Radius when type is `city`</Note>
+    		Radius value
+    	</ParamField>
+    	<ParamField body="countryCode" type="string">
+    		ISO 3166-1 alpha-2 country codes e.g: `US`,`UK`
+    	</ParamField>
+    	<ParamField body="countryName" type="string">
+    		Country Name
+    	</ParamField>
+    </Expandable>
+
+</ParamField>
+
+<ParamField body="excludedLocations" type="object[]">
+	Areas where you don't want your ads to appear. Get excluded locations data
+	from [here](/api-reference/endpoint/meta/search_targeting_locations)
+	<Expandable title="Location Targeting Object">
 		<ParamField body="id" type="string" required>
 			Facebook location ID
 		</ParamField>
@@ -27,51 +60,26 @@
 		</ParamField>
 		<ParamField body="distance_unit" type="string">
 			<Note>Use Distance Unit when type is `city`</Note>
-			Distance unit (mile, etc.)
-		</ParamField>
-		<ParamField body="radius" type="number">
-			<Note>Use Radius when type is `city`</Note>
-			Radius value
-		</ParamField>
-		<ParamField body="countryCode" type="string">
-			ISO 3166-1 alpha-2 country codes e.g: `US`,`UK`
-		</ParamField>
-		<ParamField body="countryName" type="string">
-			Country Name
-		</ParamField>
-	</Expandable>
+			Distance unit (`mile` or `km`)
+    	</ParamField>
+    	<ParamField body="radius" type="number">
+    		<Note>Use Radius when type is `city`</Note>
+    		Radius value
+    	</ParamField>
+    	<ParamField body="countryCode" type="string">
+    		ISO 3166-1 alpha-2 country codes e.g: `US`,`UK`
+    	</ParamField>
+    	<ParamField body="countryName" type="string">
+    		Country Name
+    	</ParamField>
+    </Expandable>
+
 </ParamField>
 
-<ParamField body="excludedLocations" type="array">
-	Get excluded locations data from
-	[here](/api-reference/endpoint/meta/search_targeting_locations)
-	<Expandable title="Location Targeting Array">
-		<ParamField body="id" type="string" required>
-			Facebook location ID
-		</ParamField>
-		<ParamField body="type" type="string" required>
-			Location type (city, etc.)
-		</ParamField>
-		<ParamField body="distance_unit" type="string">
-			<Note>Use Distance Unit when type is `city`</Note>
-			Distance unit (mile, etc.)
-		</ParamField>
-		<ParamField body="radius" type="number">
-			<Note>Use Radius when type is `city`</Note>
-			Radius value
-		</ParamField>
-		<ParamField body="countryCode" type="string">
-			ISO 3166-1 alpha-2 country codes e.g: `US`,`UK`
-		</ParamField>
-		<ParamField body="countryName" type="string">
-			Country Name
-		</ParamField>
-	</Expandable>
-</ParamField>
-
-<ParamField body="proximityTargeting" type="array">
-	You have to get the proximity targeting data on your own.
-	<Expandable title="Proximity Targeting Array">
+<ParamField body="proximityTargeting" type="object[]">
+	Targets people within a specific radius of a location. You have to get the
+	proximity targeting data on your own.
+	<Expandable title="Proximity Targeting Object">
 		<ParamField body="countryName" type="string">
 			Country Name
 		</ParamField>
@@ -90,51 +98,60 @@
 	</Expandable>
 </ParamField>
 
-<ParamField body="interests" type="array">
-	<Expandable title="Interests Array">
-		<ParamField body="id" type="string" required>
-			Interest Id
-		</ParamField>
-		<ParamField body="name" type="string" required>
-			Interest Name
-		</ParamField>
-		<ParamField body="type" type="string" required>
-			Interest Type = `interests`
-		</ParamField>
-	</Expandable>
+<ParamField body="interests" type="object[]">
+	Broad audience based on general interests (e.g., fitness, travel). Get interests data from [here](/api-reference/endpoint/meta/search_targeting_interests)
+
+    <Expandable title="Interests Object">
+    	<ParamField body="id" type="string" required>
+    		Interest Id
+    	</ParamField>
+    	<ParamField body="name" type="string" required>
+    		Interest Name
+    	</ParamField>
+    	<ParamField body="type" type="string" required>
+    		Interest Type = `interests`
+    	</ParamField>
+    </Expandable>
+
 </ParamField>
 
-<ParamField body="narrowInterests" type="array">
-	<Expandable title="Narrow Interests Array">
-		<ParamField body="id" type="string" required>
-			Interest Id
-		</ParamField>
-		<ParamField body="name" type="string" required>
-			Interest Name
-		</ParamField>
-		<ParamField body="type" type="string" required>
-			Interest Type = `interests`
-		</ParamField>
-	</Expandable>
+<ParamField body="narrowInterests" type="object[]">
+	 Refines audience by requiring an additional interest match. Get narrow interests data from [here](/api-reference/endpoint/meta/search_targeting_interests)
+
+    <Expandable title="Narrow Interests Object">
+    	<ParamField body="id" type="string" required>
+    		Interest Id
+    	</ParamField>
+    	<ParamField body="name" type="string" required>
+    		Interest Name
+    	</ParamField>
+    	<ParamField body="type" type="string" required>
+    		Interest Type = `interests`
+    	</ParamField>
+    </Expandable>
+
 </ParamField>
 
-<ParamField body="furtherInterests" type="array">
-	<Expandable title="Further Interests Array">
-		<ParamField body="id" type="string" required>
-			Interest Id
-		</ParamField>
-		<ParamField body="name" type="string" required>
-			Interest Name
-		</ParamField>
-		<ParamField body="type" type="string" required>
-			Interest Type = `interests`
-		</ParamField>
-	</Expandable>
+<ParamField body="furtherInterests" type="object[]">
+	Adds another layer of filtering—users must match all levels. Get further narrow interests data from [here](/api-reference/endpoint/meta/search_targeting_interests)
+
+    <Expandable title="Further Interests Object">
+    	<ParamField body="id" type="string" required>
+    		Interest Id
+    	</ParamField>
+    	<ParamField body="name" type="string" required>
+    		Interest Name
+    	</ParamField>
+    	<ParamField body="type" type="string" required>
+    		Interest Type = `interests`
+    	</ParamField>
+    </Expandable>
+
 </ParamField>
 
 <ParamField body="targetLocales" type="number[]">
-	Array of locale targeting parameters, you can get the list of locales
-	[here](https://developers.facebook.com/docs/marketing-apis/reference/ad-account/targeting-specs#locales)
+	Use to target specific languages. You can get the list of locales
+	[here](/api-reference/endpoint/meta/get_targeting_locales)
 </ParamField>
 
 <ParamField body="audienceId" type="string[]">
@@ -143,10 +160,16 @@
 </ParamField>
 
 <ParamField body="excludedAudienceIds" type="string[]">
-	Audience IDs to exclude
+	Audience IDs to exclude, you can get the audienceId from list of audiences
+	[here](/api-reference/endpoint/meta/get_custom_audiences)
 </ParamField>
 
-<ParamField body="manualPlacements" type="boolean">
+<ParamField body="manualPlacements" type="boolean" default={false}>
+	<Note>Set to `false` to use Advantage+ placements (recommended).</Note>
+	<Note>
+		If you set to `true`, you have to provide `facebook_positions`,
+		`instagram_positions`, `messenger_positions`
+	</Note>
 	Whether placements are manually selected
 </ParamField>
 
@@ -166,11 +189,19 @@
 </ParamField>
 
 <ParamField body="userDevices" type="string[]">
-	Device names, you can get the list of devices from
+	Device targeting, you have to send the device name in string array, you can
+	get the list of devices from
 	[here](/api-reference/endpoint/meta/get_targeting_systems_lookup)
+
+    <Note>
+    	Make sure to choose right operating system for the device.
+    	- for eg. If the user device is iphone, then you have to send `ios` in user operating system.
+    </Note>
+
 </ParamField>
 
 <ParamField body="userOS" type="string[]">
-	Operating system names, you can get the list of operating systems from
+	Operating system targeting, you have to send the os platform in string
+	array, you can get the list of operating systems from
 	[here](/api-reference/endpoint/meta/get_targeting_systems_lookup)
 </ParamField>

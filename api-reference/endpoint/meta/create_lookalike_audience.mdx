@@ -12,18 +12,20 @@ description: "This endpoint allows you to create a Lookalike Audience based on a
 	retrieve the user ID from [get profile
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
-<ParamField body="sourceType" type="string" required >
+<ParamField body="sourceType" type="string" required>
 	Source Type = `PAGE` or `AUDIENCE`
 </ParamField>
 <ParamField body="sourceId" type="string">
 	<Info>
-		If sourceType is `PAGE`, you must include the page id parameter. This should be the Facebook Page ID from which the audience will be created.
+		You can get the source id from [get custom
+		audiences](/api-reference/endpoint/meta/get_custom_audiences) endpoint.
+		Pass custom audience id in `sourceId` parameter.
 	</Info>
-
-    <Info>
-    If sourceType is `AUDIENCE`, you must include the `sourceId` parameter.
-    </Info>
-
+	<Warning>
+		If sourceType is `PAGE`, you don't need to send the `sourceId`
+		parameter.
+		<br /> If sourceType is `AUDIENCE`, you must include the `sourceId` parameter.
+	</Warning>
 </ParamField>
 <ParamField body="audienceName" type="string" required>
 	Audience Name

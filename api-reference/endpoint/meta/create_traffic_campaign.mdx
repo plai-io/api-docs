@@ -66,7 +66,7 @@ playground: "none"
 
 ### Dynamic Ads Parameters
 
-<ParamField body="images" type="array">
+<ParamField body="images" type="object[]">
 	<Expandable title="Image Assets Array">
 		<ParamField body="url" type="string" required>
 			URL for image asset
@@ -75,7 +75,7 @@ playground: "none"
 
 </ParamField>
 
-<ParamField body="videos" type="array">
+<ParamField body="videos" type="object[]">
 	<Expandable title="Video Assets Array">
 		<ParamField body="video_id" type="string" required>
 			Facebook video ID
@@ -87,7 +87,7 @@ playground: "none"
 
 </ParamField>
 
-<ParamField body="primaryText" type="array">
+<ParamField body="primaryText" type="object[]">
 	<Expandable title="Primary Text Array">
 		<ParamField body="text" type="string" required>
 			Main ad copy text
@@ -96,13 +96,17 @@ playground: "none"
 
 </ParamField>
 
-<ParamField body="headline1" type="array">
+<ParamField body="headlines" type="object[]">
 	<Expandable title="Headline Variations Array">
 		<ParamField body="text" type="string" required>
 			Headline text variation
 		</ParamField>
 	</Expandable>
-
+	<Warning>
+		Headline max length is 255 characters. however, for non-English
+		languages, the limit is determined by the number of bytes rather than
+		the number of visible characters
+	</Warning>
 </ParamField>
 
 <ParamField body="callToAction" type="string" required>
@@ -116,9 +120,13 @@ playground: "none"
 	For Traffic Goal, campaignType is `LINK_CLICKS`
 </ParamField>
 
-### Standard Ads Parameters
+### Non Dynamic Ads Parameters
 
-<ParamField body="carousel" type="array">
+<ParamField body="carousel" type="object[]">
+	<Warning>
+		- Atleast 2 carousel items are required.
+		- Maximum 10 carousel items are allowed.
+	</Warning>
 	<Expandable title="Carousel Array">
 		<ParamField body="name" type="string" required>
 			Carousel Name
@@ -139,18 +147,11 @@ playground: "none"
 
 </ParamField>
 
-<ParamField body="isDynamicCreative" type="boolean" >
-	Whether it's dynamic creative, useable with images/videos
-
-    <Note>
-    	Use `isDynamicCreative` = `false`, to create multiple standard
-    	`non-dynamic` ads in a single AdSet.
-    </Note>
-
-</ParamField>
-
-<ParamField body="multipleCreatives" type="array">
-
+<ParamField body="multipleCreatives" type="object[]">
+	<Warning>
+		- Atleast 1 creative is required.
+		- Maximum 10 creatives are allowed.
+	</Warning>
     <Expandable title="Multiple Creative Configuration">
     	<ParamField body="url" type="string" required>
     		Destination URL
@@ -160,12 +161,17 @@ playground: "none"
     		Call to Action
     	</ParamField>
 
-    	<ParamField body="headline1" type="string">
+    	<ParamField body="headlines" type="string">
     		Headline
+    		<Warning>Headline max length is 255 characters. however, for non-English languages, the limit is determined by the number of bytes rather than the number of visible characters</Warning>
     	</ParamField>
 
     	<ParamField body="image" type="string">
     		Image URL
+    		<Warning>
+    			- Minimum Image Size: 400x400px
+    			- Supported Aspect Ratios: 1:1, 16:9, 9:16
+    		</Warning>
     	</ParamField>
 
     	<ParamField body="video" type="object">
@@ -179,24 +185,6 @@ playground: "none"
     		</Expandable>
     	</ParamField>
 
-    	<ParamField body="phoneNumber" type="string">
-    		Phone Number (for Call Ads)
-    	</ParamField>
-
-    	<ParamField
-    		body="greetingText"
-    		type="string"
-    	>
-    		Greeting Text
-    	</ParamField>
-
-    	<ParamField body="conversations" type="array">
-    		<Expandable title="Conversations Array">
-    			<ParamField body="title" type="string" required>
-    				Conversation Title
-    			</ParamField>
-    		</Expandable>
-    	</ParamField>
 
     </Expandable>
 
@@ -230,7 +218,7 @@ playground: "none"
 	</Expandable>
 </ParamField>
 
-<ParamField body="locations" type="array">
+<ParamField body="locations" type="object[]">
 	<Expandable title="Location Targeting Array">
 		<ParamField body="id" type="string" required>
 			Facebook location ID
@@ -247,7 +235,7 @@ playground: "none"
 	</Expandable>
 </ParamField>
 
-<ParamField body="excludedLocations" type="array">
+<ParamField body="excludedLocations" type="object[]">
 	<Expandable title="Location Targeting Array">
 		<ParamField body="id" type="string" required>
 			Facebook location ID
@@ -264,7 +252,7 @@ playground: "none"
 	</Expandable>
 </ParamField>
 
-<ParamField body="proximityTargeting" type="array">
+<ParamField body="proximityTargeting" type="object[]">
 	<Expandable title="Proximity Targeting Array">
 		<ParamField body="countryName" type="string" required>
 			2 char country code like `US`, `UK`, etc.
@@ -284,7 +272,7 @@ playground: "none"
 	</Expandable>
 </ParamField>
 
-<ParamField body="interests" type="array">
+<ParamField body="interests" type="object[]">
 	<Expandable title="Interests Array">
 		<ParamField body="id" type="string" required>
 			Interest Id
@@ -298,7 +286,7 @@ playground: "none"
 	</Expandable>
 </ParamField>
 
-<ParamField body="narrowInterests" type="array">
+<ParamField body="narrowInterests" type="object[]">
 	<Expandable title="Narrow Interests Array">
 		<ParamField body="id" type="string" required>
 			Interest Id
@@ -312,7 +300,7 @@ playground: "none"
 	</Expandable>
 </ParamField>
 
-<ParamField body="furtherInterests" type="array">
+<ParamField body="furtherInterests" type="object[]">
 	<Expandable title="Further Interests Array">
 		<ParamField body="id" type="string" required>
 			Interest Id
@@ -331,7 +319,7 @@ playground: "none"
 	[here](https://developers.facebook.com/docs/marketing-apis/reference/ad-account/targeting-specs#locales)
 </ParamField>
 
-<ParamField body="audienceId" type="array">
+<ParamField body="audienceId" type="object[]">
 	Array of audience IDs, you can get the audienceId from list of audiences
 	[here](/api-reference/endpoint/meta/get_custom_audiences)
 </ParamField>
@@ -390,6 +378,11 @@ playground: "none"
 				<ResponseField name="leadFormId" type="string">
 					The unique identifier for the lead form associated with this
 					campaign.
+					<Warning>
+						You can get the lead form id from [get lead
+						forms](/api-reference/endpoint/meta/get_lead_forms)
+						endpoint.
+					</Warning>
 				</ResponseField>
 				<ResponseField name="campaignId" type="string">
 					The unique identifier for the campaign.

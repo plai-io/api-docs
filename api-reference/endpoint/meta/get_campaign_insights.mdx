@@ -18,11 +18,13 @@ description: "This endpoint is used to fetch campaign insights for a specific ca
 </ParamField>
 
 <ParamField body="startDate" type="string">
-	The start date for the insights period in YYYY-MM-DD format
+	The start date for the insights period in YYYY-MM-DD format. If the start
+	date is not provided, insights will be generated for all time.
 </ParamField>
 
 <ParamField body="endDate" type="string">
-	The end date for the insights period in YYYY-MM-DD format
+	The end date for the insights period in YYYY-MM-DD format. If the end date
+	is not provided, insights will be generated for all time.
 </ParamField>
 
 <ParamField body="currencySymbol" type="string" required>

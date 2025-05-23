@@ -25,7 +25,7 @@ description: "This endpoint is used to get the list of audiences."
 			Indicates whether the specific operation or API action was
 			successful.
 		</ResponseField>
-		<ResponseField name="audiences" type="array">
+		<ResponseField name="audiences" type="object[]">
 			<Expandable title="Audience Object">
 				<ResponseField name="name" type="string">
 					The display name of the audience segment.
@@ -45,7 +45,7 @@ description: "This endpoint is used to get the list of audiences."
 					URN identifier for the associated LinkedIn sponsored
 					account.
 				</ResponseField>
-				<ResponseField name="destinations" type="array">
+				<ResponseField name="destinations" type="object[]">
 					<Expandable title="Destination Object">
 						<ResponseField name="destination" type="string">
 							Platform where audience is used (e.g., `LINKEDIN`).

@@ -5,33 +5,38 @@
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
 
-<ParamField body="url" type="string" required>
-	Your website URL
-</ParamField>
-
-<ParamField body="budget" type="number" required>
-	Campaign budget amount.
-</ParamField>
-
 <ParamField body="campaignName" type="string" required>
 	Descriptive name for the campaign
 </ParamField>
 
-<ParamField body="audienceName" type="string" required>
-	Name of the target audience
+<ParamField body="budget" type="number" required>
+	Campaigns daily budget amount.
 </ParamField>
 
 <ParamField body="startDate" type="string">
-	Start Date Format: `YYYY-MM-DD`
+	Start Date Format: `YYYY-MM-DD`, use to schedule the campaign to start at a
+	specific date.
 </ParamField>
 
 <ParamField body="endDate" type="string">
-	End Date Format: `YYYY-MM-DD`
+	End Date Format: `YYYY-MM-DD`, use to schedule the campaign to end at a
+	specific date.
+</ParamField>
+
+<ParamField body="url" type="string" required>
+	Your Website URL
 </ParamField>
 
 <ParamField body="specialAdCategories" type="string[]">
 	Special ad categories = `HOUSING`, `FINANCIAL_PRODUCTS_SERVICES`,
 	`EMPLOYMENT`
+	<Note>
+		- `HOUSING`: Ads related to property sales, rentals, or home-related
+		services. <br />
+		- `FINANCIAL_PRODUCTS_SERVICES`: Ads promoting credit cards, loans, insurance,
+		or other financial services. <br /> - `EMPLOYMENT`: Ads offering job opportunities
+		or recruitment-related services.
+	</Note>
 </ParamField>
 
 <ParamField body="specialAdCountries" type="string[]">

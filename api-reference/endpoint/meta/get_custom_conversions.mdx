@@ -13,7 +13,8 @@ description: "Get custom conversions for a campaign"
 	page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
 <ParamField body="pixelId" type="string" required>
-	Facebook Pixel ID
+	Facebook Pixel ID, you can get the pixel id from
+	[here](/api-reference/endpoint/meta/get_pixels_list)
 </ParamField>
 <ParamField body="campaignType" type="string" required>
 	Campaign Type, Supported values are: `CONVERSIONS`, `OUTCOME_SALES`
@@ -31,7 +32,7 @@ description: "Get custom conversions for a campaign"
 			Indicates whether the specific operation or API action was successful.
 		</ResponseField>
 
-    	<ResponseField name="customConversions" type="array" >
+    	<ResponseField name="customConversions" type="object[]" >
             <Expandable title="Custom Conversions Object">
                 <ResponseField name="name" type="string" >
                     Custom conversion name
