@@ -1,0 +1,89 @@
+---
+title: "Get Catalog Products List"
+api: "POST /meta/get_catalog_products_list"
+description: "This endpoint is used to get the list of products in a catalog."
+---
+
+## Request Body
+
+<ParamField body='userId' type='string' required>
+  User ID, If not already created, make a user on [create user
+  page](/api-reference/endpoint/auth/create_user) first. If already created,
+  retrieve the user ID from [get profile
+  page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body='productSetId' type='string' required>
+  The unique identifier of the product set
+</ParamField>
+
+## Response
+
+<ResponseField name='success' type='boolean'>
+  Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name='results' type='object'>
+  <Expandable title='Results Object'>
+    <ResponseField name='success' type='boolean'>
+      Indicates whether the specific operation or API action was successful.
+    </ResponseField>
+
+    	<ResponseField name="products" type="object[]" >
+            <Expandable title="Products">
+                <ResponseField name="id" type="string" >
+                    Unique identifier for the product
+                </ResponseField>
+
+                <ResponseField name="name" type="string" >
+                    Display name of the product
+                </ResponseField>
+
+                <ResponseField name="description" type="string"  >
+                    Product description
+                </ResponseField>
+
+                <ResponseField name="retailer_id" type="string"  >
+                    Unique identifier of the retailer selling the product
+                </ResponseField>
+
+                <ResponseField name="price" type="string"  >
+                    Regular price of the product
+                </ResponseField>
+
+                <ResponseField name="sale_price" type="string"  >
+                    Discounted price of the product (if on sale)
+                </ResponseField>
+
+                <ResponseField name="currency" type="string"  >
+                    Currency code for the product price (e.g., USD, EUR)
+                </ResponseField>
+
+                <ResponseField name="condition" type="string"  >
+                    Product condition (e.g., new, used, refurbished)
+                </ResponseField>
+
+                <ResponseField name="availability" type="string"  >
+                    Current availability status of the product
+                </ResponseField>
+
+                <ResponseField name="image_url" type="string"  >
+                    URL to the product's main image
+                </ResponseField>
+
+                <ResponseField name="images" type="string[]">
+                    Array of Images
+                </ResponseField>
+
+                 <ResponseField name="url" type="string"  >
+                    URL to the product's page
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+
+     <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+
+  </Expandable>
+</ResponseField>

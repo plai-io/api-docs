@@ -1,0 +1,48 @@
+---
+title: "Create Catalog Product Set"
+api: "POST /meta/create_catalog_product_set"
+description: "This endpoint is used to create a catalog product set."
+---
+
+## Request Body
+
+<ParamField body='userId' type='string' required>
+  User ID, If not already created, make a user on [create user
+  page](/api-reference/endpoint/auth/create_user) first. If already created,
+  retrieve the user ID from [get profile
+  page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+<ParamField body='catalogId' type='string' required>
+  The ID of the catalog to be used.
+</ParamField>
+<ParamField body='name' type='string' required>
+  The name of the product set to be created.
+</ParamField>
+<ParamField body="productIds" type="string[]" required>
+  Product IDs should be obtained from the `products` field in the [get catalog products feed](/api-reference/endpoint/meta/get_catalog_products_feed) endpoint. 
+  Each product's `retailer_id` should match the product ID used here.
+</ParamField>
+
+
+## Response
+
+<ResponseField name='success' type='boolean'>
+  Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object" >
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean" >
+			Indicates whether the specific operation or API action was successful.
+		</ResponseField>
+
+     <ResponseField name="id" type="string" >
+        Unique catalog identifier
+     </ResponseField>
+
+     <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+    </Expandable>
+
+</ResponseField>

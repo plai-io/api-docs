@@ -1,0 +1,86 @@
+---
+title: "Create Catalog Products Feed"
+api: "POST /meta/create_catalog_products_feed"
+description: "This endpoint is used to create a catalog products feed."
+---
+
+## Request Body
+
+<ParamField body='userId' type='string' required>
+  User ID, If not already created, make a user on [create user
+  page](/api-reference/endpoint/auth/create_user) first. If already created,
+  retrieve the user ID from [get profile
+  page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+<ParamField body='name' type='string' required>
+  The name of the feed to be created.
+</ParamField>
+<ParamField body='catalogId' type='string' required>
+  The unique identifier of the catalog to which this feed will be added.
+</ParamField>
+ 
+
+<ParamField body="fileUrl" type="string" required>
+  <a href="/files/catalog_products.csv" download>
+    <Card
+      title="Download Sample CSV"
+      icon="download"
+    >
+      Sample CSV
+    </Card>
+  </a>
+  The URL of the file containing the product data to be imported into the catalog.
+</ParamField>
+
+
+<ParamField body='countryCode' type='string' required>
+  The country code (e.g., "US", "GB") for which the feed is intended.
+</ParamField>
+<ParamField body='currencyCode' type='string' required>
+  The three-letter currency code (e.g., "USD", "EUR") used for product prices in
+  the feed.
+</ParamField>
+<ParamField body='interval' type='string'>
+  The frequency at which the feed should be updated (e.g., "DAILY", "WEEKLY"). Default is "DAILY".
+</ParamField>
+<ParamField body='minute' type='string'>
+  The minute of the hour when the feed update should be scheduled (0-59). Default is "0".
+</ParamField>
+<ParamField body='hour' type='string'>
+  The hour of the day (in 24-hour format, 0-23) when the feed update should be
+  scheduled. Default is "0".
+</ParamField>
+<ParamField body='dayOfWeek' type='string'>
+  The day of the week when the feed update should be scheduled (e.g., "MONDAY",
+  "TUESDAY"). Default is "MONDAY".
+</ParamField>
+<ParamField body='dayOfMonth' type='string'>
+  The day of the month when the feed update should be scheduled (1-31). Default is "1".
+</ParamField>
+<ParamField body='timezone' type='string' required>
+  The timezone in which the feed update schedule should be interpreted (e.g.,
+  "America/Los_Angeles").
+</ParamField>
+
+## Response
+
+<ResponseField name='success' type='boolean'>
+  Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object" >
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean" >
+			Indicates whether the specific operation or API action was successful.
+		</ResponseField>
+
+     <ResponseField name="id" type="string" >
+        Unique catalog identifier
+     </ResponseField>
+
+     <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+    </Expandable>
+
+</ResponseField>

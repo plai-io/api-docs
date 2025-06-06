@@ -1,0 +1,176 @@
+---
+title: "Get Catalog Products Feed"
+api: "POST /meta/get_catalog_products_feed"
+description: "This endpoint is used to get a catalog products feed."
+---
+
+## Request Body
+
+<ParamField body='userId' type='string' required>
+  User ID, If not already created, make a user on [create user
+  page](/api-reference/endpoint/auth/create_user) first. If already created,
+  retrieve the user ID from [get profile
+  page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+<ParamField body='catalogFeedId' type='string' required>
+  The unique identifier of the catalog feed to be retrieved.
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object" >
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean" >
+			Indicates whether the specific operation or API action was successful.
+		</ResponseField>
+
+    	<ResponseField name="catalogFeed" type="object">
+            <Expandable title="Catalog Feed">
+                <ResponseField name="name" type="string" >
+                    Name of the catalog feed
+                </ResponseField>
+
+                <ResponseField name="id" type="string" >
+                    Unique catalog feed identifier
+                </ResponseField>
+
+                <ResponseField name="schedule" type="object">
+                     <Expandable title="Schedule Object">
+                    <ResponseField name="hour" type="number" >
+                      The hour of the day (in 24-hour format, 0-23) when the feed update should be scheduled.
+                    </ResponseField>
+
+                     <ResponseField name="id" type="string">
+                       Schedule ID
+                    </ResponseField>
+
+                     <ResponseField name="interval" type="string">
+                      The frequency at which the feed should be updated (e.g., "DAILY", "WEEKLY").
+                    </ResponseField>
+
+                     <ResponseField name="interval_count" type="number">
+                      The number of intervals between updates.
+                    </ResponseField>
+
+                    <ResponseField name="minute" type="number">
+                      The minute of the hour when the feed update should be scheduled (0-59).
+                    </ResponseField>
+
+                    <ResponseField name="timezone" type="string">
+                      The timezone in which the feed update schedule should be interpreted (e.g., "America/Los_Angeles").
+                    </ResponseField>
+
+                     <ResponseField name="url" type="string">
+                      The URL of the file containing the product data to be imported into the catalog.
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+
+              <ResponseField name="product_count" type="number">
+                    The number of products in the feed.
+              </ResponseField>
+
+              
+    	    <ResponseField name="products" type="object[]" >
+            <Expandable title="Products">
+                <ResponseField name="id" type="string" >
+                    Unique product identifier
+                </ResponseField>
+
+                <ResponseField name="name" type="string" >
+                    Product name
+                </ResponseField>
+
+                  <ResponseField name="retailer_id" type="string" >
+                    Product retailer id
+                </ResponseField>
+
+             
+            </Expandable>
+        </ResponseField>
+
+             <ResponseField name="country" type="string">
+                    The country of the catalog feed.
+              </ResponseField>
+
+              <ResponseField name="default_currency" type="string">
+                    The default currency of the catalog feed.
+              </ResponseField>
+
+               <ResponseField name='uploads' type='object[]'>
+                  <Expandable title='Uploads'>
+
+                     <ResponseField name='num_invalid_items' type='number'>
+                      The number of invalid items in the upload.
+                    </ResponseField>
+
+                        <ResponseField name='error_count' type='number'>
+                      The number of errors in the upload.
+                    </ResponseField>
+
+                    <ResponseField name='warning_count' type='number'>
+                      The number of warnings in the upload.
+                    </ResponseField>
+
+                    <ResponseField name="error_report" type="object" >
+                      <Expandable title='Error Report'>
+                        <ResponseField name='report_status' type='string'>
+                          The status of the error report.
+                        </ResponseField>                        
+                      </Expandable>
+                    </ResponseField>
+
+                      <ResponseField name='url' type='string'>
+                      The URL of the file containing the product data to be imported into the catalog.
+                    </ResponseField>
+
+                      <ResponseField name='errors' type='object[]'>
+                     <Expandable title='Errors'>
+                       <ResponseField name='total_count' type='number'>
+                         The total number of errors in the upload.
+                       </ResponseField>
+
+                       <ResponseField name='summary' type='string'>
+                         The summary of the errors in the upload.
+                       </ResponseField>
+
+                       <ResponseField name='description' type='string'>
+                         The description of the errors in the upload.
+                       </ResponseField>
+
+                       <ResponseField name='error_type' type='string'>
+                         The type of error.
+                       </ResponseField>
+
+                       <ResponseField name='severity' type='string'>
+                         The severity of the error.
+                       </ResponseField>
+
+                       <ResponseField name='id' type='string'>
+                         The ID of the error.
+                       </ResponseField>
+                       
+                     </Expandable>
+               </ResponseField>
+
+                 <ResponseField name='id' type='string'>
+                  The ID of the feed.
+                </ResponseField>
+
+                  </Expandable>
+                </ResponseField>  
+
+                
+            </Expandable>
+        </ResponseField>
+
+        <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+    </Expandable>
+
+</ResponseField>
