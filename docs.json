@@ -157,12 +157,14 @@
                 "group": "Catalog",
                 "icon": "cart-shopping",
                 "pages": [
+                  "api-reference/endpoint/meta/catalog_overview",
                   "api-reference/endpoint/meta/get_catalog_list",
                   "api-reference/endpoint/meta/create_catalog",
                   "api-reference/endpoint/meta/create_catalog_products_feed",
                   "api-reference/endpoint/meta/get_catalog_products_feed",
                   "api-reference/endpoint/meta/create_catalog_product_set",
-                  "api-reference/endpoint/meta/get_catalog_products_list"
+                  "api-reference/endpoint/meta/get_catalog_products_list",
+                  "api-reference/endpoint/meta/edit_catalog_product_set"
                 ]
               }
             ]
