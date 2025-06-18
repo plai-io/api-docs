@@ -1,5 +1,5 @@
 ---
-title: "Create Advert Link"
+title: "Ad Account Connection"
 api: "POST /auth/create_link"
 description: "This endpoint generates a link that allows users to seamlessly connect their Ad accounts for the purpose of creating advertisements."
 ---
@@ -7,39 +7,38 @@ description: "This endpoint generates a link that allows users to seamlessly con
 ## Request Body
 
 <ParamField body="userId" type="string" required>
-	User ID, If not already created, make a user on [create user
-	page](/api-reference/endpoint/auth/create_user) first. If already created,
-	retrieve the user ID from [get profile
-	page](/api-reference/endpoint/auth/get_profile).
+  User Id, If not already created, make a user on [create user
+  page](/api-reference/endpoint/auth/create_user) first. If already created,
+  retrieve the user ID from [get profile
+  page](/api-reference/endpoint/auth/get_profile).
 </ParamField>
 <ParamField body="platform" type="string" initialValue="FACEBOOK" required>
-	For Facebook or Instagram, set `platform = FACEBOOK`, for LinkedIn, set
-	`platform = LINKEDIN`.
+  For Facebook or Instagram, set `platform = FACEBOOK`, for LinkedIn, set
+  `platform = LINKEDIN`.
 </ParamField>
 <ParamField body="redirectUri" type="URL">
-	The URL users are redirected to after linking their accounts
+  The URL users are redirected to after linking their accounts
 </ParamField>
 <ParamField body="state" type="string">
-	State, (if you want to send object make sure it is stringify)
+  State, (if you want to send object make sure it is stringify)
 </ParamField>
 
 ## Response
 
 <ResponseField name="success" type="boolean">
-	Indicates that the HTTP response was successful (status code 200 OK).
+  Indicates that the HTTP response was successful (status code 200 OK).
 </ResponseField>
 
 <ResponseField name="results" type="object">
-	<Expandable title="Results">
-		<ResponseField name="success" type="boolean">
-			Indicates whether the specific operation or API action was
-			successful.
-		</ResponseField>
-		<ResponseField name="link" type="string">
-			Generated URL with parameters and redirect URL
-		</ResponseField>
-		<ResponseField name="error" type="string">
-			Error message if something went wrong
-		</ResponseField>
-	</Expandable>
+  <Expandable title="Results">
+    <ResponseField name="success" type="boolean">
+      Indicates whether the specific operation or API action was successful.
+    </ResponseField>
+    <ResponseField name="link" type="string">
+      Generated URL with parameters and redirect URL
+    </ResponseField>
+    <ResponseField name="error" type="string">
+      Error message if something went wrong
+    </ResponseField>
+  </Expandable>
 </ResponseField>
