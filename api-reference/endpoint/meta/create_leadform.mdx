@@ -64,20 +64,30 @@ description: "This endpoint is used to create a leadform."
 		<ParamField body="button_text" type="string" required>
 			Text for the action button
 		</ParamField>
+				<ParamField body="button_type" type="string" required>
+			Type of button: `VIEW_WEBSITE`, `CALL_BUSINESS`
+		</ParamField>
+				<ParamField body="website_url" type="string">
+			URL for the website button
+			<Note>
+				This field must be **required** when `button_type` is set to `VISIT_WEBSITE`.
+			</Note>
+		</ParamField>
+				<ParamField body="country_code" type="string">
+			ISO 3166-1 alpha-2 country codes e.g: `US`,`UK`
+				<Note>
+				This field must be **required** when `button_type` is set to `CALL_BUSINESS`.
+			</Note>
+		</ParamField>
 		<ParamField body="business_phone_number" type="string">
 			Business phone number to display
+				<Note>
+				This field must be **required** when `button_type` is set to `CALL_BUSINESS`.
+			</Note>
 		</ParamField>
-		<ParamField body="button_type" type="string" required>
-			Type of button: `VIEW_WEBSITE`, `CALL_BUSINESS`, `MESSAGE_BUSINESS`,
-			`DOWNLOAD`, `SCHEDULE_APPOINTMENT`, `VIEW_ON_FACEBOOK`,
-			`PROMO_CODE`, `NONE`, `WHATSAPP`, `P2B_MESSENGER`
-		</ParamField>
-		<ParamField body="country_code" type="string" required>
-			ISO 3166-1 alpha-2 country codes e.g: `US`,`UK`
-		</ParamField>
-		<ParamField body="website_url" type="string" required>
-			URL for the website button
-		</ParamField>
+
+
+
 	</Expandable>
 </ParamField>
 
