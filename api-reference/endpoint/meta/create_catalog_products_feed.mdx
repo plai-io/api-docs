@@ -41,7 +41,9 @@ description: "This endpoint is used to create a catalog products feed."
   the feed.
 </ParamField>
 <ParamField body='interval' type='string'>
-  The frequency at which the feed should be updated (e.g., "DAILY", "WEEKLY"). Default is "DAILY".
+  The frequency at which the feed should be updated (e.g., "HOURLY", "DAILY"). Default is "DAILY".
+ 
+  Type of values: `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`
 </ParamField>
 <ParamField body='minute' type='string'>
   The minute of the hour when the feed update should be scheduled (0-59). Default is "0".
@@ -53,6 +55,8 @@ description: "This endpoint is used to create a catalog products feed."
 <ParamField body='dayOfWeek' type='string'>
   The day of the week when the feed update should be scheduled (e.g., "MONDAY",
   "TUESDAY"). Default is "MONDAY".
+
+  Type of values: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`
 </ParamField>
 <ParamField body='dayOfMonth' type='string'>
   The day of the month when the feed update should be scheduled (1-31). Default is "1".
