@@ -1,0 +1,46 @@
+---
+title: "Get Lead Forms" 
+api: "POST /gads/get_lead_forms"
+description: "This endpoint is used to get lead forms."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+
+       	<ResponseField name="leadFormInfo" type="object[]">
+            <Expandable title="Lead Form Info Object">
+                <ResponseField name="leadFormAssetId" type="string">
+                    Lead form Asset ID
+                </ResponseField>
+
+                <ResponseField name="name" type="string">
+                    Name of the lead form
+                </ResponseField>
+
+                              
+            </Expandable>
+        </ResponseField>
+
+     <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+    </Expandable>
+</ResponseField>

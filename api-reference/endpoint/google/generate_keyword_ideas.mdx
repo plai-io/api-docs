@@ -1,0 +1,74 @@
+---
+title: "Generate Keyword Ideas"
+api: "POST /gads/generate_keyword_ideas"
+description: "This endpoint is used to generate keyword ideas."
+---
+
+## Request Body
+
+<ParamField body="seedKeyword" type="string" required>
+	Seed keyword for generating keyword ideas
+</ParamField>
+
+<ParamField body="languageId" type="number" required>
+	Language ID for generating keyword ideas
+</ParamField>
+
+<ParamField body="locationIds" type="string[]" required>
+	Location IDs for generating keyword ideas
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+
+       	<ResponseField name="keywords" type="object[]">
+            <Expandable title="Keyword Object">
+                <ResponseField name="keyword" type="string">
+                    Keyword name
+                </ResponseField>
+
+                <ResponseField name="searchVolume" type="number">
+                    Search volume for the keyword
+                </ResponseField>
+
+                  	<ResponseField name="monthlySearchVolumeHolders" type="object[]">
+            <Expandable title="Monthly Search Volume Holder Object">
+                <ResponseField name="year" type="string">
+                    Year of the search volume
+                </ResponseField>
+
+                <ResponseField name="month" type="number">
+                    Month of the search volume
+                </ResponseField>
+
+                <ResponseField name="montlySearches" type="number">
+                    Monthly searches for the keyword
+                </ResponseField>
+ 
+            </Expandable>
+        </ResponseField>
+
+         <ResponseField name="cpc" type="number">
+                    CPC for the keyword
+                </ResponseField>
+
+               
+
+       
+            </Expandable>
+        </ResponseField>
+
+     <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+    </Expandable>
+</ResponseField>

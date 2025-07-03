@@ -1,0 +1,42 @@
+---
+title: "Get Location V2"
+api: "POST /gads/get_location_v2"
+description: "This endpoint is used to get a location v2."
+---
+
+## Request Body
+
+<ParamField body="location" type="string" required>
+	Location name
+</ParamField>
+
+ 
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+
+      <ResponseField name="locationId" type="string">
+           Location ID
+      </ResponseField>
+      <ResponseField name="bingAdsLocationId" type="string">
+           Bing Ads Location ID
+      </ResponseField>
+      <ResponseField name="status" type="string">
+           Status of the location
+      </ResponseField>
+
+      <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+  </Expandable>
+</ResponseField>

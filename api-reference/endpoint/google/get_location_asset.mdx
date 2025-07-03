@@ -1,0 +1,54 @@
+---
+title: "Get Location Asset"
+api: "POST /gads/get_location_asset"
+description: "This endpoint is used to get a location asset."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+
+       	<ResponseField name="locationAssets" type="object[]">
+            <Expandable title="Location Asset Object">
+                <ResponseField name="id" type="string">
+                    Location asset ID
+                </ResponseField>
+
+                <ResponseField name="name" type="string">
+                    Name of the location asset
+                </ResponseField>
+ 
+
+                <ResponseField name="place_id" type="string">
+                    Place ID of the location asset
+                </ResponseField>
+ 
+
+               
+
+       
+            </Expandable>
+        </ResponseField>
+
+     <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+    </Expandable>
+</ResponseField>

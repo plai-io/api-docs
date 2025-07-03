@@ -1,208 +1,244 @@
 {
-	"$schema": "https://mintlify.com/docs.json",
-	"theme": "mint",
-	"name": "Plai Api Docs",
-	"colors": {
-		"primary": "#1E45F9",
-		"light": "#0A84E3",
-		"dark": "#1E45F9"
-	},
-	"favicon": "/favicon.png",
-	"navigation": {
-		"groups": [
-			{
-				"group": "Getting Started",
-				"pages": ["introduction", "quickstart"]
-			},
-			{
-				"group": "Api Endpoints",
-				"pages": [
-					{
-						"group": "Authentication",
-						"icon": "user",
-						"pages": [
-							"api-reference/endpoint/auth/auth_overview",
-							"api-reference/endpoint/auth/create_user",
-							"api-reference/endpoint/auth/get_profile",
-							"api-reference/endpoint/auth/create_advert",
-							"api-reference/endpoint/auth/get_connected_accounts"
-						]
-					},
-					{
-						"group": "Meta APIs",
-						"icon": "meta",
-						"pages": [
-							"api-reference/endpoint/meta/meta_overview",
-							{
-								"group": "Campaign",
-								"icon": "megaphone",
-								"pages": [
-									"api-reference/endpoint/meta/campaign_overview",
-									{
-										"group": "Campaign Goals",
-										"icon": "flag",
-										"pages": [
-											{
-												"group": "Traffic",
-												"icon": "arrow-right",
-												"pages": [
-													"api-reference/endpoint/meta/campaign/traffic_dynamic",
-													"api-reference/endpoint/meta/campaign/traffic_standard"
-												]
-											},
-											{
-												"group": "Leads",
-												"icon": "users",
-												"pages": [
-													"api-reference/endpoint/meta/campaign/leads_dynamic",
-													"api-reference/endpoint/meta/campaign/leads_standard"
-												]
-											},
-											{
-												"group": "Sales",
-												"icon": "chart-area",
-												"pages": [
-													"api-reference/endpoint/meta/campaign/sales_dynamic",
-													"api-reference/endpoint/meta/campaign/sales_standard"
-												]
-											},
-											{
-												"group": "Awareness",
-												"icon": "megaphone",
-												"pages": [
-													"api-reference/endpoint/meta/campaign/awareness_dynamic",
-													"api-reference/endpoint/meta/campaign/awareness_standard"
-												]
-											},
-											{
-												"group": "Conversion",
-												"icon": "badge-check",
-												"pages": [
-													"api-reference/endpoint/meta/campaign/conversion_dynamic",
-													"api-reference/endpoint/meta/campaign/conversion_standard"
-												]
-											},
-											{
-												"group": "Message Ads",
-												"icon": "message",
-												"pages": [
-													"api-reference/endpoint/meta/campaign/engagement"
-												]
-											},
-											{
-												"group": "Phone Call",
-												"icon": "phone",
-												"pages": [
-													"api-reference/endpoint/meta/campaign/phone_call"
-												]
-											},
-											{
-												"group": "Boost Post",
-												"icon": "arrow-up-right",
-												"pages": [
-													"api-reference/endpoint/meta/campaign/boost_post"
-												]
-											}
-										]
-									},
-									"api-reference/endpoint/meta/get_campaign_insights",
-									"api-reference/endpoint/meta/update_campaign_status"
-								]
-							},
-							{
-								"group": "Audience",
-								"icon": "users",
-								"pages": [
-									"api-reference/endpoint/meta/create_fb_csv_audience",
-									"api-reference/endpoint/meta/create_lookalike_audience",
-									"api-reference/endpoint/meta/create_leadform_audience",
-									"api-reference/endpoint/meta/create_page_audience",
-									"api-reference/endpoint/meta/get_custom_audiences"
-								]
-							},
-							{
-								"group": "Lead Form",
-								"icon": "align-left",
-								"pages": [
-									"api-reference/endpoint/meta/check_leadform_tos",
-									"api-reference/endpoint/meta/create_leadform",
-									"api-reference/endpoint/meta/get_leadforms"
-								]
-							},
-							{
-								"group": "Targeting",
-								"icon": "circle-plus",
-								"pages": [
-									"api-reference/endpoint/meta/search_targeting_interests",
-									"api-reference/endpoint/meta/search_targeting_locations",
-									"api-reference/endpoint/meta/get_pixels_list",
-									"api-reference/endpoint/meta/get_custom_conversions",
-									"api-reference/endpoint/meta/get_targeting_systems_lookup",
-									"api-reference/endpoint/meta/get_targeting_locales"
-								]
-							},
-							{
-								"group": "Media",
-								"icon": "clapperboard",
-								"pages": [
-									"api-reference/endpoint/meta/get_ad_account_media",
-									"api-reference/endpoint/meta/get_fb_page_media",
-									"api-reference/endpoint/meta/get_ig_page_media",
-									"api-reference/endpoint/meta/get_page_posts",
-									"api-reference/endpoint/meta/upload_video",
-									"api-reference/endpoint/meta/get_video_info"
-								]
-							}
-						]
-					},
-					{
-						"group": "Linkedin APIs",
-						"icon": "linkedin",
-						"pages": [
-							"api-reference/endpoint/linkedin/linkedin_overview",
-							"api-reference/endpoint/linkedin/create_csv_audience",
-							"api-reference/endpoint/linkedin/link_csv_audience",
-							"api-reference/endpoint/linkedin/get_audiences_list"
-						]
-					}
-				]
-			}
-		]
-	},
-	"api": {
-		"mdx": {
-			"server": "https://public.plai.io",
-			"auth": {
-				"method": "key",
-				"name": "x-api-key"
-			}
-		},
-		"playground": {
-			"proxy": false
-		}
-	},
-	"logo": {
-		"light": "/logo/light.svg",
-		"dark": "/logo/dark.svg"
-	},
-	"navbar": {
-		"links": [
-			{
-				"label": "Support",
-				"href": "https://www.plai.io/about-us#wf-form-Newsletter-Form"
-			}
-		],
-		"primary": {
-			"type": "button",
-			"label": "Dashboard",
-			"href": "https://whitelabel.plai.io"
-		}
-	},
-	"footer": {
-		"socials": {
-			"facebook": "https://www.facebook.com/plaiapp",
-			"instagram": "https://www.facebook.com/plaiapp",
-			"linkedin": "https://www.linkedin.com/company/plaiio"
-		}
-	}
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Plai Api Docs",
+  "colors": {
+    "primary": "#1E45F9",
+    "light": "#0A84E3",
+    "dark": "#1E45F9"
+  },
+  "favicon": "/favicon.png",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Getting Started",
+        "pages": ["introduction", "quickstart"]
+      },
+      {
+        "group": "Api Endpoints",
+        "pages": [
+          {
+            "group": "Authentication",
+            "icon": "user",
+            "pages": [
+              "api-reference/endpoint/auth/auth_overview",
+              "api-reference/endpoint/auth/create_user",
+              "api-reference/endpoint/auth/get_profile",
+              "api-reference/endpoint/auth/create_advert",
+              "api-reference/endpoint/auth/get_connected_accounts"
+            ]
+          },
+          {
+            "group": "Meta APIs",
+            "icon": "meta",
+            "pages": [
+              "api-reference/endpoint/meta/meta_overview",
+              {
+                "group": "Campaign",
+                "icon": "megaphone",
+                "pages": [
+                  "api-reference/endpoint/meta/campaign_overview",
+                  {
+                    "group": "Campaign Goals",
+                    "icon": "flag",
+                    "pages": [
+                      {
+                        "group": "Traffic",
+                        "icon": "arrow-right",
+                        "pages": [
+                          "api-reference/endpoint/meta/campaign/traffic_dynamic",
+                          "api-reference/endpoint/meta/campaign/traffic_standard"
+                        ]
+                      },
+                      {
+                        "group": "Leads",
+                        "icon": "users",
+                        "pages": [
+                          "api-reference/endpoint/meta/campaign/leads_dynamic",
+                          "api-reference/endpoint/meta/campaign/leads_standard"
+                        ]
+                      },
+                      {
+                        "group": "Sales",
+                        "icon": "chart-area",
+                        "pages": [
+                          "api-reference/endpoint/meta/campaign/sales_dynamic",
+                          "api-reference/endpoint/meta/campaign/sales_standard"
+                        ]
+                      },
+                      {
+                        "group": "Awareness",
+                        "icon": "megaphone",
+                        "pages": [
+                          "api-reference/endpoint/meta/campaign/awareness_dynamic",
+                          "api-reference/endpoint/meta/campaign/awareness_standard"
+                        ]
+                      },
+                      {
+                        "group": "Conversion",
+                        "icon": "badge-check",
+                        "pages": [
+                          "api-reference/endpoint/meta/campaign/conversion_dynamic",
+                          "api-reference/endpoint/meta/campaign/conversion_standard"
+                        ]
+                      },
+                      {
+                        "group": "Message Ads",
+                        "icon": "message",
+                        "pages": [
+                          "api-reference/endpoint/meta/campaign/engagement"
+                        ]
+                      },
+                      {
+                        "group": "Phone Call",
+                        "icon": "phone",
+                        "pages": [
+                          "api-reference/endpoint/meta/campaign/phone_call"
+                        ]
+                      },
+                      {
+                        "group": "Boost Post",
+                        "icon": "arrow-up-right",
+                        "pages": [
+                          "api-reference/endpoint/meta/campaign/boost_post"
+                        ]
+                      }
+                    ]
+                  },
+                  "api-reference/endpoint/meta/get_campaign_insights",
+                  "api-reference/endpoint/meta/update_campaign_status"
+                ]
+              },
+              {
+                "group": "Audience",
+                "icon": "users",
+                "pages": [
+                  "api-reference/endpoint/meta/create_fb_csv_audience",
+                  "api-reference/endpoint/meta/create_lookalike_audience",
+                  "api-reference/endpoint/meta/create_leadform_audience",
+                  "api-reference/endpoint/meta/create_page_audience",
+                  "api-reference/endpoint/meta/get_custom_audiences"
+                ]
+              },
+              {
+                "group": "Lead Form",
+                "icon": "align-left",
+                "pages": [
+                  "api-reference/endpoint/meta/check_leadform_tos",
+                  "api-reference/endpoint/meta/create_leadform",
+                  "api-reference/endpoint/meta/get_leadforms"
+                ]
+              },
+              {
+                "group": "Targeting",
+                "icon": "circle-plus",
+                "pages": [
+                  "api-reference/endpoint/meta/search_targeting_interests",
+                  "api-reference/endpoint/meta/search_targeting_locations",
+                  "api-reference/endpoint/meta/get_pixels_list",
+                  "api-reference/endpoint/meta/get_custom_conversions",
+                  "api-reference/endpoint/meta/get_targeting_systems_lookup",
+                  "api-reference/endpoint/meta/get_targeting_locales"
+                ]
+              },
+              {
+                "group": "Media",
+                "icon": "clapperboard",
+                "pages": [
+                  "api-reference/endpoint/meta/get_ad_account_media",
+                  "api-reference/endpoint/meta/get_fb_page_media",
+                  "api-reference/endpoint/meta/get_ig_page_media",
+                  "api-reference/endpoint/meta/get_page_posts",
+                  "api-reference/endpoint/meta/upload_video",
+                  "api-reference/endpoint/meta/get_video_info"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Linkedin APIs",
+            "icon": "linkedin",
+            "pages": [
+              "api-reference/endpoint/linkedin/linkedin_overview",
+              "api-reference/endpoint/linkedin/create_csv_audience",
+              "api-reference/endpoint/linkedin/link_csv_audience",
+              "api-reference/endpoint/linkedin/get_audiences_list"
+            ]
+          },
+          {
+            "group": "Google APIs",
+            "icon": "google",
+            "pages": [
+              "api-reference/endpoint/google/google_overview",
+              {
+                "group": "Campaign",
+                "icon": "megaphone",
+                "pages": [
+                  "api-reference/endpoint/google/create_lead_form",
+                  "api-reference/endpoint/google/get_lead_forms",
+                  "api-reference/endpoint/google/check_lead_form_acceptance"
+                ]
+              },
+              {
+                "group": "Lead Form",
+                "icon": "align-left",
+                "pages": [
+                  "api-reference/endpoint/google/create_search_campaign",
+                  "api-reference/endpoint/google/update_campaign_status",
+                  "api-reference/endpoint/google/get_google_ads_result"
+                ]
+              },
+              {
+                "group": "Utilities",
+                "icon": "gear",
+                "pages": [
+                  "api-reference/endpoint/google/generate_keyword_ideas",
+                  "api-reference/endpoint/google/get_conversion_action",
+                  "api-reference/endpoint/google/get_location_asset",
+                  "api-reference/endpoint/google/customer_status",
+                  "api-reference/endpoint/google/get_location_v2"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "api": {
+    "mdx": {
+      "server": "https://public.plai.io",
+      "auth": {
+        "method": "key",
+        "name": "x-api-key"
+      }
+    },
+    "playground": {
+      "proxy": false
+    }
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "https://www.plai.io/about-us#wf-form-Newsletter-Form"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://whitelabel.plai.io"
+    }
+  },
+  "footer": {
+    "socials": {
+      "facebook": "https://www.facebook.com/plaiapp",
+      "instagram": "https://www.facebook.com/plaiapp",
+      "linkedin": "https://www.linkedin.com/company/plaiio"
+    }
+  }
 }

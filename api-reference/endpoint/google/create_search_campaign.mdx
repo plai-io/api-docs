@@ -1,0 +1,284 @@
+---
+title: "Create Search Campaign"
+api: "POST /gads/create_search_campaign"
+description: "This endpoint is used to create a search campaign."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="goal" type="string" required>
+	Name of the campaign
+</ParamField>
+
+<ParamField body="amount" type="string" required>
+	Amount of the campaign
+</ParamField>
+
+<ParamField body="userListId" type="string | string[]">
+	User List ID(s). Can be a single string or an array of strings.
+</ParamField>
+
+<ParamField body="startDate" type="string" required>
+	Start Date Format: `YYYY-MM-DD`
+</ParamField>
+
+<ParamField body="endDate" type="string">
+	End Date Format: `YYYY-MM-DD`
+</ParamField>
+
+<ParamField body="keywords" type="array" required>
+	Keywords for the campaign. Can be an array of strings or objects with text and match_type properties.
+	
+	<Expandable title="Keyword Object">
+		<ParamField body="text" type="string" required>
+			The keyword text
+		</ParamField>
+		
+		<ParamField body="match_type" type="string" required>
+			The match type for the keyword
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="negativeKeywords" type="array">
+	Negative keywords for the campaign. Keywords that should not trigger the ad.
+	
+	<Expandable title="Negative Keywords Array">
+		<ParamField body="text" type="string">
+			The negative keyword text
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="locations" type="array">
+	Target locations for the campaign. Array of location strings.
+	
+	<Expandable title="Locations Array">
+		<ParamField body="location" type="string">
+			Location string (e.g., city name, country, etc.)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="proximityTargeting" type="array">
+	Proximity targeting for the campaign. Array of proximity targeting objects.
+	
+	<Expandable title="Proximity Targeting Array">
+		<ParamField body="radius_units" type="string" required>
+			Units for the radius (e.g., "MILES", "KILOMETERS")
+		</ParamField>
+		
+		<ParamField body="radius" type="number" required>
+			Radius value for the proximity targeting
+		</ParamField>
+		
+		<ParamField body="longitude_in_micro_degrees" type="number" required>
+			Longitude in micro degrees
+		</ParamField>
+		
+		<ParamField body="latitude_in_micro_degrees" type="number" required>
+			Latitude in micro degrees
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="negativeLocations" type="array">
+	Negative locations for the campaign. Locations that should be excluded from targeting.
+	
+	<Expandable title="Negative Locations Array">
+		<ParamField body="location" type="string">
+			Location string to exclude from targeting (e.g., city name, country, etc.)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="languages" type="array">
+	Languages for the campaign. Array of language strings.
+	
+	<Expandable title="Languages Array">
+		<ParamField body="language" type="string">
+			Language string (e.g., "en", "es", "fr", etc.)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="ads" type="array">
+	Ads array for the campaign. Array of ad objects containing creative elements.
+	
+	<Expandable title="Ads Array">
+		<ParamField body="url" type="string" required>
+			Destination URL for the ad
+		</ParamField>
+		
+		<ParamField body="headlines" type="array" required>
+			Array of headline strings for the ad
+			
+			<Expandable title="Headlines Array">
+				<ParamField body="headline" type="string">
+					Headline text for the ad
+				</ParamField>
+			</Expandable>
+		</ParamField>
+		
+		<ParamField body="descriptions" type="array" required>
+			Array of description strings for the ad
+			
+			<Expandable title="Descriptions Array">
+				<ParamField body="description" type="string">
+					Description text for the ad
+				</ParamField>
+			</Expandable>
+		</ParamField>
+		
+		<ParamField body="headlineIndexToPinFirstSlot" type="number">
+			Index of the headline to pin to the first slot (optional)
+		</ParamField>
+		
+		<ParamField body="descriptionIndexToPinFirstSlot" type="number">
+			Index of the description to pin to the first slot (optional)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="conversionCategory" type="array">
+	Conversion categories for the campaign. Array of conversion category strings.
+	
+	<Expandable title="Conversion Category Array">
+		<ParamField body="category" type="string">
+			Conversion category string (e.g., "PURCHASE", "SIGN_UP", "LEAD", etc.)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="callouts" type="array">
+	Callouts array for the campaign. Array of callout strings.
+	
+	<Expandable title="Callouts Array">
+		<ParamField body="callout" type="string">
+			Callout text string (e.g., "Free shipping", "24/7 support", etc.)
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="phoneNumber" type="string">
+	Phone number for the campaign (optional)
+</ParamField>
+
+<ParamField body="phoneNumberCountryCode" type="string">
+	Country code for the phone number (optional)
+</ParamField>
+
+<ParamField body="leadFormAssetId" type="string">
+	Lead form asset ID for the campaign (optional)
+</ParamField>
+
+<ParamField body="siteLink" type="array">
+	Site links array for the campaign. Array of site link objects. Minimum 2 items required.
+	
+	<Expandable title="Site Link Array">
+		<ParamField body="sitelinkText" type="string" required>
+			Text for the site link
+		</ParamField>
+		
+		<ParamField body="url" type="string" required>
+			URL for the site link
+		</ParamField>
+		
+		<ParamField body="line1" type="string" required>
+			First line of the site link description
+		</ParamField>
+		
+		<ParamField body="line2" type="string" required>
+			Second line of the site link description
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="images" type="array">
+	Images array for the campaign. Array of image URLs.
+	
+	<Expandable title="Images Array">
+		<ParamField body="image" type="string">
+			Image URL string
+		</ParamField>
+	</Expandable>
+</ParamField>
+
+<ParamField body="tracking_url_template" type="string">
+	Tracking URL template for the campaign (optional)
+</ParamField>
+
+<ParamField body="currencyCode" type="string">
+	Currency code for the campaign (optional)
+</ParamField>
+
+<ParamField body="geo_target_type" type="string">
+	Geographic targeting type for the campaign
+	
+	Valid values: `PRESENCE`, `PRESENCE_OR_INTEREST`
+</ParamField>
+
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+ 
+
+
+      <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+  </Expandable>
+</ResponseField>
+
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			       Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+
+        <ResponseField name="adGroupResourceName" type="string">
+			       Ad Group Resource Name
+        </ResponseField>
+
+        <ResponseField name="campaignResourceName" type="string">
+			       Campaign Resource Name
+        </ResponseField>
+
+        <ResponseField name="additionalMessage" type="string">
+          Additional Message
+        </ResponseField>
+
+        <ResponseField name="campaignSentForHumanReview" type="string">
+          Campaign Sent For Human Review
+        </ResponseField>
+
+      <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+  </Expandable>
+</ResponseField>

@@ -1,0 +1,196 @@
+---
+title: "Get Google Ads Result"
+api: "POST /gads/get_google_ads_result"
+description: "This endpoint is used to get the result of a google ads campaign."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="campaignId" type="string" required>
+	Campaign ID
+</ParamField>
+
+<ParamField body="startDate" type="string">
+	Start Date Format: `YYYY-MM-DD`
+</ParamField>
+
+<ParamField body="endDate" type="string">
+	End Date Format: `YYYY-MM-DD`
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+
+       	<ResponseField name="stats" type="object[]">
+            <Expandable title="Stats Object">
+                <ResponseField name="campaignid" type="string">
+                    Campaign ID
+                </ResponseField>
+
+                <ResponseField name="campaignName" type="string">
+                    Campaign Name
+                </ResponseField>
+
+                <ResponseField name="servingStatus" type="string">
+                    Serving Status
+                </ResponseField>
+
+                <ResponseField name="advertising_channel_type" type="string">
+                    Advertising Channel Type
+                </ResponseField>
+
+                <ResponseField name="status" type="string">
+                    Status
+                </ResponseField>
+
+                <ResponseField name="avgPosition" type="string">
+                    Average Position
+                </ResponseField>
+
+                <ResponseField name="clicks" type="string">
+                    Clicks
+                </ResponseField>
+
+                <ResponseField name="conversions" type="string">
+                    Conversions
+                </ResponseField>
+
+                <ResponseField name="cost" type="string">
+                    Cost
+                </ResponseField>
+
+                <ResponseField name="ctr" type="string">
+                    CTR
+                </ResponseField>
+
+                <ResponseField name="impressions" type="string">
+                    Impressions
+                </ResponseField>
+
+                <ResponseField name="interactions" type="string">
+                    Interactions
+                </ResponseField>
+
+                <ResponseField name="topImpressionPercentage" type="string">
+                    Top Impression Percentage
+                </ResponseField>
+
+                <ResponseField name="videoViews" type="string">
+                    Video Views
+                </ResponseField>
+
+                <ResponseField name="videoViewRate" type="string">
+                    Video View Rate
+                </ResponseField>
+
+                <ResponseField name="averageCpv" type="string">
+                    Average CPV
+                </ResponseField>
+
+                <ResponseField name="cpm" type="string">
+                    CPM
+                </ResponseField>
+
+                <ResponseField name="conversionRateRanking" type="string">
+                    Conversion Rate Ranking
+                </ResponseField>
+
+                <ResponseField name="costPerConversion" type="string">
+                    Cost Per Conversion
+                </ResponseField>
+
+                <ResponseField name="dateStart" type="string">
+                    Date Start
+                </ResponseField>
+
+                <ResponseField name="cpc" type="string">
+                    CPC
+                </ResponseField>
+
+                <ResponseField name="timeUnit" type="string">
+                    Time Unit
+                </ResponseField>
+
+                <ResponseField name="spend" type="string">
+                    Spend
+                </ResponseField>
+
+                <ResponseField name="phone_calls" type="string">
+                    Phone Calls
+                </ResponseField>
+
+                <ResponseField name="phone_impressions" type="string">
+                    Phone Impressions
+                </ResponseField>
+
+                <ResponseField name="phone_through_rate" type="string">
+                    Phone Through Rate
+                </ResponseField>
+
+                <ResponseField name="searchImpressionShare" type="string">
+                    Search Impression Share
+                </ResponseField>
+
+                <ResponseField name="searchBudgetLostImpressionShare" type="string">
+                    Search Budget Lost Impression Share
+                </ResponseField>
+
+                <ResponseField name="searchRankLostImpressionShare" type="string">
+                    Search Rank Lost Impression Share
+                </ResponseField>
+
+                <ResponseField name="primary_status" type="string">
+                    Primary Status
+                </ResponseField>
+
+                <ResponseField name="primary_status_reasons" type="string[]">
+                    Primary Status Reasons
+                </ResponseField>
+
+                <ResponseField name="all_conversions" type="string">
+                    All Conversions
+                </ResponseField>
+
+                <ResponseField name="all_conversions_value" type="string">
+                    All Conversions Value
+                </ResponseField>
+
+                <ResponseField name="display_spend" type="string">
+                    Display Spend
+                </ResponseField>
+
+                <ResponseField name="display_cpc" type="string">
+                    Display CPC
+                </ResponseField>
+
+                <ResponseField name="display_costPerConversion" type="string">
+                    Display Cost Per Conversion
+                </ResponseField>
+
+      
+                                                                                                          
+       
+            </Expandable>
+        </ResponseField>
+
+     <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+    </Expandable>
+</ResponseField>
