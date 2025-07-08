@@ -1,7 +1,7 @@
 ---
 title: "Get Location Asset"
 api: "POST /gads/get_location_asset"
-description: "This endpoint is used to get a location asset."
+description: "This endpoint retrieves the location assets linked to the user's Google Ads account. These assets include details such as the location name, ID, and place ID, which are used to show business locations on Google Maps or in location-based ad extensions. Use this to fetch and manage your connected business locations."
 ---
 
 ## Request Body
@@ -38,12 +38,7 @@ description: "This endpoint is used to get a location asset."
 
                 <ResponseField name="place_id" type="string">
                     Place ID of the location asset
-                </ResponseField>
- 
-
-               
-
-       
+                </ResponseField>                     
             </Expandable>
         </ResponseField>
 

@@ -166,7 +166,7 @@
             ]
           },
           {
-            "group": "Google APIs",
+            "group": "Google Ads APIs",
             "icon": "google",
             "pages": [
               "api-reference/endpoint/google/google_overview",
@@ -174,18 +174,18 @@
                 "group": "Campaign",
                 "icon": "megaphone",
                 "pages": [
-                  "api-reference/endpoint/google/create_lead_form",
-                  "api-reference/endpoint/google/get_lead_forms",
-                  "api-reference/endpoint/google/check_lead_form_acceptance"
+                  "api-reference/endpoint/google/create_search_campaign",
+                  "api-reference/endpoint/google/update_campaign_status",
+                  "api-reference/endpoint/google/get_google_ads_result"
                 ]
               },
               {
                 "group": "Lead Form",
                 "icon": "align-left",
                 "pages": [
-                  "api-reference/endpoint/google/create_search_campaign",
-                  "api-reference/endpoint/google/update_campaign_status",
-                  "api-reference/endpoint/google/get_google_ads_result"
+                  "api-reference/endpoint/google/create_lead_form",
+                  "api-reference/endpoint/google/get_lead_forms",
+                  "api-reference/endpoint/google/check_lead_form_acceptance"
                 ]
               },
               {
@@ -193,10 +193,11 @@
                 "icon": "gear",
                 "pages": [
                   "api-reference/endpoint/google/generate_keyword_ideas",
-                  "api-reference/endpoint/google/get_conversion_action",
+                  "api-reference/endpoint/google/get_conversion_event",
                   "api-reference/endpoint/google/get_location_asset",
-                  "api-reference/endpoint/google/customer_status",
-                  "api-reference/endpoint/google/get_location_v2"
+                  "api-reference/endpoint/google/check_image_asset_eligibility",
+                  "api-reference/endpoint/google/get_location_id",
+                  "api-reference/endpoint/google/create_location_group"
                 ]
               }
             ]

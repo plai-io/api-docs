@@ -1,7 +1,7 @@
 ---
-title: "Customer Status"
-api: "POST /gads/customer_status"
-description: "This endpoint is used to check the status of a customer."
+title: "Get Conversion Event"
+api: "POST /gads/get_conversion_event"
+description: "This endpoint retrieves the available conversion events linked to a Google Ads account. Use it to fetch and display valid options when setting up a campaign with a conversion-based objective."
 ---
 
 ## Request Body
@@ -27,10 +27,9 @@ description: "This endpoint is used to check the status of a customer."
 			Indicates whether the specific operation or API action was successful.
         </ResponseField>
 
-      <ResponseField name="isEligibleForSearcgAdImageAsset" type="boolean">
-           Is eligible for search ad image asset
+      <ResponseField name="events" type="string[]">
+           Events of the conversion actions
       </ResponseField>
-
 
       <ResponseField name="error" type="string">
     		Error string if something went wrong

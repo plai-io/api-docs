@@ -1,0 +1,50 @@
+---
+title: "Create Location Group"
+api: "POST /gads/create_location_group"
+description: |
+  This endpoint creates a location group in the user's Google Ads account by grouping multiple business locations together.
+
+  The required `locationAssetIds` should be obtained from the [Get Location Asset API](/api-reference/endpoint/gads/get_location_asset), which returns the connected business locations and their corresponding IDs.
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="locationAssetIds" type="string[]" required>
+Array of location asset IDs representing your connected business locations in Google Ads.  
+
+These IDs are used to generate a `locationGroupId` within the `create_search_campaign` endpoint, allowing your ads to appear on Google Maps and in location-based search results.
+
+You can retrieve these IDs by calling the [Get Location Asset API](/api-reference/endpoint/gads/get_location_asset) and using the `id` field from each returned location.
+</ParamField>
+
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+
+     <ResponseField name="locationGroupId" type="string">
+Unique identifier of the location group created using the provided location asset IDs.  
+
+This ID should be passed to the `create_search_campaign` endpoint to associate the location group with your campaign, enabling ads to appear on Google Maps and in location-based results.
+</ResponseField>
+
+     <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+    </Expandable>
+</ResponseField>

@@ -1,7 +1,7 @@
 ---
-title: "Get Conversion Action"
-api: "POST /gads/get_conversion_action"
-description: "This endpoint is used to get a conversion action."
+title: "Check Image Asset Eligibility"
+api: "POST /gads/account_status"
+description: "This endpoint checks whether a Google Ads account is eligible to use image assets in search ads. Use this to verify account capabilities before proceeding with campaign setup."
 ---
 
 ## Request Body
@@ -27,9 +27,12 @@ description: "This endpoint is used to get a conversion action."
 			Indicates whether the specific operation or API action was successful.
         </ResponseField>
 
-      <ResponseField name="categories" type="string[]">
-           Categories of conversion actions
+      <ResponseField name="isEligibleForSearchAdImageAsset" type="boolean">
+          Specifies whether the Google Ads account is eligible to use image assets in search ads.
+
+          Returns `true` if the account supports image extensions for Search campaigns.
       </ResponseField>
+
 
       <ResponseField name="error" type="string">
     		Error string if something went wrong
