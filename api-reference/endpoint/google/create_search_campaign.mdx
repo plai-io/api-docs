@@ -1,0 +1,297 @@
+---
+title: "Create Search Campaign"
+api: "POST /gads/create_search_campaign"
+description: "This endpoint generates a new Google Search campaign based on the selected objective. You can choose between driving website traffic or generating conversions such as sign-ups, purchases, or lead submissions. The campaign setup includes all necessary details like targeting locations, ad creatives, daily budget, keywords, and optimization preferences to control how and where your ads are delivered."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+User ID, If not already created, make a user on [create user
+page](/api-reference/endpoint/auth/create_user) first. If already created,
+retrieve the user ID from [get profile
+page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="objective" type="string" required>
+Specifies the goal of the campaign. Determines how the campaign is optimized and what actions are prioritized.
+
+- `TRAFFIC`: Optimizes the campaign to drive users to a website or landing page.
+
+- `CONVERSION`: Optimizes the campaign to drive valuable actions like sign-ups, purchases, or leads.
+
+
+Valid `objective` values: `CONVERSION`, `TRAFFIC`
+
+</ParamField>
+
+<ParamField body="campaignName" type="string" required>
+Name of the campaign
+</ParamField>
+
+<ParamField body="dailyBudget" type="string" required>
+Daily budget of the campaign
+
+<ParamField body="dailyBudget" type="string" required>
+Daily budget of the campaign.
+
+<Note> The currency used for the `dailyBudget` is the same as the one set during the ad account creation.</Note>
+</ParamField>
+
+</ParamField>
+
+
+
+<ParamField body="startDate" type="string" required>
+Start Date Format: `YYYY-MM-DD`, use to schedule the campaign to start at a specific date.
+</ParamField>
+
+<ParamField body="endDate" type="string">
+End Date Format: `YYYY-MM-DD`, use to schedule the campaign to end at a specific date.
+</ParamField>
+
+<ParamField body="keywords" type="object[]" required>
+Keywords for the campaign. You can either pass your own keywords or use our [generate keyword ideas API](/api-reference/endpoint/google/generate_keyword_ideas) to get keyword suggestions.
+
+<Expandable title="Keyword Object">
+<ParamField body="text" type="string" required>
+The keyword text
+</ParamField>
+
+<ParamField body="match_type" type="string" required>
+The match type for the keyword
+
+Valid `match_type` values: `EXACT`, `PHRASE`, `BROAD`
+
+</ParamField>
+</Expandable>
+</ParamField>
+
+
+
+<ParamField body="negativeKeywords" type="object[]">
+Negative keywords for the campaign. Locations that should be excluded from targeting. You can either pass your own keywords or use our [generate keyword ideas API](/api-reference/endpoint/google/generate_keyword_ideas) to get keyword suggestions.
+
+<Expandable title="Negative Keyword Object">
+<ParamField body="text" type="string" required>
+The keyword text
+</ParamField>
+
+<ParamField body="match_type" type="string" required>
+The match type for the keyword
+
+Valid `match_type` values: `EXACT`, `PHRASE`, `BROAD`
+
+</ParamField>
+</Expandable>
+</ParamField>
+
+<ParamField body="locations" type="string[]" required>
+`locations` is an array of target `location IDs` for the campaign. To get the `locationId` reference [get location API](/api-reference/endpoint/google/get_location_id).
+<Note>
+Locations is required if `proximityTargeting` is not provided.
+</Note>
+</ParamField>
+
+<ParamField body="proximityTargeting" type="object[]">
+`proximityTargeting` allows you to define `radius-based` targeting for your campaign. Use this when you want to show ads to users within a certain distance from a specific geographic point. This is especially useful for local businesses or location-based services.
+
+
+<Expandable title="Proximity Targeting Object">
+<ParamField body="radius_units" type="string" required>
+The unit of distance for the radius.  
+
+Example: `"MILES"`
+
+Valid values: `"MILES"` or `"KILOMETERS"`  
+</ParamField>
+
+<ParamField body="radius" type="number" required>
+The radius around the specified location where ads will be shown.  
+
+Measured in the units defined by `radius_units`.  
+
+Example: `10` (meaning 10 miles or kilometers based on your setting)
+</ParamField>
+
+<ParamField body="longitude_in_micro_degrees" type="number" required>
+The longitude of the center point, expressed in micro degrees (1 degree = 1,000,000 micro degrees).  
+
+Example: `73680000` equals `73.68°`
+</ParamField>
+
+<ParamField body="latitude_in_micro_degrees" type="number" required>
+The latitude of the center point, expressed in micro degrees.  
+
+Example: `31500000` equals `31.5°`
+</ParamField>
+</Expandable>
+
+<Note>
+Proximity targeting is required if `locations` is not provided.
+</Note>
+</ParamField>
+
+<ParamField body="negativeLocations" type="string[]">
+`negative_locations` is an array of `location IDs` that you want to exclude from the campaign targeting. To get the `locationId` reference [get location API](/api-reference/endpoint/google/get_location_id).
+</ParamField>
+
+<ParamField body="geo_target_type" type="string">
+Targeting type for the campaign
+
+Valid values: `PRESENCE`, `PRESENCE_OR_INTEREST`
+
+<Note>
+Default `geo_target_type` is `PRESENCE`.
+</Note>
+</ParamField>
+
+
+<ParamField body="languages" type="string[]">
+Languages for the campaign. Array of language code strings.
+
+Language code string (e.g., "en", "es", "fr", etc.)
+</ParamField>
+
+<ParamField body="ads" type="object[]" required>
+`ads` defines the list of ad creatives to be used in the campaign. Each entry includes the destination `URL`, multiple `headlines` and `descriptions` (as arrays of strings), along with optional fields to pin a specific headline or description to the top position in the ad.
+
+<Expandable title="Ads Object">
+<ParamField body="url" type="url" required>
+The final destination URL of the ad. This is where users are taken after clicking the ad.
+</ParamField>
+
+<ParamField body="headlines" type="string[]" required>
+A headline is a short message (max **30 characters**) that appears as the clickable title of your ad. It's the first thing users see in search results.  
+
+Example: `"Get 50% Off Today"`, `"Best Cleaning Services"`, `"Book in 2 Minutes"`
+
+<Warning>
+An array of short, attention-grabbing titles (3 to 15 items).  
+</Warning>
+</ParamField>
+
+<ParamField body="descriptions" type="string[]" required>
+A description provides supporting details (max **90 characters**) about your product, offer, or service. It helps convince users to click.  
+
+Example: `"Free shipping on all orders over $25"`, `"Trusted by 10,000+ customers"`
+
+<Warning>
+An array of detailed ad descriptions (2 to 4 items).  
+</Warning>
+</ParamField>
+
+<ParamField body="headlineIndexToPinFirstSlot" type="number">
+Index of a headline (from the `headlines` array) to always show in the **first slot** of the ad. Use this to prioritize important messages.
+
+</ParamField>
+
+<ParamField body="descriptionIndexToPinFirstSlot" type="number">
+Index of a description (from the `descriptions` array) to always show in the **first slot** of the ad.
+</ParamField>
+</Expandable>
+</ParamField>
+
+<ParamField body="conversionEvents" type="string[]">
+`conversionEvents` is an array of strings that define the desired conversion actions for the campaign. To get the conversion categories reference [get conversion action API](/api-reference/endpoint/google/get_conversion_event).
+
+<Note>
+Conversion events are required if `objective` is "CONVERSION".
+</Note>
+
+</ParamField>
+
+<ParamField body="callouts" type="string[]" required>
+Callouts are Keywords for the campaign. You can either type your own keywords or use our [generate keyword ideas API](/api-reference/endpoint/google/generate_keyword_ideas) to get keyword suggestions.
+</ParamField>
+
+<ParamField body="phoneNumber" type="string">
+Phone number to be displayed with the campaign. Must be in a valid local format.  
+Example: (201) 555-0123
+</ParamField>
+
+<ParamField body="phoneNumberCountryCode" type="string">
+Two-letter country code in uppercase (ISO format).  
+Example: "US", "PK", "BE"
+
+<Note>
+`phoneNumberCountryCode` is required if `phoneNumber` is provided.
+</Note>
+</ParamField>
+
+
+
+<ParamField body="leadFormAssetId" type="string">
+A lead form is a Google Ads asset used to collect user information directly within the ad.
+To get the lead form asset ID reference [get lead forms API](/api-reference/endpoint/google/get_lead_forms) or [create lead form API](/api-reference/endpoint/google/create_lead_form).
+
+</ParamField>
+
+
+
+<ParamField body="images" type="string[]">
+Image assets for the campaign. Provide an array of image URLs. Make sure the connected Google Ads account is eligible to use image assets by using our [Image Asset Eligibility API](/api-reference/endpoint/google/check_image_asset_eligibility).
+</ParamField>
+
+
+<ParamField body="utmParams" type="string">
+UTM parameters for the campaign
+</ParamField>
+
+<ParamField body="locationGroupId" type="string">
+Unique identifier of the location group to associate with this campaign.  
+
+This ID allows your ads to appear on Google Maps and in location-based search results by linking your campaign to a group of business locations.  
+
+You can obtain the `locationGroupId` by calling the [Create Location Group API](/api-reference/endpoint/google/create_location_group).
+</ParamField>
+
+
+
+
+
+
+
+
+
+## Response
+
+<ResponseField name="success" type="boolean">
+Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+
+<ResponseField name="results" type="object">
+<Expandable title="Results Object">
+<ResponseField name="success" type="boolean">
+Indicates whether the specific operation or API action was successful.
+</ResponseField>
+
+<ResponseField name="adGroupResourceName" type="string">
+Full resource name of the created Ad Group.  
+
+Example: `"customers/123/adGroups/456"`
+</ResponseField>
+
+<ResponseField name="campaignResourceName" type="string">
+Full resource name of the associated campaign.  
+
+Format: `"customers/{customerId}/campaigns/{campaignId}"`  
+
+To extract the `campaignId`, split the string by `/` and use the last segment.  
+
+Example:  
+Input: `"customers/123/campaigns/789"` → `campaignId = 789`
+</ResponseField>
+
+<ResponseField name="additionalMessage" type="string">
+Any optional message related to the operation, such as warnings or notes.
+
+</ResponseField>
+
+
+<ResponseField name="error" type="string">
+Error string if something went wrong
+</ResponseField>
+</Expandable>
+</ResponseField>

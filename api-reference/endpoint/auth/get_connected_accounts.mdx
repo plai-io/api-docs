@@ -109,6 +109,34 @@ description: "This endpoint allows you to retrieve a list of ads accounts (e.g.,
     					</ResponseField>
     				</Expandable>
     			</ResponseField>
+
+							<ResponseField
+    				name="googleAds"
+    				type="object"
+    				dynamicKey="socialMediaPlatform"
+    			>
+    				<Expandable title="Google Ads Account Details">
+    					<ResponseField name="userName" type="string" >
+    						The authenticated user's display name
+    					</ResponseField>
+											<ResponseField name="email" type="string" >
+    						The authenticated user's email
+    					</ResponseField>
+    					<ResponseField name="accountId" type="number" >
+    						Platform-specific account identifier
+    					</ResponseField>
+    					<ResponseField name="accountName" type="string">
+    						Account Name
+    					</ResponseField>
+    					<ResponseField name="currencyCode" type="string">
+    						3-letter ISO currency code for the account
+    					</ResponseField>
+    					<ResponseField name="managerId" type="string">
+    						Manager ID
+    					</ResponseField>
+    				</Expandable>
+    			</ResponseField>
+
     		</Expandable>
     	</ResponseField>
     	<ResponseField name="error" type="string">
