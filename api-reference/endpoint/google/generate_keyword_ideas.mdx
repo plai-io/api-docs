@@ -10,13 +10,25 @@ description: "This endpoint generates keyword ideas related to a given input key
 	Keyword for generating similar keyword ideas.
 </ParamField>
 
-<ParamField body="languageId" type="number">
+{/* <ParamField body="languageId" type="number">
 Language ID for generating keyword ideas.  
 
 You can find supported `languageIds` in the  
 [Google Ads Language Codes Table](https://developers.google.com/static/google-ads/api/data/tables/languagecodes.csv).
 
 Default languageId is **English**.  
+</ParamField> */}
+
+<ParamField body="languageId" type="string">
+`languageId` for generating keyword ideas. 
+  <Card
+        title="You can find supported `languageIds` by downloading the file and use the column `Criterion ID` as the `languageId`"
+    	horizontal
+        icon="download"
+        href="https://developers.google.com/static/google-ads/api/data/tables/languagecodes.csv"
+    />
+
+<Note>Default `languageId` is **English**.</Note> 
 </ParamField>
 
 <ParamField body="locationIds" type="string[]">
@@ -24,8 +36,10 @@ Default languageId is **English**.
 
     You can retrieve the appropriate `locationId` using the [Get Location API](/api-reference/endpoint/gads/get_location_v2).
 
-    Default `locationId` is **United States**.
+    <Note>Default `locationId` is **United States**.</Note>
 </ParamField>
+
+
 
 ## Response
 

@@ -193,11 +193,11 @@
                 "icon": "gear",
                 "pages": [
                   "api-reference/endpoint/google/generate_keyword_ideas",
-                  "api-reference/endpoint/google/get_conversion_event",
-                  "api-reference/endpoint/google/get_location_asset",
-                  "api-reference/endpoint/google/check_image_asset_eligibility",
                   "api-reference/endpoint/google/get_location_id",
-                  "api-reference/endpoint/google/create_location_group"
+                  "api-reference/endpoint/google/get_conversion_event",
+                  "api-reference/endpoint/google/check_image_asset_eligibility",
+                  "api-reference/endpoint/google/create_location_group",
+                  "api-reference/endpoint/google/get_location_asset"
                 ]
               }
             ]

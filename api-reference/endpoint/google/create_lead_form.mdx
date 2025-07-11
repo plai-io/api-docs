@@ -18,7 +18,7 @@ The name of your business or brand, shown at the top of the lead form.
 
 Example: `"Fresh Bites Cafe"`
 
-<Note>Maximum length: **25 characters**.</Note>
+<Warning>Maximum length: **25 characters**.</Warning>
 </ParamField>
 
 <ParamField body="headline" type="string" required>
@@ -26,7 +26,7 @@ Example: `"Fresh Bites Cafe"`
 
 Example: `"Get Your Free Quote"`
 
-<Note>Maximum length: **30 characters**.</Note>
+<Warning>Maximum length: **30 characters**.</Warning>
 
 </ParamField>
 
@@ -35,10 +35,10 @@ Example: `"Get Your Free Quote"`
 
 Example: `"Schedule a consultation in under 2 minutes"`
 
-<Note>Maximum length: **90 characters**</Note>
+<Warning>Maximum length: **90 characters**</Warning>
 </ParamField>
 
-<ParamField body="privacy_policy_url" type="string" required>
+<ParamField body="privacy_policy_url" type="url" required>
 A valid URL linking to your business's privacy policy.  
 Required to comply with data privacy regulations.  
 
@@ -63,10 +63,10 @@ Use this to reinforce value or next steps.
 
 Example: `"We'll contact you within 24 hours with your custom quote."`
 
-<Note>Maximum length: **200 characters**  </Note>
+<Warning>Maximum length: **200 characters**  </Warning>
 </ParamField>
 
-<ParamField body="input_fields" type="string[]">
+<ParamField body="input_fields" type="string[]" required>
 Fields to request from the user in the lead form.
 
 Each string should be one of the predefined input types supported by Google.  

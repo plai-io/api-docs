@@ -31,16 +31,23 @@ Name of the campaign
 
 <ParamField body="dailyBudget" type="string" required>
 Daily budget of the campaign
+
+<ParamField body="dailyBudget" type="string" required>
+Daily budget of the campaign.
+
+<Note> The currency used for the `dailyBudget` is the same as the one set during the ad account creation.</Note>
+</ParamField>
+
 </ParamField>
 
 
 
 <ParamField body="startDate" type="string" required>
-Start Date Format: `YYYY-MM-DD`
+Start Date Format: `YYYY-MM-DD`, use to schedule the campaign to start at a specific date.
 </ParamField>
 
 <ParamField body="endDate" type="string">
-End Date Format: `YYYY-MM-DD`
+End Date Format: `YYYY-MM-DD`, use to schedule the campaign to end at a specific date.
 </ParamField>
 
 <ParamField body="keywords" type="object[]" required>
@@ -129,10 +136,14 @@ Proximity targeting is required if `locations` is not provided.
 `negative_locations` is an array of `location IDs` that you want to exclude from the campaign targeting. To get the `locationId` reference [get location API](/api-reference/endpoint/google/get_location_id).
 </ParamField>
 
-<ParamField body="geo_target_type" type="string" default="PRESENCE">
+<ParamField body="geo_target_type" type="string">
 Targeting type for the campaign
 
 Valid values: `PRESENCE`, `PRESENCE_OR_INTEREST`
+
+<Note>
+Default `geo_target_type` is `PRESENCE`.
+</Note>
 </ParamField>
 
 
@@ -142,11 +153,11 @@ Languages for the campaign. Array of language code strings.
 Language code string (e.g., "en", "es", "fr", etc.)
 </ParamField>
 
-<ParamField body="ads" type="object[]">
+<ParamField body="ads" type="object[]" required>
 `ads` defines the list of ad creatives to be used in the campaign. Each entry includes the destination `URL`, multiple `headlines` and `descriptions` (as arrays of strings), along with optional fields to pin a specific headline or description to the top position in the ad.
 
 <Expandable title="Ads Object">
-<ParamField body="url" type="string" required>
+<ParamField body="url" type="url" required>
 The final destination URL of the ad. This is where users are taken after clicking the ad.
 </ParamField>
 
@@ -155,9 +166,9 @@ A headline is a short message (max **30 characters**) that appears as the clicka
 
 Example: `"Get 50% Off Today"`, `"Best Cleaning Services"`, `"Book in 2 Minutes"`
 
-<Note>
+<Warning>
 An array of short, attention-grabbing titles (3 to 15 items).  
-</Note>
+</Warning>
 </ParamField>
 
 <ParamField body="descriptions" type="string[]" required>
@@ -165,9 +176,9 @@ A description provides supporting details (max **90 characters**) about your pro
 
 Example: `"Free shipping on all orders over $25"`, `"Trusted by 10,000+ customers"`
 
-<Note>
+<Warning>
 An array of detailed ad descriptions (2 to 4 items).  
-</Note>
+</Warning>
 </ParamField>
 
 <ParamField body="headlineIndexToPinFirstSlot" type="number">
@@ -190,7 +201,7 @@ Conversion events are required if `objective` is "CONVERSION".
 
 </ParamField>
 
-<ParamField body="callouts" type="string[]">
+<ParamField body="callouts" type="string[]" required>
 Callouts are Keywords for the campaign. You can either type your own keywords or use our [generate keyword ideas API](/api-reference/endpoint/google/generate_keyword_ideas) to get keyword suggestions.
 </ParamField>
 
@@ -223,7 +234,7 @@ Image assets for the campaign. Provide an array of image URLs. Make sure the con
 </ParamField>
 
 
-<ParamField body="tracking_url_template" type="string">
+<ParamField body="utmParams" type="string">
 UTM parameters for the campaign
 </ParamField>
 
@@ -232,7 +243,7 @@ Unique identifier of the location group to associate with this campaign.
 
 This ID allows your ads to appear on Google Maps and in location-based search results by linking your campaign to a group of business locations.  
 
-You can obtain the `locationGroupId` by calling the [Create Location Group API](/api-reference/endpoint/gads/create_location_group).
+You can obtain the `locationGroupId` by calling the [Create Location Group API](/api-reference/endpoint/google/create_location_group).
 </ParamField>
 
 
