@@ -1,0 +1,104 @@
+---
+title: "Create Lead Form"
+api: "POST /gads/create_lead_form"
+description: "This endpoint creates a new lead form asset for a Google Ads campaign. A lead form allows you to collect user information directly within your ad using customizable fields, headlines, call-to-action text, and a privacy policy link."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="name" type="string" required>
+The name of your business or brand, shown at the top of the lead form.  
+
+Example: `"Fresh Bites Cafe"`
+
+<Warning>Maximum length: **25 characters**.</Warning>
+</ParamField>
+
+<ParamField body="headline" type="string" required>
+	A short, attention-grabbing headline that appears above the form fields.  
+
+Example: `"Get Your Free Quote"`
+
+<Warning>Maximum length: **30 characters**.</Warning>
+
+</ParamField>
+
+<ParamField body="description" type="string" required>
+	A brief description providing context for why users should fill out the form.  
+
+Example: `"Schedule a consultation in under 2 minutes"`
+
+<Warning>Maximum length: **90 characters**</Warning>
+</ParamField>
+
+<ParamField body="privacy_policy_url" type="url" required>
+A valid URL linking to your business's privacy policy.  
+Required to comply with data privacy regulations.  
+
+Example: `"https://yourdomain.com/privacy"`
+
+<Note>Required for compliance with data privacy regulations.</Note>
+</ParamField>
+
+
+
+<ParamField body="call_to_action_type" type="string" required>
+Type of call-to-action button that appears below the form. 
+
+  Choose one from the following supported values:  `LEARN_MORE`, `GET_QUOTE`,`APPLY_NOW`, `SIGN_UP`, `CONTACT_US`, `SUBSCRIBE`, `DOWNLOAD`, `BOOK_NOW`, `GET_OFFER`, `REGISTER`, `GET_INFO`, `REQUEST_DEMO`, `JOIN_NOW`, `GET_STARTED`
+
+</ParamField>
+
+<ParamField body="call_to_action_description" type="string" required>
+A short message shown with the call-to-action button. 
+
+Use this to reinforce value or next steps. 
+
+Example: `"We'll contact you within 24 hours with your custom quote."`
+
+<Warning>Maximum length: **200 characters**  </Warning>
+</ParamField>
+
+<ParamField body="input_fields" type="string[]" required>
+Fields to request from the user in the lead form.
+
+Each string should be one of the predefined input types supported by Google.  
+You may include multiple fields in the array.
+
+	 Supported Input fields: `FULL_NAME`, `EMAIL`, `PHONE_NUMBER`, `POSTAL_CODE`, `STREET_ADDRESS`, `CITY`, `REGION`, `COUNTRY`, `WORK_EMAIL`, `COMPANY_NAME`, `WORK_PHONE`, `JOB_TITLE`, `FIRST_NAME`, `LAST_NAME`, `COMPANY_SIZE`, `ANNUAL_SALES`, `YEARS_IN_BUSINESS`, `JOB_DEPARTMENT`, `JOB_ROLE`, `CATEGORY`, `PREFERRED_CONTACT_METHOD`, `PREFERRED_LOCATION`, `PREFERRED_CONTACT_TIME`, `PURCHASE_TIMELINE`, `YEARS_OF_EXPERIENCE`, `JOB_INDUSTRY`, `LEVEL_OF_EDUCATION`, `PROPERTY_TYPE`, `REALTOR_HELP_GOAL`, `PROPERTY_COMMUNITY`, `PRICE_RANGE`, `NUMBER_OF_BEDROOMS`, `FURNISHED_PROPERTY`, `PETS_ALLOWED_PROPERTY`, `NEXT_PLANNED_PURCHASE`, `EVENT_SIGNUP_INTEREST`, `PREFERRED_SHOPPING_PLACES`, `FAVORITE_BRAND`, `TRANSPORTATION_COMMERCIAL_LICENSE_TYPE`, `EVENT_BOOKING_INTEREST`, `DESTINATION_COUNTRY`, `DESTINATION_CITY`, `DEPARTURE_COUNTRY`, `DEPARTURE_CITY`, `DEPARTURE_DATE`, `RETURN_DATE`, `NUMBER_OF_TRAVELERS`, `TRAVEL_BUDGET`, `TRAVEL_ACCOMMODATION`
+
+</ParamField>
+
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+
+      <ResponseField name="leadFormAssetId" type="string">
+      The unique ID of the created lead form asset.  
+      This `leadFormAssetId` can be used to reference or attach the form to a campaign.
+						
+      Example: `"1234567890"`
+      </ResponseField>
+
+      <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+  </Expandable>
+</ResponseField>

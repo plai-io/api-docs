@@ -1,0 +1,88 @@
+---
+title: "Generate Keyword Ideas"
+api: "POST /gads/generate_keyword_ideas"
+description: "This endpoint generates keyword ideas related to a given input keyword. It helps users discover relevant search terms along with useful insights such as search volume, cost-per-click (CPC), and monthly trends. Ideal for planning and optimizing Google Ads campaigns based on real search behavior."
+---
+
+## Request Body
+
+<ParamField body="keyword" type="string" required>
+	Keyword for generating similar keyword ideas.
+</ParamField>
+
+{/* <ParamField body="languageId" type="number">
+Language ID for generating keyword ideas.  
+
+You can find supported `languageIds` in the  
+[Google Ads Language Codes Table](https://developers.google.com/static/google-ads/api/data/tables/languagecodes.csv).
+
+Default languageId is **English**.  
+</ParamField> */}
+
+<ParamField body="languageId" type="string">
+`languageId` for generating keyword ideas. 
+  <Card
+        title="You can find supported `languageIds` by downloading the file and use the column `Criterion ID` as the `languageId`"
+    	horizontal
+        icon="download"
+        href="https://developers.google.com/static/google-ads/api/data/tables/languagecodes.csv"
+    />
+
+<Note>Default `languageId` is **English**.</Note> 
+</ParamField>
+
+<ParamField body="locationIds" type="string[]">
+	Location IDs for generating keyword ideas
+
+    You can retrieve the appropriate `locationId` using the [Get Location API](/api-reference/endpoint/gads/get_location_v2).
+
+    <Note>Default `locationId` is **United States**.</Note>
+</ParamField>
+
+
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+
+       	<ResponseField name="keywords" type="object[]">
+            <Expandable title="Keyword Object">
+                <ResponseField name="keyword" type="string">
+                    The generated keyword idea related to the input keyword.  
+                 
+                     Example: `"best running shoes"`
+                </ResponseField>
+
+                <ResponseField name="searchVolume" type="number">
+                    Average monthly search volume for the keyword.  
+                    
+                    Example: `19000`
+                </ResponseField>
+
+             
+
+         <ResponseField name="cpc" type="number">
+              Estimated cost-per-click value for the keyword. 
+               
+               This is a numerical score used to help rank keyword performance.
+                </ResponseField>
+
+               
+
+       
+            </Expandable>
+        </ResponseField>
+
+     <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+    </Expandable>
+</ResponseField>

@@ -1,0 +1,41 @@
+---
+title: "Check Image Asset Eligibility"
+api: "POST /gads/check_image_asset_eligibility"
+description: "This endpoint checks whether a Google Ads account is eligible to use image assets in search ads. Use this to verify account capabilities before proceeding with campaign setup."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+
+      <ResponseField name="isEligibleForSearchAdImageAsset" type="boolean">
+          Specifies whether the Google Ads account is eligible to use image assets in search ads.
+
+          Returns `true` if the account supports image extensions for Search campaigns.
+      </ResponseField>
+
+
+      <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+  </Expandable>
+</ResponseField>
