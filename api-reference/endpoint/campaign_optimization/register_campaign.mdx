@@ -1,0 +1,50 @@
+---
+title: "Register Campaign"
+api: "POST /optimize_me/register_campaign"
+description: "This endpoint registers a campaign for continuous optimization. Once registered, our system monitors and adjusts both audience and creative segments based on their performance."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+User ID, If not already created, make a user on [create user
+page](/api-reference/endpoint/auth/create_user) first. If already created,
+retrieve the user ID from [get profile
+page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="campaignId" type="string" required>
+	Campaign ID
+</ParamField>
+
+<ParamField body="platform" type="string">
+	Platform for the campaign — defines where the ads will be served.
+
+ For Facebook or Instagram, set `platform = FACEBOOK`, for Google, set `platform = GOOGLE`.
+
+
+ Valid values: `GOOGLE`, `FACEBOOK`
+
+ <Note>Default `platform` is **FACEBOOK**.</Note>
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+ 
+
+
+      <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+  </Expandable>
+</ResponseField>

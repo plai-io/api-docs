@@ -1,0 +1,58 @@
+---
+title: "Campaign Optimization API Overview"
+description: "Our Campaign Optimization APIs help you reduce costs and improve ad performance by automatically optimizing your audience and creative assets. With intelligent adjustments based on real-time data, we ensure your campaigns consistently drive better results."
+---
+
+### Optimization Strategy
+
+We offer **two types of optimization**:
+
+#### 🎯 Audience Optimization (Every 14 Days)
+
+Automatically improves your targeting based on:
+
+- **Age & Gender**: Focus spending on segments that engage more.
+- **Location**: Shift budget away from underperforming cities.
+- **Placement**: Pause placements (e.g., Stories, Feed, In-stream) that don’t convert well.
+
+> Example: If your smartwatch ad is converting well in New York for ages 18–35 via mobile feed, the system will automatically shift your focus there and reduce spend on segments like 60+ in Dallas via desktop.
+
+
+#### 🎨 Creative Optimization (Every 7 Days)
+
+Improves what users actually **see** in your ads:
+
+- **Images & Videos**: Removes low-performing visuals.
+- **Primary Text & Headlines**: Instead of removing, poorly performing copies are rewritten using AI for better engagement.
+
+
+---
+
+### Campaign Optimization APIs
+
+<Card
+  title="🧾 Register Campaign"
+  href="/api-reference/endpoint/campaign_optimization/register_campaign"
+>
+  Register a campaign for continuous optimization. Once registered, our system monitors and adjusts both audience and creative segments based on their performance.
+</Card>
+
+<Card
+  title="📜 Get Optimization History"
+  href="/api-reference/endpoint/campaign_optimization/get_campaign_optimization_history"
+>
+  Retrieve detailed logs of past optimizations — see which audience segments or creatives were removed, added, or updated.
+</Card>
+
+<Card
+  title="🗑️ Deregister Campaign"
+  href="/api-reference/endpoint/campaign_optimization/deregister_campaign"
+>
+  Stop optimization for a campaign. Use this endpoint if you no longer want your campaign to be optimized through the "Optimize For Me" system.
+</Card>
+
+
+---
+
+> 📘 Audience optimization is performed **every 14 days**, while creative optimization runs **every 7 days**.  
+> Additional API endpoints will be added as new features are released. Stay tuned.
