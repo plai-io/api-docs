@@ -1,0 +1,40 @@
+---
+title: "Deregister Campaign"
+api: "POST /optimize_me/deregister_campaign"
+description: "Use this endpoint when a user decides to stop campaign optimization through the 'Optimize For Me' service. Once deregistered, the system will no longer perform audience or creative optimizations for that campaign.This allows users full control over which campaigns are being optimized and ensures flexibility if strategies or requirements change."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+User ID, If not already created, make a user on [create user
+page](/api-reference/endpoint/auth/create_user) first. If already created,
+retrieve the user ID from [get profile
+page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="campaignId" type="string" required>
+	Campaign ID
+</ParamField>
+
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+ 
+
+
+      <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+  </Expandable>
+</ResponseField>

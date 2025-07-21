@@ -201,6 +201,16 @@
                 ]
               }
             ]
+          },
+          {
+            "group": "Campaign Optimization",
+            "icon": "gear",
+            "pages": [
+              "api-reference/endpoint/campaign_optimization/campaign_optimization_overview",
+              "api-reference/endpoint/campaign_optimization/register_campaign",
+              "api-reference/endpoint/campaign_optimization/get_campaign_optimization_history",
+              "api-reference/endpoint/campaign_optimization/deregister_campaign"
+            ]
           }
         ]
       }

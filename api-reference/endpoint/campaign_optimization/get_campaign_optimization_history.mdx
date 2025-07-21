@@ -1,0 +1,140 @@
+---
+title: "Get Campaign Optimization History"
+api: "POST /optimize_me/get_campaign_optimization_history"
+description: "This endpoint retrieves the full optimization history of a campaign. It includes detailed logs of changes made during both audience and creative optimizations — such as which segments were paused, what assets were updated, and when these changes occurred."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+User ID, If not already created, make a user on [create user
+page](/api-reference/endpoint/auth/create_user) first. If already created,
+retrieve the user ID from [get profile
+page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+<ParamField body="campaignId" type="string" required>
+	Campaign ID
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+
+<ResponseField name="results" type="object">
+  <Expandable title="Results Object">
+        <ResponseField name="success" type="boolean">
+			      Indicates whether the specific operation or API action was successful.
+        </ResponseField>
+
+        	<ResponseField name="campaign" type="object">
+			<Expandable title="Campaign Object">
+				<ResponseField name="campaignId" type="string">
+					The unique identifier for the campaign.
+				</ResponseField>
+				<ResponseField name="campaignName" type="string">
+					The name of the campaign.
+				</ResponseField>
+				<ResponseField name="startDate" type="number">
+					The start date of the campaign.
+				</ResponseField>
+				<ResponseField name="timestamp" type="number">
+					Timestamp of the optimization.
+				</ResponseField>
+				<ResponseField name="optimizationStatus" type="string">
+					Optimization status of the campaign.
+				</ResponseField>
+			 
+				<ResponseField name="platform" type="string">
+					The platform of the campaign.
+				</ResponseField>
+			 	<ResponseField name="history" type="object[]">
+            <Expandable title="History Object">
+                <ResponseField name="adId" type="string">
+                    The ad ID.  
+                 
+                     Example: `"1234567890"`
+                </ResponseField>
+
+            <ResponseField name="headlines" type="object[]">
+            <Expandable title="Headlines Object">
+                <ResponseField name="newText" type="string">
+                    The new headline text.                      
+                </ResponseField>
+
+                <ResponseField name="oldText" type="string">
+                    The old headline text.                      
+                </ResponseField>                                                                       
+            </Expandable>
+        </ResponseField>
+        
+            <ResponseField name="primaryTexts" type="object[]">
+            <Expandable title="Primary Texts Object">
+                <ResponseField name="newText" type="string">
+                    The new primary text.                      
+                </ResponseField>
+
+                <ResponseField name="oldText" type="string">
+                    The old primary text.                      
+                </ResponseField>                                                                       
+            </Expandable>
+        </ResponseField>
+
+        <ResponseField name="images" type="object[]">
+            <Expandable title="Images Object">
+                <ResponseField name="url" type="string">
+                    The url of the image.                      
+                </ResponseField>
+
+                <ResponseField name="width" type="number">
+                    The width of the image.                      
+                </ResponseField> 
+
+                 <ResponseField name="height" type="number">
+                    The height of the image.                      
+                </ResponseField>  
+
+                   <ResponseField name="id" type="string">
+                    The id of the image.                      
+                </ResponseField>                                                                     
+            </Expandable>
+        </ResponseField>
+
+         <ResponseField name="adSetId" type="string">
+                    The ad set id.                      
+                </ResponseField>
+
+                   <ResponseField name="timestamp" type="number">
+                The timestamp of the optimization.                    
+                </ResponseField>
+
+                  <ResponseField name="lastUpdate" type="object">
+            <Expandable title="Last Update Object">
+                <ResponseField name="_seconds" type="number">
+                    The seconds of the last update.                      
+                </ResponseField>
+
+                <ResponseField name="_nanoseconds" type="number">
+                    The nanoseconds of the last update.                      
+                </ResponseField> 
+
+                                                                                    
+            </Expandable>
+        </ResponseField>
+                                                       
+            </Expandable>
+        </ResponseField>
+ 
+			</Expandable>
+		</ResponseField>
+ 
+
+
+      <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+  </Expandable>
+</ResponseField>
