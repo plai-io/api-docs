@@ -1,0 +1,48 @@
+---
+title: "Update Campaign Budget"
+api: "POST /meta/edit_campaign"
+description: "This endpoint allows you to update the daily budget of a campaign."
+---
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+
+<ParamField body="campaignId" type="string" required>
+	The unique identifier of the campaign
+</ParamField>
+
+<ParamField body="editLevel" type="string" default="BUDGET">
+	The level of campaign property you want to edit. 
+	Currently supports `BUDGET` to update the campaign’s daily budget. 
+	<Note>Default `editLevel` is **BUDGET**.</Note> 
+</ParamField>
+
+<ParamField body="amount" type="number" required>
+	The new daily budget amount for the campaign. Required when `editLevel` is set to `BUDGET`. 
+	Must be a positive number representing the budget in your account's currency.
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was
+			successful.
+		</ResponseField>
+		<ResponseField name="error" type="string">
+			Error string if something went wrong
+		</ResponseField>
+	</Expandable>
+</ResponseField>

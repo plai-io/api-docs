@@ -106,7 +106,8 @@
                     ]
                   },
                   "api-reference/endpoint/meta/get_campaign_insights",
-                  "api-reference/endpoint/meta/update_campaign_status"
+                  "api-reference/endpoint/meta/update_campaign_status",
+                  "api-reference/endpoint/meta/update_campaign_budget"
                 ]
               },
               {
