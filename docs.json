@@ -227,8 +227,7 @@
       }
     },
     "playground": {
-      "proxy": false,
-      "mode": "simple"
+      "proxy": false
     }
   },
   "logo": {
