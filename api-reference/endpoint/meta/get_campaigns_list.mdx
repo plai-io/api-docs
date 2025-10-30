@@ -1,0 +1,67 @@
+---
+title: "Get Campaigns List"
+api: "POST /meta/get_campaigns_list"
+description: "This endpoint is used to fetch list of all campaigns."
+---
+
+
+## Request Body
+
+<ParamField body="userId" type="string" required>
+	User ID, If not already created, make a user on [create user
+	page](/api-reference/endpoint/auth/create_user) first. If already created,
+	retrieve the user ID from [get profile
+	page](/api-reference/endpoint/auth/get_profile).
+</ParamField>
+
+
+## Response
+
+<ResponseField name="success" type="boolean">
+	Indicates that the HTTP response was successful (status code 200 OK).
+</ResponseField>
+
+<ResponseField name="results" type="object">
+	<Expandable title="Results Object">
+		<ResponseField name="success" type="boolean">
+			Indicates whether the specific operation or API action was successful.
+		</ResponseField>
+
+    	<ResponseField name="campaigns" type="object[]">
+            <Expandable title="Campaign">
+                <ResponseField name="id" type="string">
+                    Unique campaign identifier
+                </ResponseField>
+
+                <ResponseField name="name" type="string">
+                    Campaign display name
+                </ResponseField>
+
+                <ResponseField name="objective" type="string">
+                    Campaign objective
+                </ResponseField>
+
+                <ResponseField name="daily_budget" type="string">
+                    Campaign daily budget
+                </ResponseField>
+
+                <ResponseField name="status" type="string">
+                    Campaign status
+                </ResponseField>
+
+                <ResponseField name="issues_info" type="string">
+                    Campaign issues information
+                </ResponseField>
+
+                <ResponseField name="created_time" type="string">
+                    Campaign created time
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+
+        <ResponseField name="error" type="string">
+    		Error string if something went wrong
+    	</ResponseField>
+    </Expandable>
+
+</ResponseField>
